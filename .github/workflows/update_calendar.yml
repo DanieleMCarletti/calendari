@@ -11,6 +11,11 @@ on:
 jobs:
   build-calendar:
     runs-on: ubuntu-latest
+    # AGGIUNGI QUESTA SEZIONE 'permissions' QUI:
+    permissions:
+      contents: write # Permette al workflow di fare commit e push al repository
+      # Se in futuro l'azione dovesse creare Pull Request, aggiungeresti:
+      # pull-requests: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4 # o v3, v2 a seconda delle tue preferenze/necessità
