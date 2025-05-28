@@ -40,7 +40,7 @@ jobs:
           else
             echo "Nessuna modifica al calendario, niente da committare."
           fi
-        env:
+        # env:
           # Rendi il nome del file di output una variabile d'ambiente se vuoi definirlo nello script
           # e accedervi qui, oppure hardcodalo come sopra.
           # OUTPUT_ICS_FILENAME: "eventi_san_siro_merged.ics" # Deve corrispondere a OUTPUT_ICS_FILE nello script Python
