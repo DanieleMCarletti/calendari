@@ -12,7 +12,7 @@ import uuid # Per generare UID se mancano
 CALENDAR_URLS = {
     "inter": "https://www.stanza.news/api/calendar/inter/all.ics",
     "milan": "https://www.stanza.news/api/calendar/milan/all.ics",
-    "festivita_usa": "https://www.officeholidays.com/ics-fed/usa" # Calendario di test
+    #"festivita_usa": "https://www.officeholidays.com/ics-fed/usa" # Calendario di test
 }
 
 # Nuova configurazione per i calendari locali
