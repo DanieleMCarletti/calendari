@@ -26,7 +26,7 @@ jobs:
           pip install requests icalendar pytz
 
       - name: Run script to generate ICS file
-        run: python your_script_name.py # SOSTITUISCI con il nome del tuo file .py
+        run: python merge_calendars.py # SOSTITUISCI con il nome del tuo file .py
 
       - name: Commit and push if changed
         run: |
