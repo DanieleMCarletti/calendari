@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 import pytz # For timezone handling
 import os # Per lavorare con i percorsi dei file
 from pathlib import Path # Per una gestione più moderna dei percorsi
+import uuid # Per generare UID se mancano
 
 # --- Configurazione ---
 CALENDAR_URLS = {
@@ -26,18 +27,45 @@ STADIO_SAN_SIRO_NAMES = [
 OUTPUT_ICS_FILE = "eventi_san_siro_merged.ics"
 TARGET_TIMEZONE = 'Europe/Rome'
 
-# --- Funzioni (get_calendar_from_url, is_home_game, normalize_dt rimangono invariate) ---
+# --- Funzioni ---
 def get_calendar_from_url(url):
-    # ... (codice esistente) ...
-# ... (codice esistente per get_calendar_from_url) ...
+    """Scarica e parsa un calendario da un URL."""
+    try:
+        response = requests.get(url, timeout=15)
+        response.raise_for_status()  # Solleva un errore per status HTTP non validi
+        calendar = Calendar.from_ical(response.text)
+        return calendar
+    except requests.exceptions.RequestException as e:
+        print(f"Errore nel scaricare il calendario da {url}: {e}")
+        return None
+    except Exception as e:
+        print(f"Errore nel parsare il calendario da {url}: {e}")
+        return None
 
 def is_home_game(event):
-    # ... (codice esistente) ...
-# ... (codice esistente per is_home_game) ...
+    """Verifica se un evento è una partita in casa a San Siro."""
+    location = event.get('location')
+    if not location:
+        return False
+    
+    location_lower = str(location).lower()
+    for name in STADIO_SAN_SIRO_NAMES:
+        if name in location_lower:
+            return True
+    return False
 
 def normalize_dt(dt_value):
-    # ... (codice esistente) ...
-# ... (codice esistente per normalize_dt) ...
+    """Normalizza un datetime object a un timezone specifico o lo rende timezone-aware."""
+    if isinstance(dt_value, datetime):
+        if dt_value.tzinfo is None or dt_value.tzinfo.utcoffset(dt_value) is None:
+            # Se è naive, lo localizziamo a UTC e poi lo convertiamo
+            # Google Calendar preferisce UTC o timezone specifiche.
+            # Per i feed di stanza.news, DTSTART/DTEND sembrano essere UTC.
+            aware_dt = pytz.utc.localize(dt_value)
+        else:
+            aware_dt = dt_value
+        return aware_dt.astimezone(pytz.timezone(TARGET_TIMEZONE))
+    return dt_value # Lascia invariato se non è un datetime (es. date object)
 
 def get_calendar_from_local_file(file_path):
     """Legge e parsa un calendario da un file .ics locale."""
@@ -80,14 +108,30 @@ def main():
 
                 if is_home_game(component): # Applica il filtro San Siro per i feed URL
                     new_event = Event()
-                    for key, value in component.items():
-                        if key.upper() in ['DTSTART', 'DTEND', 'DTSTAMP', 'CREATED', 'LAST-MODIFIED', 'RECURRENCE-ID']:
-                            new_event.add(key, normalize_dt(component.decoded(key)))
-                        else:
-                            new_event.add(key, component.decoded(key) if isinstance(value, bytes) else value)
-                    
+                    for key, value_encoded in component.items(): # Rinomino value in value_encoded
+                        # Decodifica solo se necessario e gestisci diversi tipi di dati
+                        try:
+                            if isinstance(value_encoded, bytes):
+                                value_decoded = value_encoded.decode('utf-8')
+                            elif hasattr(value_encoded, 'dt'): # Per oggetti vDDDTypes (date/datetime)
+                                value_decoded = value_encoded.dt 
+                            else:
+                                value_decoded = value_encoded
+
+                            if key.upper() in ['DTSTART', 'DTEND', 'DTSTAMP', 'CREATED', 'LAST-MODIFIED', 'RECURRENCE-ID']:
+                                new_event.add(key, normalize_dt(value_decoded))
+                            else:
+                                new_event.add(key, value_decoded)
+                        except Exception as e:
+                            # print(f"    Attenzione: errore nel processare la proprietà '{key}': {e} - Valore: {value_encoded}")
+                            # Se una proprietà non critica causa problemi, potresti volerla saltare o loggare
+                            if key.upper() not in ['UID', 'SUMMARY', 'DTSTART']: # Salta se non critica
+                                 new_event.add(key, str(value_encoded)) # Prova ad aggiungerla come stringa
+                            else:
+                                print(f"    Errore critico con la proprietà '{key}', l'evento potrebbe essere incompleto.")
+
+
                     if not new_event.get('uid'):
-                        import uuid
                         new_event.add('uid', str(uuid.uuid4()))
 
                     merged_calendar.add_component(new_event)
@@ -118,22 +162,30 @@ def main():
                             # print(f"    Evento duplicato (da file locale) saltato (UID): {component.get('summary')}")
                             continue
                         
-                        # Per i file locali, assumiamo che gli eventi siano già rilevanti
-                        # e non applichiamo il filtro is_home_game(), a meno che tu non voglia.
-                        # Se vuoi filtrare anche questi, aggiungi:
-                        # if not is_home_game(component):
-                        #     continue
-                        
                         new_event = Event()
-                        for key, value in component.items():
-                            if key.upper() in ['DTSTART', 'DTEND', 'DTSTAMP', 'CREATED', 'LAST-MODIFIED', 'RECURRENCE-ID']:
-                                new_event.add(key, normalize_dt(component.decoded(key)))
-                            else:
-                                new_event.add(key, component.decoded(key) if isinstance(value, bytes) else value)
+                        for key, value_encoded in component.items():
+                            try:
+                                if isinstance(value_encoded, bytes):
+                                    value_decoded = value_encoded.decode('utf-8')
+                                elif hasattr(value_encoded, 'dt'): 
+                                    value_decoded = value_encoded.dt
+                                else:
+                                    value_decoded = value_encoded
+
+                                if key.upper() in ['DTSTART', 'DTEND', 'DTSTAMP', 'CREATED', 'LAST-MODIFIED', 'RECURRENCE-ID']:
+                                    new_event.add(key, normalize_dt(value_decoded))
+                                else:
+                                    new_event.add(key, value_decoded)
+                            except Exception as e:
+                                # print(f"    Attenzione: errore nel processare la proprietà '{key}' (locale): {e} - Valore: {value_encoded}")
+                                if key.upper() not in ['UID', 'SUMMARY', 'DTSTART']:
+                                     new_event.add(key, str(value_encoded))
+                                else:
+                                    print(f"    Errore critico con la proprietà '{key}' (locale), l'evento potrebbe essere incompleto.")
+
 
                         if not new_event.get('uid'):
-                            import uuid
-                            new_event.add('uid', str(uuid.uuid4())) # Aggiungi UID se mancante
+                            new_event.add('uid', str(uuid.uuid4()))
 
                         merged_calendar.add_component(new_event)
                         all_event_uids.add(new_event.get('uid'))
@@ -144,7 +196,6 @@ def main():
 
     # Scrivi il calendario unito in un file .ics
     try:
-        # Assicurati che il percorso di output sia relativo alla directory dello script
         output_file_path = script_dir / OUTPUT_ICS_FILE
         with open(output_file_path, 'wb') as f:
             f.write(merged_calendar.to_ical())
