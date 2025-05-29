@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:BLACKPINK – World Tour 2025
+DTSTART;TZID=Europe/Rome:20250806T210000
+DTEND;TZID=Europe/Rome:20250806T230000
+LOCATION:Ippodromo SNAI La Maura, Via Lampugnano 95, Milano
+DESCRIPTION:Concerto delle BLACKPINK, unica data italiana del loro tour mondiale.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Post Malone – I-Days Milano
+DTSTART;TZID=Europe/Rome:20250827T210000
+DTEND;TZID=Europe/Rome:20250827T230000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Concerto di Post Malone nell'ambito degli I-Days Milano Coca-Cola 2025.
+END:VEVENT
+END:VCALENDAR

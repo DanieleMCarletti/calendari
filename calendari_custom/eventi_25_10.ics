@@ -1,0 +1,40 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:OneRepublic – Live in Milano
+DTSTART;TZID=Europe/Rome:20251011T210000
+DTEND;TZID=Europe/Rome:20251011T230000
+LOCATION:Unipol Forum, Via G. Di Vittorio 6, Assago (MI)
+DESCRIPTION:Concerto degli OneRepublic al Unipol Forum di Assago.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lady Gaga – The Chromatica Ball
+DTSTART;TZID=Europe/Rome:20251019T210000
+DTEND;TZID=Europe/Rome:20251019T230000
+LOCATION:Unipol Forum, Via G. Di Vittorio 6, Assago (MI)
+DESCRIPTION:Concerto di Lady Gaga nell'ambito del tour "The Chromatica Ball".
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lady Gaga – The Chromatica Ball (Replica)
+DTSTART;TZID=Europe/Rome:20251020T210000
+DTEND;TZID=Europe/Rome:20251020T230000
+LOCATION:Unipol Forum, Via G. Di Vittorio 6, Assago (MI)
+DESCRIPTION:Replica del concerto di Lady Gaga al Unipol Forum.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Premio Cumani – Premio Verziere – Premio del Piazzale
+DTSTART;TZID=Europe/Rome:20251012T140000
+DTEND;TZID=Europe/Rome:20251012T160000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Giornata di corse ippiche con i premi Cumani, Verziere e del Piazzale.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Premio C. Porta – Jockey Club – Premio Dormello
+DTSTART;TZID=Europe/Rome:20251019T140000
+DTEND;TZID=Europe/Rome:20251019T160000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Giornata di corse ippiche con i premi C. Porta, Jockey Club e Dormello.
+END:VEVENT
+END:VCALENDAR

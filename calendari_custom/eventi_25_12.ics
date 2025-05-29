@@ -1,0 +1,54 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:The Zen Circus – Live in Milano
+DTSTART;TZID=Europe/Rome:20251203T210000
+DTEND;TZID=Europe/Rome:20251203T230000
+LOCATION:Alcatraz, Via Valtellina 25, Milano
+DESCRIPTION:Concerto dei The Zen Circus all'Alcatraz di Milano.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Till Lindemann – Live in Milano
+DTSTART;TZID=Europe/Rome:20251212T210000
+DTEND;TZID=Europe/Rome:20251212T230000
+LOCATION:Alcatraz, Via Valtellina 25, Milano
+DESCRIPTION:Concerto di Till Lindemann all'Alcatraz di Milano.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Giornata di corse ippiche
+DTSTART;TZID=Europe/Rome:20251207T140000
+DTEND;TZID=Europe/Rome:20251207T160000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Giornata di corse ippiche
+DTSTART;TZID=Europe/Rome:20251208T140000
+DTEND;TZID=Europe/Rome:20251208T160000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Giornata di corse ippiche
+DTSTART;TZID=Europe/Rome:20251213T140000
+DTEND;TZID=Europe/Rome:20251213T160000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Giornata di corse ippiche
+DTSTART;TZID=Europe/Rome:20251220T140000
+DTEND;TZID=Europe/Rome:20251220T160000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Giornata di corse ippiche
+DTSTART;TZID=Europe/Rome:20251229T140000
+DTEND;TZID=Europe/Rome:20251229T160000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
+END:VEVENT
+END:VCALENDAR

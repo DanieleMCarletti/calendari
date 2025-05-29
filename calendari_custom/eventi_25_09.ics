@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:Olly – La Grande Festa
+DTSTART;TZID=Europe/Rome:20250902T210000
+DTEND;TZID=Europe/Rome:20250902T230000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Concerto di Olly, vincitore di Sanremo 2025, prima data dell'evento "La Grande Festa".
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Olly – La Grande Festa (Replica)
+DTSTART;TZID=Europe/Rome:20250904T210000
+DTEND;TZID=Europe/Rome:20250904T230000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Replica del concerto di Olly nell'ambito de "La Grande Festa".
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Tananai – Calmocobra Live Estate 2025
+DTSTART;TZID=Europe/Rome:20250905T210000
+DTEND;TZID=Europe/Rome:20250905T230000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Concerto di Tananai per il tour estivo "Calmocobra Live Estate 2025".
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Lucio Corsi – Ippodromi 2025
+DTSTART;TZID=Europe/Rome:20250907T210000
+DTEND;TZID=Europe/Rome:20250907T230000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Concerto di Lucio Corsi nell'ambito del tour "Ippodromi 2025".
+END:VEVENT
+END:VCALENDAR

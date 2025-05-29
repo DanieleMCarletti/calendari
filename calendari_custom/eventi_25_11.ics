@@ -1,0 +1,33 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+SUMMARY:Johnny Marr – Live in Milano
+DTSTART;TZID=Europe/Rome:20251106T210000
+DTEND;TZID=Europe/Rome:20251106T230000
+LOCATION:Alcatraz, Via Valtellina 25, Milano
+DESCRIPTION:Concerto di Johnny Marr all'Alcatraz di Milano.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:The Psychedelic Furs – Live in Milano
+DTSTART;TZID=Europe/Rome:20251111T210000
+DTEND;TZID=Europe/Rome:20251111T230000
+LOCATION:Alcatraz, Via Valtellina 25, Milano
+DESCRIPTION:Concerto dei The Psychedelic Furs all'Alcatraz di Milano.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Premio Vittorio di Capua
+DTSTART;TZID=Europe/Rome:20251109T140000
+DTEND;TZID=Europe/Rome:20251109T160000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Giornata di corse ippiche con il Premio Vittorio di Capua.
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Premio Federico Tesio – St. Leger Italiano
+DTSTART;TZID=Europe/Rome:20251116T140000
+DTEND;TZID=Europe/Rome:20251116T160000
+LOCATION:Ippodromo SNAI San Siro, Piazzale dello Sport 16, Milano
+DESCRIPTION:Giornata di corse ippiche con i premi Federico Tesio e St. Leger Italiano.
+END:VEVENT
+END:VCALENDAR
