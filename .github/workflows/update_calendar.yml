@@ -37,17 +37,40 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          # Tira le modifiche più recenti dal repository remoto prima di fare qualsiasi altra cosa
+
+          ICS_FILE_PATH="${{ env.OUTPUT_ICS_FILENAME || 'eventi_san_siro_merged.ics' }}"
+
+          # Controlla se ci sono modifiche locali al file ICS prima di fare il pull
+          # Se ci sono, mettile da parte (stash)
+          # Usiamo "git status --porcelain" per vedere se ci sono modifiche non committate
+          if ! git diff --quiet HEAD -- "$ICS_FILE_PATH"; then
+            echo "Stashing local changes to $ICS_FILE_PATH"
+            # Stash solo il file specifico se è modificato, includi anche untracked files (-u) se il file potrebbe essere nuovo
+            git stash push -u -m "temp_ics_update_stash" -- "$ICS_FILE_PATH"
+          fi
+          
+          # Tira le modifiche più recenti dal repository remoto
+          # Potresti voler usare --rebase per una history più pulita, ma un merge normale è ok
+          echo "Pulling latest changes from origin/main..."
           git pull origin main
-          git add ${{ env.OUTPUT_ICS_FILENAME || 'eventi_san_siro_merged.ics' }} # Usa la variabile d'ambiente o il nome file di default
+          
+          # Se avevamo messo da parte delle modifiche, prova a riapplicarle
+          # Cerca uno stash con il nostro messaggio specifico
+          STASH_ENTRY=$(git stash list --grep="temp_ics_update_stash" -n 1 --pretty=%H)
+          if [ -n "$STASH_ENTRY" ]; then
+            echo "Applying stashed changes for $ICS_FILE_PATH..."
+            git stash pop
+            # Se ci sono conflitti dopo il pop, lo script fallirà qui,
+            # indicando che è necessario un intervento manuale per risolvere i conflitti.
+          fi
+          
+          # Aggiungi il file (ora aggiornato o ripristinato dallo stash)
+          git add "$ICS_FILE_PATH"
+          
           # Controlla se ci sono modifiche da committare
           if ! git diff --staged --quiet; then
             git commit -m "Aggiornamento automatico calendario eventi San Siro"
             git push
           else
-            echo "Nessuna modifica al calendario, niente da committare."
+            echo "Nessuna modifica significativa al calendario da committare dopo pull/stash."
           fi
-        # env:
-          # Rendi il nome del file di output una variabile d'ambiente se vuoi definirlo nello script
-          # e accedervi qui, oppure hardcodalo come sopra.
-          # OUTPUT_ICS_FILENAME: "eventi_san_siro_merged.ics" # Deve corrispondere a OUTPUT_ICS_FILE nello script Python
