@@ -37,6 +37,8 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          # Tira le modifiche più recenti dal repository remoto prima di fare qualsiasi altra cosa
+          git pull origin main
           git add ${{ env.OUTPUT_ICS_FILENAME || 'eventi_san_siro_merged.ics' }} # Usa la variabile d'ambiente o il nome file di default
           # Controlla se ci sono modifiche da committare
           if ! git diff --staged --quiet; then
