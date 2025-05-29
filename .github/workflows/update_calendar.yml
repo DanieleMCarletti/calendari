@@ -37,40 +37,46 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          ICS_FILE_PATH="${{ env.OUTPUT_ICS_FILENAME || 'eventi_san_siro_merged.ics' }}" # Assicurati che questa sia la path corretta al file generato
+          TEMP_ICS_NAME=".${ICS_FILE_PATH}.temp_generated_by_workflow" # Nome del file temporaneo
 
-          ICS_FILE_PATH="${{ env.OUTPUT_ICS_FILENAME || 'eventi_san_siro_merged.ics' }}"
-
-          # Controlla se ci sono modifiche locali al file ICS prima di fare il pull
-          # Se ci sono, mettile da parte (stash)
-          # Usiamo "git status --porcelain" per vedere se ci sono modifiche non committate
-          if ! git diff --quiet HEAD -- "$ICS_FILE_PATH"; then
-            echo "Stashing local changes to $ICS_FILE_PATH"
-            # Stash solo il file specifico se è modificato, includi anche untracked files (-u) se il file potrebbe essere nuovo
-            git stash push -u -m "temp_ics_update_stash" -- "$ICS_FILE_PATH"
+          # Verifica che il file generato esista prima di continuare
+          if [ ! -f "$ICS_FILE_PATH" ]; then
+            echo "Errore: Il file ICS generato '$ICS_FILE_PATH' non è stato trovato!"
+            exit 1
           fi
           
-          # Tira le modifiche più recenti dal repository remoto
-          # Potresti voler usare --rebase per una history più pulita, ma un merge normale è ok
-          echo "Pulling latest changes from origin/main..."
+          echo "Spostamento temporaneo del file generato $ICS_FILE_PATH a $TEMP_ICS_NAME"
+          mv "$ICS_FILE_PATH" "$TEMP_ICS_NAME"
+          
+          echo "Pull delle modifiche più recenti da origin/main..."
+          # Facciamo un pull per aggiornare la working directory.
+          # Se ci fossero modifiche locali non committate (a parte il file generato),
+          # questo potrebbe fallire. actions/checkout di solito fornisce una copia pulita.
           git pull origin main
           
-          # Se avevamo messo da parte delle modifiche, prova a riapplicarle
-          # Cerca uno stash con il nostro messaggio specifico
-          STASH_ENTRY=$(git stash list --grep="temp_ics_update_stash" -n 1 --pretty=%H)
-          if [ -n "$STASH_ENTRY" ]; then
-            echo "Applying stashed changes for $ICS_FILE_PATH..."
-            git stash pop
-            # Se ci sono conflitti dopo il pop, lo script fallirà qui,
-            # indicando che è necessario un intervento manuale per risolvere i conflitti.
-          fi
+          echo "Ripristino del file generato dal workflow $ICS_FILE_PATH da $TEMP_ICS_NAME"
+          # Sposta indietro il file generato, sovrascrivendo la versione di $ICS_FILE_PATH
+          # che potrebbe essere stata scaricata dal pull.
+          # Questo assicura che la versione del file sia quella appena generata dallo script.
+          mv "$TEMP_ICS_NAME" "$ICS_FILE_PATH"
           
-          # Aggiungi il file (ora aggiornato o ripristinato dallo stash)
+          echo "Aggiunta del file $ICS_FILE_PATH all'area di staging..."
           git add "$ICS_FILE_PATH"
           
-          # Controlla se ci sono modifiche da committare
+          echo "Controllo delle differenze da committare..."
+          # Controlla se ci sono modifiche nell'area di staging rispetto all'ultimo commit (HEAD)
           if ! git diff --staged --quiet; then
-            git commit -m "Aggiornamento automatico calendario eventi San Siro"
+            echo "Commit e push delle modifiche per $ICS_FILE_PATH..."
+            git commit -m "Aggiornamento automatico calendario: $ICS_FILE_PATH (workflow)"
             git push
           else
-            echo "Nessuna modifica significativa al calendario da committare dopo pull/stash."
+            echo "Nessuna modifica significativa al file $ICS_FILE_PATH da committare."
+            echo "Il file generato è identico a quello presente su main dopo il pull, o non è stato modificato."
           fi
+        env:
+          # Assicurati che OUTPUT_ICS_FILENAME sia impostata correttamente dallo step precedente
+          # Se il tuo file è sempre 'eventi_san_siro_merged.ics' nella root, puoi anche ometterla qui
+          # e usare direttamente il nome del file.
+          OUTPUT_ICS_FILENAME: ${{ env.OUTPUT_ICS_FILENAME }}
