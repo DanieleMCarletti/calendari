@@ -1,0 +1,105 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Generated Calendar (Europe/Rome)//example.com//
+X-WR-CALNAME:Eventi San Siro - 2025_07
+X-WR-TIMEZONE:Europe/Rome
+BEGIN:VEVENT
+SUMMARY:Bruce Springsteen and The E Street Band (Data 2)
+DTSTART;TZID=Europe/Rome:20250703T203000
+DTEND;TZID=Europe/Rome:20250703T235900
+DTSTAMP:20250530T091521Z
+UID:00eec233-292d-410f-88c3-5d3175c0e6b0
+DESCRIPTION:Seconda data del concerto di Bruce Springsteen and The E Stree
+ t Band allo Stadio San Siro.
+LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
+ 51 Milano MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Pia
+ zzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Ultimo - Stadi 2025 (Data 1)
+DTSTART;TZID=Europe/Rome:20250705T210000
+DTEND;TZID=Europe/Rome:20250705T234500
+DTSTAMP:20250530T091521Z
+UID:eb594299-dbdc-4d76-b1ae-83d1aab8e6b2
+DESCRIPTION:Prima data del concerto di Ultimo allo Stadio San Siro.
+LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
+ 51 Milano MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Pia
+ zzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Ultimo - Stadi 2025 (Data 2)
+DTSTART;TZID=Europe/Rome:20250707T210000
+DTEND;TZID=Europe/Rome:20250707T234500
+DTSTAMP:20250530T091521Z
+UID:809463d1-779a-4867-9749-6b976e2bab18
+DESCRIPTION:Seconda data del concerto di Ultimo allo Stadio San Siro.
+LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
+ 51 Milano MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Pia
+ zzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Marco Mengoni - Marco Negli Stadi (Data 1)
+DTSTART;TZID=Europe/Rome:20250713T210000
+DTEND;TZID=Europe/Rome:20250713T233000
+DTSTAMP:20250530T091521Z
+UID:b48b2335-c286-4568-b481-e785de240cd9
+DESCRIPTION:Prima data del concerto di Marco Mengoni allo Stadio San Siro.
+LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
+ 51 Milano MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Pia
+ zzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Marco Mengoni - Marco Negli Stadi (Data 2)
+DTSTART;TZID=Europe/Rome:20250714T210000
+DTEND;TZID=Europe/Rome:20250714T233000
+DTSTAMP:20250530T091521Z
+UID:fb45488b-7726-415e-b95d-efb169bd98e9
+DESCRIPTION:Seconda data del concerto di Marco Mengoni allo Stadio San Sir
+ o.
+LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
+ 51 Milano MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Pia
+ zzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Olivia Rodrigo - GUTS World Tour - I-Days Milano
+DTSTART;TZID=Europe/Rome:20250715T203000
+DTEND;TZID=Europe/Rome:20250715T230000
+DTSTAMP:20250530T091521Z
+UID:6becea83-1a1d-4de9-9d94-7c9a0dabe538
+DESCRIPTION:Concerto di Olivia Rodrigo\, parte degli I-Days Milano Coca-Co
+ la.
+LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
+  Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+La+Maur
+ a%2C+Via+Lampugnano%2C+95%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:The Who - I-Days Milano
+DTSTART;TZID=Europe/Rome:20250720T203000
+DTEND;TZID=Europe/Rome:20250720T230000
+DTSTAMP:20250530T091521Z
+UID:ca222ea1-5547-4de7-b950-2e5fdfed04e7
+DESCRIPTION:Concerto dei The Who\, parte degli I-Days Milano Coca-Cola.
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
+ o MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
+ o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Thirty Seconds To Mars - Seasons World Tour 2025
+DTSTART;TZID=Europe/Rome:20250702T210000
+DTEND;TZID=Europe/Rome:20250702T233000
+DTSTAMP:20250530T091521Z
+UID:e03d390d-576d-4ff3-92d2-0c76c8920077
+DESCRIPTION:Concerto dei Thirty Seconds To Mars.
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
+ o MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
+ o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+END:VCALENDAR

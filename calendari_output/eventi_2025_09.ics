@@ -1,0 +1,54 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Generated Calendar (Europe/Rome)//example.com//
+X-WR-CALNAME:Eventi San Siro - 2025_09
+X-WR-TIMEZONE:Europe/Rome
+BEGIN:VEVENT
+SUMMARY:Lucio Corsi - Ippodromi 2025
+DTSTART;TZID=Europe/Rome:20250907T210000
+DTEND;TZID=Europe/Rome:20250907T230000
+DTSTAMP:20250530T091521Z
+UID:d5723a6e-fe3d-4f62-8bf4-43acfc930767
+DESCRIPTION:Concerto di Lucio Corsi.
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
+ o MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
+ o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Olly - La Grande Festa (Data 1)
+DTSTART;TZID=Europe/Rome:20250902T210000
+DTEND;TZID=Europe/Rome:20250902T230000
+DTSTAMP:20250530T091521Z
+UID:f18ff258-b641-4cc9-8a67-d9b8088979f6
+DESCRIPTION:Concerto di Olly.
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
+ o MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
+ o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Olly - La Grande Festa (Data 2)
+DTSTART;TZID=Europe/Rome:20250904T210000
+DTEND;TZID=Europe/Rome:20250904T230000
+DTSTAMP:20250530T091521Z
+UID:7b375d0e-5bc7-4ac3-a44b-ef77c5d16821
+DESCRIPTION:Replica concerto di Olly.
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
+ o MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
+ o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Tananai - Calmocobra Live Estate 2025
+DTSTART;TZID=Europe/Rome:20250905T210000
+DTEND;TZID=Europe/Rome:20250905T233000
+DTSTAMP:20250530T091521Z
+UID:25db9814-6139-47f1-aa15-0d2e3340152a
+DESCRIPTION:Concerto di Tananai.
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
+ o MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
+ o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+END:VCALENDAR

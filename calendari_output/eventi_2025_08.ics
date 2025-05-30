@@ -1,0 +1,30 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Generated Calendar (Europe/Rome)//example.com//
+X-WR-CALNAME:Eventi San Siro - 2025_08
+X-WR-TIMEZONE:Europe/Rome
+BEGIN:VEVENT
+SUMMARY:BLACKPINK - BORN PINK World Tour ENCORE
+DTSTART;TZID=Europe/Rome:20250806T203000
+DTEND;TZID=Europe/Rome:20250806T230000
+DTSTAMP:20250530T091521Z
+UID:7ae4d6a0-90c3-4eab-bde0-a257fad8a25f
+DESCRIPTION:Concerto delle BLACKPINK.
+LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
+  Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+La+Maur
+ a%2C+Via+Lampugnano%2C+95%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Post Malone - I-Days Milano
+DTSTART;TZID=Europe/Rome:20250827T203000
+DTEND;TZID=Europe/Rome:20250827T230000
+DTSTAMP:20250530T091521Z
+UID:0c27734a-d568-4a5b-8678-09d526181b89
+DESCRIPTION:Concerto di Post Malone\, parte degli I-Days Milano Coca-Cola.
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
+ o MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
+ o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+END:VCALENDAR
