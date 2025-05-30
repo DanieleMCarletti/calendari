@@ -21,6 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install icalendar pytz requests # <-- AGGIUNGI 'requests' QUI
           pip install icalendar pytz # Le dipendenze del nuovo script
 
       - name: Run script to generate monthly ICS files
