@@ -292,7 +292,7 @@ def main():
     print(f"  Numero totale di eventi prima della de-duplicazione finale: {len(all_events_for_aggregation)}")
     final_unique_event_dicts = apply_deduplication_and_merge(all_events_for_aggregation)
     
-    display_name_aggregated = f'Eventi San Siro {CURRENT_YEAR} (Aggregato)'
+    display_name_aggregated = f'Eventi San Siro (Aggregato)'
     aggregated_calendar_obj = create_calendar_from_event_dicts(final_unique_event_dicts, display_name_aggregated)
 
     if len(aggregated_calendar_obj.walk('VEVENT')) > 0:
