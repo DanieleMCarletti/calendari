@@ -1,0 +1,51 @@
+name: Generate Monthly Calendars
+
+on:
+  workflow_dispatch: # Permette l'esecuzione manuale dall'interfaccia di GitHub
+
+jobs:
+  build-monthly-calendars:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permette al workflow di fare commit e push al repository
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' # O la versione che preferisci
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install icalendar pytz # Le dipendenze del nuovo script
+
+      - name: Run script to generate monthly ICS files
+        run: python genera_calendari_mensili.py # Assicurati che questo sia il nome corretto del tuo nuovo script
+
+      - name: Commit and push generated ICS files
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          echo "Pulling latest changes from origin/main..."
+          git pull origin main # Sincronizza con il remoto prima di committare
+          
+          # Aggiungi tutti i file .ics nella cartella di output
+          # Assicurati che il percorso 'calendari_output/*.ics' sia corretto
+          # Se la cartella non esiste o non ci sono file .ics, git add non farà nulla e va bene.
+          git add calendari_output/*.ics 
+          
+          # Controlla se ci sono modifiche da committare
+          # `git diff --staged --quiet` esce con 0 se non ci sono modifiche, 1 se ci sono.
+          # `!` inverte il codice di uscita.
+          if ! git diff --staged --quiet; then
+            echo "Modifiche trovate nei file ICS generati. Committing e pushing..."
+            git commit -m "Aggiornamento automatico calendari mensili (workflow)"
+            git push
+          else
+            echo "Nessuna modifica significativa nei calendari mensili da committare."
+          fi
