@@ -16,8 +16,7 @@ TARGET_TIMEZONE_OBJ = pytz.timezone(TARGET_TIMEZONE_STR)
 
 DATA_SOURCE_FOLDER_NAME = "dati_grezzi"
 OUTPUT_ICS_FOLDER_NAME = "calendari_output"
-CURRENT_YEAR = 2025 # Per il nome del file aggregato, potremmo renderlo dinamico
-AGGREGATED_ICS_FILENAME = f"eventi_san_siro_{CURRENT_YEAR}_aggregato.ics"
+AGGREGATED_ICS_FILENAME = f"eventi_san_siro_aggregato.ics"
 
 CALENDAR_URLS = {
     "inter": "https://www.stanza.news/api/calendar/inter/all.ics",
