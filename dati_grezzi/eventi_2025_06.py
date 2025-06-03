@@ -45,6 +45,15 @@ event_list = [
         'description': "Seconda data dei Pinguini Tattici Nucleari allo Stadio San Siro per il loro 'Hello World Tour Stadi 2025'."
     },
     {
+        'summary': 'Modà',
+        'dtstart_str': '2025-06-12T21:00:00',
+        'dtend_str': '2025-06-12T23:45:00',
+        'location_name': 'Stadio San Siro (Giuseppe Meazza)',
+        'location_address': 'Piazzale Angelo Moratti, 20151 Milano MI, Italy',
+        'google_maps_url_str': 'https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Piazzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy',
+        'description': "Modà allo Stadio San Siro per il loro 'Hello World Tour Stadi 2025'."
+    },
+    {
         'summary': 'Cesare Cremonini - Stadi 2025 (Data 1)',
         'dtstart_str': '2025-06-15T21:00:00',
         'dtend_str': '2025-06-15T23:45:00',
