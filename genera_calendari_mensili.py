@@ -16,16 +16,16 @@ TARGET_TIMEZONE_OBJ = pytz.timezone(TARGET_TIMEZONE_STR)
 
 DATA_SOURCE_FOLDER_NAME = "dati_grezzi"
 OUTPUT_ICS_FOLDER_NAME = "calendari_output"
-AGGREGATED_ICS_FILENAME = f"eventi_san_siro_aggregato.ics"
+CURRENT_YEAR = datetime.now().year # Definito per filtri data o nomi visualizzati
+AGGREGATED_ICS_FILENAME = "eventi_san_siro_aggregato.ics" # Nome file senza anno
 
 CALENDAR_URLS = {
-    "inter": "https://ics.fixtur.es/v2/inter.ics", 
+    "inter": "https://ics.fixtur.es/v2/inter.ics",
     "milan": "https://ics.fixtur.es/v2/ac-milan.ics",
 }
 
-# Nomi per il filtro is_home_game (da affinare se necessario)
-STADIO_SAN_SIRO_KEYWORDS = [
-    "san siro", "giuseppe meazza" # Aggiungere altri se servono
+STADIO_SAN_SIRO_KEYWORDS = [ # Usato come fallback se il summary non è chiaro
+    "san siro", "giuseppe meazza"
 ]
 
 LOCATION_ALIASES = {
@@ -38,41 +38,36 @@ LOCATION_ALIASES = {
 # --- Funzioni di Download e Parsing URL ---
 def get_calendar_from_url(url):
     try:
-        response = requests.get(url, timeout=15)
+        response = requests.get(url, timeout=20) # Aumentato timeout
         response.raise_for_status()
         return Calendar.from_ical(response.text)
+    except requests.exceptions.Timeout:
+        print(f"Timeout durante il download del calendario da {url}")
     except requests.exceptions.RequestException as e:
         print(f"Errore nel scaricare il calendario da {url}: {e}")
     except Exception as e:
         print(f"Errore nel parsare il calendario da {url}: {e}")
     return None
 
-def is_relevant_location(location_text):
-    """Verifica se la location è una di quelle di nostro interesse."""
+def is_location_relevant_for_feed(location_text):
+    """Verifica se la location da un feed ICS è una di quelle di nostro interesse (San Siro/La Maura)."""
     if not location_text: return False
-    normalized_loc = normalize_location_for_signature(location_text) # Usa la stessa normalizzazione
-    # Verifica se la location normalizzata corrisponde a una delle chiavi canoniche
-    # che sappiamo essere a San Siro / La Maura.
-    # Questo assume che le chiavi di LOCATION_ALIASES siano le location di interesse.
-    return normalized_loc in LOCATION_ALIASES 
+    normalized_loc = normalize_location_for_signature(location_text)
+    return normalized_loc in LOCATION_ALIASES
 
-# --- Funzioni di Normalizzazione e Utilità (esistenti e nuove) ---
+# --- Funzioni di Normalizzazione e Utilità ---
 def parse_datetime_str(dt_str):
     if not dt_str: return None
     try:
         return datetime.strptime(dt_str, '%Y-%m-%dT%H:%M:%S')
     except ValueError:
-        # print(f"Attenzione: formato data/ora non valido: {dt_str}")
         return None
 
 def make_timezone_aware(dt_obj, timezone_obj=TARGET_TIMEZONE_OBJ):
     if not dt_obj: return None
-    if isinstance(dt_obj, date) and not isinstance(dt_obj, datetime): # Se è solo date
-        # Converti in datetime all'inizio del giorno per poter localizzare
+    if isinstance(dt_obj, date) and not isinstance(dt_obj, datetime):
         dt_obj = datetime.combine(dt_obj, datetime.min.time())
-        
-    if not isinstance(dt_obj, datetime): return None # Se ancora non è datetime, non possiamo procedere
-
+    if not isinstance(dt_obj, datetime): return None
     if dt_obj.tzinfo is None or dt_obj.tzinfo.utcoffset(dt_obj) is None:
         return timezone_obj.localize(dt_obj)
     return dt_obj.astimezone(timezone_obj)
@@ -80,12 +75,21 @@ def make_timezone_aware(dt_obj, timezone_obj=TARGET_TIMEZONE_OBJ):
 def normalize_summary_for_signature(summary):
     if not summary: return ""
     s = str(summary).lower().strip()
-    s = re.sub(r'\b(live|world tour|concerto|evento|show|i-days milano|stadi \d{4}|partita|campionato|serie a|coppa italia|champions league|europa league)\b', '', s, flags=re.IGNORECASE)
+    # Rimuovi qualificatori di competizione comuni dai summary per il confronto
+    s = re.sub(r'\s*\[(cl|el|cop|serie a|campionato)\]\s*$', '', s, flags=re.IGNORECASE) # Rimuove [CL], [EL], [COP] etc. alla fine
+    s = re.sub(r'\b(live|world tour|concerto|evento|show|i-days milano|stadi \d{4}|partita)\b', '', s, flags=re.IGNORECASE)
     s = re.sub(r'\(data \d+(?: - ipotizzata)?\)', '', s, flags=re.IGNORECASE)
-    s = re.sub(r'[^\w\s-]', '', s)
+    s = re.sub(r'[^\w\s-]', '', s) # Rimuove la maggior parte della punteggiatura
     s = re.sub(r'\s+', ' ', s).strip()
-    # Tentativo di normalizzare Inter vs Milan -> Milan vs Inter
-    parts = sorted([p.strip() for p in s.split(" vs ")])
+    
+    # Normalizza "SquadraA - SquadraB (punteggio)" in "SquadraA - SquadraB"
+    s = re.sub(r'\s*\(\d+-\d+\)\s*$', '', s).strip()
+
+    # Normalizza "SquadraA vs SquadraB" in ordine alfabetico per la firma
+    # per rendere "A vs B" e "B vs A" la stessa firma se si riferiscono alla stessa partita
+    # Nota: Questo potrebbe non essere sempre desiderabile se A vs B è diverso da B vs A per la location
+    # Ma lo applichiamo solo al summary normalizzato per la firma.
+    parts = sorted([p.strip() for p in re.split(r'\s+vs\s+|\s+-\s+', s) if p.strip()])
     s = " vs ".join(parts)
     return s
 
@@ -96,8 +100,7 @@ def normalize_location_for_signature(location_name):
         if canonical in loc_lower: return canonical
         for alias in aliases:
             if alias in loc_lower: return canonical
-    # Normalizzazione base se non trovato alias (potrebbe essere meno efficace)
-    loc_lower = re.sub(r'[^\w\s-,]', '', loc_lower) # Mantieni virgole e trattini
+    loc_lower = re.sub(r'[^\w\s-,]', '', loc_lower)
     loc_lower = re.sub(r'\s+', ' ', loc_lower).strip()
     return loc_lower
 
@@ -105,8 +108,22 @@ def create_event_signature(event_data_dict):
     norm_summary = normalize_summary_for_signature(event_data_dict.get('summary'))
     dt_start_obj_naive = parse_datetime_str(event_data_dict.get('dtstart_str'))
     event_date_str = dt_start_obj_naive.date().isoformat() if dt_start_obj_naive else ""
-    norm_loc = normalize_location_for_signature(event_data_dict.get('location_name', event_data_dict.get('location', ''))) # Considera anche campo 'location'
-    return (norm_summary, event_date_str, norm_loc)
+    # Per la firma, usiamo una location normalizzata, se la location originale è San Siro/La Maura.
+    # Se la location non è San Siro/La Maura (es. trasferta), usiamo quella specifica per la firma.
+    raw_location = event_data_dict.get('location_name', event_data_dict.get('location', ''))
+    norm_loc_specific = normalize_location_for_signature(raw_location)
+    
+    # Se la location normalizzata è una delle nostre principali, usiamo quella per la firma.
+    # Altrimenti, usiamo la location normalizzata specifica (per distinguere le trasferte).
+    if norm_loc_specific in LOCATION_ALIASES:
+        signature_location = norm_loc_specific
+    else: 
+        # Per le trasferte o location non mappate, usiamo la stringa normalizzata originale
+        # per evitare che tutte le trasferte abbiano la stessa firma di location vuota.
+        signature_location = norm_loc_specific if norm_loc_specific else "unknown_location"
+
+    return (norm_summary, event_date_str, signature_location)
+
 
 def load_event_list_from_file(file_path):
     module_name = file_path.stem
@@ -121,45 +138,36 @@ def load_event_list_from_file(file_path):
     return None
 
 def ical_event_component_to_dict(component):
-    """Converte un componente VEVENT da icalendar in un nostro dizionario standard."""
-    event_dict = {'source_type': 'ics_feed'} # Per tracciare l'origine
+    event_dict = {'source_type': 'ics_feed'}
     event_dict['summary'] = str(component.get('summary', 'Evento da Feed ICS'))
-
     dtstart_prop = component.get('dtstart')
     if dtstart_prop:
         dtstart_obj_orig = dtstart_prop.dt
         dtstart_obj_aware = make_timezone_aware(dtstart_obj_orig)
         if dtstart_obj_aware:
             event_dict['dtstart_str'] = dtstart_obj_aware.strftime('%Y-%m-%dT%H:%M:%S')
-
     dtend_prop = component.get('dtend')
     if dtend_prop:
         dtend_obj_orig = dtend_prop.dt
         dtend_obj_aware = make_timezone_aware(dtend_obj_orig)
         if dtend_obj_aware:
             event_dict['dtend_str'] = dtend_obj_aware.strftime('%Y-%m-%dT%H:%M:%S')
-    
-    event_dict['location_name'] = str(component.get('location', '')) # Mettiamo tutto in location_name
-    event_dict['location_address'] = '' # I feed ICS raramente lo separano
+    event_dict['location_name'] = str(component.get('location', ''))
+    event_dict['location_address'] = ''
     event_dict['description'] = str(component.get('description', ''))
-    event_dict['google_maps_url_str'] = '' # Non presente solitamente nei feed generici
-    
-    # Mantieni UID originale per eventuale logica di merge più avanzata, ma non per la firma base
+    event_dict['google_maps_url_str'] = ''
     event_dict['original_uid_from_feed'] = str(component.get('uid', ''))
     return event_dict
 
 def apply_deduplication_and_merge(event_list_of_dicts):
-    """Applica la logica di de-duplicazione e merge a una lista di dizionari evento."""
-    print(f"  Inizio de-duplicazione per {len(event_list_of_dicts)} eventi...")
+    print(f"  Inizio de-duplicazione per {len(event_list_of_dicts)} eventi candidati...")
     processed_events_by_signature = {}
     for raw_event_data in event_list_of_dicts:
         signature = create_event_signature(raw_event_data)
-        
         dt_start_new_str = raw_event_data.get('dtstart_str')
         dt_end_new_str = raw_event_data.get('dtend_str')
-
         dt_start_new_obj = make_timezone_aware(parse_datetime_str(dt_start_new_str))
-        if not dt_start_new_obj: continue # Salta se dtstart non è valido
+        if not dt_start_new_obj: continue
 
         if signature in processed_events_by_signature:
             existing_event_data = processed_events_by_signature[signature]
@@ -181,51 +189,41 @@ def apply_deduplication_and_merge(event_list_of_dicts):
                 merged_desc = f"{ex_desc}\n---\n{new_desc}" if ex_desc else new_desc
                 existing_event_data['description'] = merged_desc
             
-            # Priorità ai dati "manuali" per URL mappa se l'esistente è da feed
             if raw_event_data.get('source_type') != 'ics_feed' and raw_event_data.get('google_maps_url_str'):
                 if not existing_event_data.get('google_maps_url_str'):
                     existing_event_data['google_maps_url_str'] = raw_event_data.get('google_maps_url_str')
                     existing_event_data['location_address'] = raw_event_data.get('location_address', existing_event_data.get('location_address',''))
-
-
             processed_events_by_signature[signature] = existing_event_data
         else:
             processed_events_by_signature[signature] = raw_event_data.copy()
     
-    print(f"  De-duplicazione completata. Eventi unici/mergiati: {len(processed_events_by_signature)}")
-    return list(processed_events_by_signature.values())
-
+    final_list = list(processed_events_by_signature.values())
+    print(f"  De-duplicazione completata. Eventi unici/mergiati: {len(final_list)}")
+    return final_list
 
 def create_calendar_from_event_dicts(event_dictionaries, calendar_display_name):
-    """Crea un oggetto icalendar.Calendar da una lista di dizionari evento processati."""
     final_calendar = Calendar()
     final_calendar.add('prodid', f'-//Generated Calendar ({TARGET_TIMEZONE_STR})//example.com//')
     final_calendar.add('version', '2.0')
     final_calendar.add('X-WR-CALNAME', calendar_display_name)
     final_calendar.add('X-WR-TIMEZONE', TARGET_TIMEZONE_STR)
-
     for event_dict in event_dictionaries:
         ics_event = Event()
         dtstart = make_timezone_aware(parse_datetime_str(event_dict.get('dtstart_str')))
         dtend = make_timezone_aware(parse_datetime_str(event_dict.get('dtend_str')))
-
         if not dtstart: continue
-
         ics_event.add('summary', event_dict.get('summary', 'Evento Senza Titolo'))
         ics_event.add('dtstart', dtstart)
         if dtend: ics_event.add('dtend', dtend)
         ics_event.add('dtstamp', make_timezone_aware(datetime.now()))
-        
         loc_name = event_dict.get('location_name', '')
         loc_addr = event_dict.get('location_address', '')
         location_string = f"{loc_name} - {loc_addr}".strip().strip('-').strip() if loc_name and loc_addr else loc_name or loc_addr
         if location_string: ics_event.add('location', location_string)
-        
         if event_dict.get('description'): ics_event.add('description', event_dict.get('description'))
         if event_dict.get('google_maps_url_str'): ics_event.add('url', event_dict.get('google_maps_url_str'))
         ics_event.add('uid', str(uuid.uuid4()))
         final_calendar.add_component(ics_event)
-        
     return final_calendar
 
 # --- Script Principale ---
@@ -233,32 +231,31 @@ def main():
     script_dir = Path(__file__).resolve().parent
     data_source_dir = script_dir / DATA_SOURCE_FOLDER_NAME
     output_dir = script_dir / OUTPUT_ICS_FOLDER_NAME
-
     if not data_source_dir.is_dir():
         print(f"Errore: La cartella dei dati sorgente '{data_source_dir}' non è stata trovata.")
         return
     output_dir.mkdir(parents=True, exist_ok=True)
-    
-    all_events_for_aggregation = [] # Lista di dizionari evento da tutte le fonti
+    all_events_for_aggregation = []
 
-    # 1. Processa file di dati grezzi mensili
     print(f"\n--- Fase 1: Processamento Dati Grezzi Mensili da '{data_source_dir}' ---")
-    for data_file_path in data_source_dir.glob("*.py"):
+    for data_file_path in sorted(data_source_dir.glob("*.py")): # Processa in ordine alfabetico
         print(f"  Processando file dati: {data_file_path.name}")
         raw_events_monthly = load_event_list_from_file(data_file_path)
         if not raw_events_monthly:
             print(f"    Nessun evento caricato da {data_file_path.name}.\n")
             continue
         
-        # De-duplica e mergia eventi per questo mese specifico
-        processed_monthly_event_dicts = apply_deduplication_and_merge(raw_events_monthly)
-        all_events_for_aggregation.extend(processed_monthly_event_dicts) # Aggiungi alla lista aggregata
+        # Applica un primo filtro opzionale solo sui dati grezzi (es. per escludere eventi non a San Siro/La Maura dai file grezzi)
+        # filtered_raw_monthly = [e for e in raw_events_monthly if is_location_relevant_for_feed(e.get('location_name', ''))] # Esempio
+        # print(f"    Eventi dopo filtro location su dati grezzi: {len(filtered_raw_monthly)}")
+        # processed_monthly_event_dicts = apply_deduplication_and_merge(filtered_raw_monthly)
+        
+        processed_monthly_event_dicts = apply_deduplication_and_merge(raw_events_monthly) # Usa tutti i dati grezzi
+        all_events_for_aggregation.extend(processed_monthly_event_dicts)
 
-        # Genera e salva il calendario ICS mensile
         output_file_basename = data_file_path.stem
         calendar_name_part = output_file_basename.replace("eventi_", "")
         display_name_monthly = f'Eventi San Siro - {calendar_name_part}'
-        
         monthly_calendar_obj = create_calendar_from_event_dicts(processed_monthly_event_dicts, display_name_monthly)
         
         if len(monthly_calendar_obj.walk('VEVENT')) > 0:
@@ -270,29 +267,85 @@ def main():
                 print(f"    Errore nello scrivere il file ICS mensile {output_ics_file_path}: {e}")
         print("")
 
-    # 2. Processa calendari URL (Inter/Milan)
     print(f"\n--- Fase 2: Processamento Calendari Partite da URL ---")
-    for team_name, url in CALENDAR_URLS.items():
-        print(f"  Scaricando calendario per: {team_name.capitalize()} da {url}")
-        calendar_component = get_calendar_from_url(url)
-        if not calendar_component: continue
+    # Filtro Data per testare con partite passate (ESEMPIO: stagione 2023/2024)
+    # Se vuoi tutte le partite future, commenta o modifica questo filtro.
+    # Per testare con dati storici e vedere se il filtro "in casa" funziona.
+    # considera_eventi_da_anno = CURRENT_YEAR - 2 # Inizia a considerare eventi da 2 anni prima
+    # considera_eventi_da_mese = 7 # da Luglio/Agosto (inizio stagione calcistica tipica)
+    # data_limite_per_feed = datetime(considera_eventi_da_anno, considera_eventi_da_mese, 1)
+    # print(f"    Considerando partite dai feed ICS a partire da: {data_limite_per_feed.date()}")
 
-        team_events_count = 0
-        for component in calendar_component.walk('VEVENT'):
+
+    for team_key, url in CALENDAR_URLS.items():
+        club_name_for_feed = "AC Milan" if team_key.lower() == "milan" else team_key.capitalize()
+        if team_key.lower() == "inter": club_name_for_feed = "Inter"
+        
+        print(f"  Scaricando calendario per: {club_name_for_feed} da {url}")
+        calendar_data_from_url = get_calendar_from_url(url)
+        if not calendar_data_from_url: continue
+
+        team_events_added_count = 0
+        for component in calendar_data_from_url.walk('VEVENT'):
+            summary_text = str(component.get('summary', ''))
             location_text = str(component.get('location', ''))
-            if is_relevant_location(location_text): # Filtra per partite a San Siro/La Maura
+            
+            dtstart_prop = component.get('dtstart')
+            if not dtstart_prop: continue
+            dtstart_obj_orig_naive = dtstart_prop.dt # Questo è naive se UTC (Z), o già aware
+            if isinstance(dtstart_obj_orig_naive, datetime) and dtstart_obj_orig_naive.tzinfo is not None: # Se è già aware (es. da feed con fusi specifici)
+                dtstart_obj_utc_equiv = dtstart_obj_orig_naive.astimezone(pytz.utc)
+            elif isinstance(dtstart_obj_orig_naive, datetime): # Se è naive (assumiamo sia UTC come da 'Z')
+                dtstart_obj_utc_equiv = pytz.utc.localize(dtstart_obj_orig_naive)
+            elif isinstance(dtstart_obj_orig_naive, date): # Se è solo una data
+                 dtstart_obj_utc_equiv = pytz.utc.localize(datetime.combine(dtstart_obj_orig_naive, datetime.min.time()))
+            else:
+                continue # Non possiamo processare
+
+            # --- INIZIO BLOCCO FILTRO DATA PER TEST ---
+            # SCOMMENTA E ADATTA QUESTO BLOCCO SE VUOI TESTARE CON PARTITE PASSATE SPECIFICHE
+            # Ad esempio, per la stagione 2023/2024:
+            test_stagione_inizio_anno = 2023
+            test_stagione_fine_anno = 2024
+            if not ( (dtstart_obj_utc_equiv.year == test_stagione_inizio_anno and dtstart_obj_utc_equiv.month >= 7) or \
+                     (dtstart_obj_utc_equiv.year == test_stagione_fine_anno and dtstart_obj_utc_equiv.month <= 6) ):
+                # print(f"      Partita feed fuori stagione di test: {summary_text} ({dtstart_obj_utc_equiv.date()})")
+                continue
+            # --- FINE BLOCCO FILTRO DATA PER TEST ---
+
+
+            is_home_match = False
+            # Prima controlla se il nome del club è all'inizio del summary
+            # e la location (se presente) è una delle nostre
+            summary_parts = [p.strip() for p in re.split(r'\s+vs\s+|\s+-\s+', summary_text, 1)] # Split su 'vs' o '-' una volta
+            
+            if len(summary_parts) > 0 and club_name_for_feed.lower() in summary_parts[0].lower():
+                # Rimuovi il nome del club e controlla se rimane vuoto o solo punteggiatura/spazi
+                # Questo aiuta a distinguere "AC Milan vs Juventus" da "AC Milan Primavera vs Juventus Primavera"
+                remaining_summary_part = re.sub(re.escape(club_name_for_feed), '', summary_parts[0], flags=re.IGNORECASE).strip()
+                if not re.search(r'[a-zA-Z0-9]', remaining_summary_part): # Se non ci sono più lettere/numeri
+                    is_home_match = True
+                    # print(f"DEBUG: Partita in casa per summary: {summary_text}")
+
+
+            # Se non identificata come in casa dal summary, ma la location è una delle nostre, considerala rilevante
+            # (potrebbe essere un evento generico a San Siro, non una partita di quel club, ma va bene per ora)
+            if not is_home_match and location_text and is_location_relevant_for_feed(location_text):
+                is_home_match = True # La consideriamo "rilevante" per la location
+                # print(f"DEBUG: Evento rilevante per location: {summary_text} @ {location_text}")
+
+
+            if is_home_match:
                 event_dict = ical_event_component_to_dict(component)
-                if event_dict.get('dtstart_str'): # Assicurati che ci sia una data di inizio valida
+                if event_dict.get('dtstart_str'):
                     all_events_for_aggregation.append(event_dict)
-                    team_events_count += 1
-        print(f"    Aggiunti {team_events_count} eventi rilevanti da {team_name.capitalize()}.")
+                    team_events_added_count += 1
+        print(f"    Aggiunti {team_events_added_count} eventi da {club_name_for_feed} dopo filtro casa/location.")
     
-    # 3. De-duplicazione finale e creazione del calendario aggregato
     print(f"\n--- Fase 3: Creazione Calendario Aggregato Finale ---")
     print(f"  Numero totale di eventi prima della de-duplicazione finale: {len(all_events_for_aggregation)}")
     final_unique_event_dicts = apply_deduplication_and_merge(all_events_for_aggregation)
-    
-    display_name_aggregated = f'Eventi San Siro (Aggregato)'
+    display_name_aggregated = f'Eventi San Siro (Aggregato)' # Nome senza anno
     aggregated_calendar_obj = create_calendar_from_event_dicts(final_unique_event_dicts, display_name_aggregated)
 
     if len(aggregated_calendar_obj.walk('VEVENT')) > 0:
@@ -305,7 +358,6 @@ def main():
             print(f"  Errore nello scrivere il file ICS aggregato {aggregated_ics_file_path}: {e}")
     else:
         print("  Nessun evento da scrivere nel calendario aggregato finale.")
-        
     print("\nProcessamento completato.")
 
 if __name__ == "__main__":
