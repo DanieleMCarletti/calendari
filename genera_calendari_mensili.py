@@ -19,8 +19,8 @@ OUTPUT_ICS_FOLDER_NAME = "calendari_output"
 AGGREGATED_ICS_FILENAME = f"eventi_san_siro_aggregato.ics"
 
 CALENDAR_URLS = {
-    "inter": "https://www.stanza.news/api/calendar/inter/all.ics",
-    "milan": "https://www.stanza.news/api/calendar/milan/all.ics",
+    "inter": "https://ics.fixtur.es/v2/inter.ics", 
+    "milan": "https://ics.fixtur.es/v2/ac-milan.ics",
 }
 
 # Nomi per il filtro is_home_game (da affinare se necessario)
