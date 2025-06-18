@@ -8,7 +8,7 @@ SUMMARY:Cesare Cremonini – LIVE25
 DTSTART;TZID=Europe/Rome:20250615T230000
 DTEND;TZID=Europe/Rome:20250615T020000
 DTSTAMP:20250528T000000Z
-UID:4283d8e7-48ce-4691-a4f4-374ec6223a3b
+UID:06ba4d41-b04e-43ac-82f6-55abb9be8cc6
 LOCATION:Stadio San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -16,7 +16,7 @@ SUMMARY:Cesare Cremonini – LIVE25
 DTSTART;TZID=Europe/Rome:20250616T230000
 DTEND;TZID=Europe/Rome:20250616T020000
 DTSTAMP:20250528T000000Z
-UID:d1308b9c-33a1-467d-8c8c-dd6afa3f1cbf
+UID:37aee537-ee6b-4e61-9d5c-92cc4f65928c
 LOCATION:Stadio San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -24,7 +24,7 @@ SUMMARY:Gabry Ponte – San Siro Dance
 DTSTART;TZID=Europe/Rome:20250628T230000
 DTEND;TZID=Europe/Rome:20250628T020000
 DTSTAMP:20250528T000000Z
-UID:a54597ac-19f4-435a-8402-f76d7ceb364c
+UID:313989a0-e4b9-4cf1-ba13-4100b928d682
 LOCATION:Stadio San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -32,7 +32,7 @@ SUMMARY:Bruce Springsteen and The E Street Band
 DTSTART;TZID=Europe/Rome:20250630T230000
 DTEND;TZID=Europe/Rome:20250630T020000
 DTSTAMP:20250528T000000Z
-UID:91545667-51a7-4cf0-8ad8-d47a72260f11
+UID:63c15c35-6416-4cff-b414-9ddd43cd5c92
 LOCATION:Stadio San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -40,7 +40,7 @@ SUMMARY:Marco Mengoni – Marco negli Stadi
 DTSTART;TZID=Europe/Rome:20250713T230000
 DTEND;TZID=Europe/Rome:20250713T020000
 DTSTAMP:20250528T000000Z
-UID:2dd9a3cc-829b-4244-b4e8-a8797606fd10
+UID:30630fef-4625-4fea-8502-85b106cd141f
 LOCATION:Stadio San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -48,7 +48,7 @@ SUMMARY:Marco Mengoni – Marco negli Stadi
 DTSTART;TZID=Europe/Rome:20250714T230000
 DTEND;TZID=Europe/Rome:20250714T020000
 DTSTAMP:20250528T000000Z
-UID:93cba289-3c91-47df-8514-87bbd6d49c3e
+UID:80c31da4-259a-4852-9771-91c1d60ee77c
 LOCATION:Stadio San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -56,7 +56,7 @@ SUMMARY:Imagine Dragons – LOOM World Tour
 DTSTART;TZID=Europe/Rome:20250527T230000
 DTEND;TZID=Europe/Rome:20250527T020000
 DTSTAMP:20250528T000000Z
-UID:60808782-3c51-4a2f-b920-dbb21d8640a5
+UID:a06aebbb-7588-4216-b241-306402c1be4a
 LOCATION:Ippodromo SNAI La Maura\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -64,7 +64,7 @@ SUMMARY:Dua Lipa – I-Days Milano
 DTSTART;TZID=Europe/Rome:20250607T230000
 DTEND;TZID=Europe/Rome:20250607T020000
 DTSTAMP:20250528T000000Z
-UID:ebc8075f-4d89-4381-880a-a0de6a970f54
+UID:4e5bda19-b205-434e-b286-37a69de84026
 LOCATION:Ippodromo SNAI La Maura\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -72,7 +72,7 @@ SUMMARY:Linkin Park – I-Days Milano
 DTSTART;TZID=Europe/Rome:20250624T230000
 DTEND;TZID=Europe/Rome:20250624T020000
 DTSTAMP:20250528T000000Z
-UID:e9024228-ab88-4201-af35-e977dabf13c1
+UID:0f99168b-0d63-49ac-a13e-a4e04f46707e
 LOCATION:Ippodromo SNAI La Maura\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -80,7 +80,7 @@ SUMMARY:Olivia Rodrigo – GUTS World Tour
 DTSTART;TZID=Europe/Rome:20250715T230000
 DTEND;TZID=Europe/Rome:20250715T020000
 DTSTAMP:20250528T000000Z
-UID:34346a40-0314-4109-8270-820750386f65
+UID:f526b6e7-6e7f-40cb-a526-f35ea9eae970
 LOCATION:Ippodromo SNAI La Maura\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -88,7 +88,7 @@ SUMMARY:Blackpink
 DTSTART;TZID=Europe/Rome:20250806T230000
 DTEND;TZID=Europe/Rome:20250806T020000
 DTSTAMP:20250528T000000Z
-UID:20f4af1f-75b6-4a75-ae82-bc3e3d2c7694
+UID:6d8123c1-d361-418f-bc75-694877a8f06e
 LOCATION:Ippodromo SNAI La Maura\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -96,7 +96,7 @@ SUMMARY:Justin Timberlake
 DTSTART;TZID=Europe/Rome:20250602T230000
 DTEND;TZID=Europe/Rome:20250602T020000
 DTSTAMP:20250528T000000Z
-UID:14daef68-add9-42ac-9276-3972dbcf89bc
+UID:7d7399e0-eb9f-4d2d-a4e0-cec5c2b7d66a
 LOCATION:Ippodromo SNAI San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -104,7 +104,7 @@ SUMMARY:Duran Duran
 DTSTART;TZID=Europe/Rome:20250620T230000
 DTEND;TZID=Europe/Rome:20250620T020000
 DTSTAMP:20250528T000000Z
-UID:1fbdf4e7-9caa-4daf-a7ce-1de68a5bf945
+UID:d9fe3a7d-1edb-4793-8741-bf6d3a7a575f
 LOCATION:Ippodromo SNAI San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -112,7 +112,7 @@ SUMMARY:Thirty Seconds to Mars
 DTSTART;TZID=Europe/Rome:20250702T230000
 DTEND;TZID=Europe/Rome:20250702T020000
 DTSTAMP:20250528T000000Z
-UID:7c7e7c00-fe81-4d4c-9148-b4a55a0ab95f
+UID:a9a06581-8c8e-42a9-b0c7-9382ec5b5ff1
 LOCATION:Ippodromo SNAI San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
@@ -120,14 +120,14 @@ SUMMARY:Post Malone
 DTSTART;TZID=Europe/Rome:20250827T230000
 DTEND;TZID=Europe/Rome:20250827T020000
 DTSTAMP:20250528T000000Z
-UID:a2de9f2c-45d2-4efe-8af1-168ea79ff714
+UID:5ca885ad-d9c8-43e3-8698-a18500ca47a7
 LOCATION:Ippodromo SNAI San Siro\, Milano
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:BLACKPINK – World Tour 2025
 DTSTART;TZID=Europe/Rome:20250806T210000
 DTEND;TZID=Europe/Rome:20250806T230000
-UID:4e2a7926-61a8-423a-8e0c-06ded8c82222
+UID:9d982c76-34f6-4f09-9e77-2b2ec6b2bdff
 DESCRIPTION:Concerto delle BLACKPINK\, unica data italiana del loro tour m
  ondiale.
 LOCATION:Ippodromo SNAI La Maura\, Via Lampugnano 95\, Milano
@@ -136,7 +136,7 @@ BEGIN:VEVENT
 SUMMARY:Post Malone – I-Days Milano
 DTSTART;TZID=Europe/Rome:20250827T210000
 DTEND;TZID=Europe/Rome:20250827T230000
-UID:7d607560-952a-48d5-afb4-f28664b704e8
+UID:c2822336-069e-4b86-bdfc-fdf2cda60973
 DESCRIPTION:Concerto di Post Malone nell'ambito degli I-Days Milano Coca-C
  ola 2025.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
@@ -145,7 +145,7 @@ BEGIN:VEVENT
 SUMMARY:Johnny Marr – Live in Milano
 DTSTART;TZID=Europe/Rome:20251106T210000
 DTEND;TZID=Europe/Rome:20251106T230000
-UID:19cc19d9-f765-4c85-92b8-aab713a53528
+UID:07beab98-22b0-41db-9790-fe038cfbc0bf
 DESCRIPTION:Concerto di Johnny Marr all'Alcatraz di Milano.
 LOCATION:Alcatraz\, Via Valtellina 25\, Milano
 END:VEVENT
@@ -153,7 +153,7 @@ BEGIN:VEVENT
 SUMMARY:The Psychedelic Furs – Live in Milano
 DTSTART;TZID=Europe/Rome:20251111T210000
 DTEND;TZID=Europe/Rome:20251111T230000
-UID:9904f973-ebe4-4892-aac5-838ba0da1ee9
+UID:4904c6e6-b9c4-4f4e-a629-99f6c1414ee6
 DESCRIPTION:Concerto dei The Psychedelic Furs all'Alcatraz di Milano.
 LOCATION:Alcatraz\, Via Valtellina 25\, Milano
 END:VEVENT
@@ -161,7 +161,7 @@ BEGIN:VEVENT
 SUMMARY:Premio Vittorio di Capua
 DTSTART;TZID=Europe/Rome:20251109T140000
 DTEND;TZID=Europe/Rome:20251109T160000
-UID:0bfe2eb6-a826-48b8-8ff5-9108a53fa8c2
+UID:1eb8d21a-bbf9-48b3-88ff-fdf30756466c
 DESCRIPTION:Giornata di corse ippiche con il Premio Vittorio di Capua.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
 END:VEVENT
@@ -169,7 +169,7 @@ BEGIN:VEVENT
 SUMMARY:Premio Federico Tesio – St. Leger Italiano
 DTSTART;TZID=Europe/Rome:20251116T140000
 DTEND;TZID=Europe/Rome:20251116T160000
-UID:831ddb8a-3ee8-41c5-9eeb-af3d243ea9ff
+UID:d06fc775-3993-46c7-b5ee-c13433cb16f7
 DESCRIPTION:Giornata di corse ippiche con i premi Federico Tesio e St. Leg
  er Italiano.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
@@ -178,7 +178,7 @@ BEGIN:VEVENT
 SUMMARY:Olly – La Grande Festa
 DTSTART;TZID=Europe/Rome:20250902T210000
 DTEND;TZID=Europe/Rome:20250902T230000
-UID:55002b9f-1cf9-43aa-a8c0-65497eb85c89
+UID:2190eb90-6cfe-4c83-9f14-16fab0568bae
 DESCRIPTION:Concerto di Olly\, vincitore di Sanremo 2025\, prima data dell
  'evento "La Grande Festa".
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
@@ -187,7 +187,7 @@ BEGIN:VEVENT
 SUMMARY:Olly – La Grande Festa (Replica)
 DTSTART;TZID=Europe/Rome:20250904T210000
 DTEND;TZID=Europe/Rome:20250904T230000
-UID:8cb54a6f-3edb-4a0b-a5b9-7f64263b8618
+UID:d2ca0ce2-bdd2-4351-8dd2-3f4a74c4b618
 DESCRIPTION:Replica del concerto di Olly nell'ambito de "La Grande Festa".
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
 END:VEVENT
@@ -195,7 +195,7 @@ BEGIN:VEVENT
 SUMMARY:Tananai – Calmocobra Live Estate 2025
 DTSTART;TZID=Europe/Rome:20250905T210000
 DTEND;TZID=Europe/Rome:20250905T230000
-UID:63fc8504-8cd1-43f1-8c3c-881a3fc0edf6
+UID:5eadc14f-e2dd-477f-bfea-0008d78ec375
 DESCRIPTION:Concerto di Tananai per il tour estivo "Calmocobra Live Estate
   2025".
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
@@ -204,7 +204,7 @@ BEGIN:VEVENT
 SUMMARY:Lucio Corsi – Ippodromi 2025
 DTSTART;TZID=Europe/Rome:20250907T210000
 DTEND;TZID=Europe/Rome:20250907T230000
-UID:7cc273fd-afb2-4baf-b854-410526b0166c
+UID:0268f2f6-d32a-4f61-9a13-86c22dc27b36
 DESCRIPTION:Concerto di Lucio Corsi nell'ambito del tour "Ippodromi 2025".
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
 END:VEVENT
@@ -212,7 +212,7 @@ BEGIN:VEVENT
 SUMMARY:The Zen Circus – Live in Milano
 DTSTART;TZID=Europe/Rome:20251203T210000
 DTEND;TZID=Europe/Rome:20251203T230000
-UID:7cca531b-b367-488c-9128-f2f932a71f5e
+UID:ec2a95ad-3be8-414f-80de-ec7fac602b97
 DESCRIPTION:Concerto dei The Zen Circus all'Alcatraz di Milano.
 LOCATION:Alcatraz\, Via Valtellina 25\, Milano
 END:VEVENT
@@ -220,7 +220,7 @@ BEGIN:VEVENT
 SUMMARY:Till Lindemann – Live in Milano
 DTSTART;TZID=Europe/Rome:20251212T210000
 DTEND;TZID=Europe/Rome:20251212T230000
-UID:c928374a-3285-42b2-8a2b-816ce892b53f
+UID:bf8367bb-c5e3-40ed-bb5f-cbfd78b45619
 DESCRIPTION:Concerto di Till Lindemann all'Alcatraz di Milano.
 LOCATION:Alcatraz\, Via Valtellina 25\, Milano
 END:VEVENT
@@ -228,7 +228,7 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche
 DTSTART;TZID=Europe/Rome:20251207T140000
 DTEND;TZID=Europe/Rome:20251207T160000
-UID:773d8ac6-8d19-4478-a67d-71f1d55c2b32
+UID:1205949a-771c-4822-9e81-7794f8abb26b
 DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
 END:VEVENT
@@ -236,7 +236,7 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche
 DTSTART;TZID=Europe/Rome:20251208T140000
 DTEND;TZID=Europe/Rome:20251208T160000
-UID:82a2f5b8-10c9-4c66-8244-76b815f21bf7
+UID:0c73340c-c236-4209-bc23-eff183dc6977
 DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
 END:VEVENT
@@ -244,7 +244,7 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche
 DTSTART;TZID=Europe/Rome:20251213T140000
 DTEND;TZID=Europe/Rome:20251213T160000
-UID:f64999fa-127c-4fc1-8d95-9f710652d917
+UID:a9e277a8-a35b-42ec-bb4c-13d7dd95fc8a
 DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
 END:VEVENT
@@ -252,7 +252,7 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche
 DTSTART;TZID=Europe/Rome:20251220T140000
 DTEND;TZID=Europe/Rome:20251220T160000
-UID:e75bfb4a-86b7-413d-b371-0f3f496fb138
+UID:6b841e04-e4cb-4063-b08d-db573a80050b
 DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
 END:VEVENT
@@ -260,7 +260,7 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche
 DTSTART;TZID=Europe/Rome:20251229T140000
 DTEND;TZID=Europe/Rome:20251229T160000
-UID:b0c9369c-178d-40d0-89ef-37ab6012be78
+UID:fc186737-e23d-4127-a3fb-1ada1caf2c0c
 DESCRIPTION:Giornata di corse ippiche all'Ippodromo SNAI San Siro.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
 END:VEVENT
@@ -268,7 +268,7 @@ BEGIN:VEVENT
 SUMMARY:OneRepublic – Live in Milano
 DTSTART;TZID=Europe/Rome:20251011T210000
 DTEND;TZID=Europe/Rome:20251011T230000
-UID:ae4b788d-15a7-41be-a80a-8f51fe3dc836
+UID:41072354-d6ac-4448-ad4f-bc902df37f39
 DESCRIPTION:Concerto degli OneRepublic al Unipol Forum di Assago.
 LOCATION:Unipol Forum\, Via G. Di Vittorio 6\, Assago (MI)
 END:VEVENT
@@ -276,7 +276,7 @@ BEGIN:VEVENT
 SUMMARY:Lady Gaga – The Chromatica Ball
 DTSTART;TZID=Europe/Rome:20251019T210000
 DTEND;TZID=Europe/Rome:20251019T230000
-UID:d3e13fa2-bc36-4264-bf09-b181258fd13f
+UID:4dadf1f9-097b-4167-9bc7-fdda93497654
 DESCRIPTION:Concerto di Lady Gaga nell'ambito del tour "The Chromatica Bal
  l".
 LOCATION:Unipol Forum\, Via G. Di Vittorio 6\, Assago (MI)
@@ -285,7 +285,7 @@ BEGIN:VEVENT
 SUMMARY:Lady Gaga – The Chromatica Ball (Replica)
 DTSTART;TZID=Europe/Rome:20251020T210000
 DTEND;TZID=Europe/Rome:20251020T230000
-UID:6cb982f5-17fc-409b-960c-20d3c13be392
+UID:eccff6a6-abd3-467f-a0d7-5ff880301c8d
 DESCRIPTION:Replica del concerto di Lady Gaga al Unipol Forum.
 LOCATION:Unipol Forum\, Via G. Di Vittorio 6\, Assago (MI)
 END:VEVENT
@@ -293,7 +293,7 @@ BEGIN:VEVENT
 SUMMARY:Premio Cumani – Premio Verziere – Premio del Piazzale
 DTSTART;TZID=Europe/Rome:20251012T140000
 DTEND;TZID=Europe/Rome:20251012T160000
-UID:cdabf382-8c34-4542-a9a3-47b288c2166f
+UID:11c3f3d7-da27-403b-b7b0-1e520b546b29
 DESCRIPTION:Giornata di corse ippiche con i premi Cumani\, Verziere e del 
  Piazzale.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
@@ -302,7 +302,7 @@ BEGIN:VEVENT
 SUMMARY:Premio C. Porta – Jockey Club – Premio Dormello
 DTSTART;TZID=Europe/Rome:20251019T140000
 DTEND;TZID=Europe/Rome:20251019T160000
-UID:24fb6dbe-e0a1-461a-b717-7046405a11f1
+UID:97fbc5db-ecc8-4dd5-802f-a29acce5c9e5
 DESCRIPTION:Giornata di corse ippiche con i premi C. Porta\, Jockey Club e
   Dormello.
 LOCATION:Ippodromo SNAI San Siro\, Piazzale dello Sport 16\, Milano
