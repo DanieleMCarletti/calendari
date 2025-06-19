@@ -1,6 +1,12 @@
 name: Generate Monthly Calendars
 
 on:
+  schedule:
+    # Esegue ogni giorno alle 03:00 UTC (le 05:00 ora italiana con l'ora legale, 04:00 senza)
+    # Puoi scegliere l'orario che preferisci.
+    # Formato CRON: minuti ore giorno-del-mese mese giorno-della-settimana
+    # Vedi https://crontab.guru/ per aiuto con la sintassi CRON
+    - cron: '0 3 * * *'
   workflow_dispatch: # Permette l'esecuzione manuale dall'interfaccia di GitHub
 
 jobs:
