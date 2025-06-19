@@ -1,11 +1,11 @@
 name: Update San Siro Calendar ICS
 
 on:
-  schedule:
+  #schedule:
     # Esegue ogni giorno alle 03:00 UTC (puoi cambiarlo)
     # Formato CRON: minuti ore giorno-del-mese mese giorno-della-settimana
     # Vedi https://crontab.guru/ per aiuto con la sintassi CRON
-    - cron: '0 3 * * *'
+   # - cron: '0 3 * * *'
   workflow_dispatch: # Permette l'esecuzione manuale dall'interfaccia di GitHub
 
 jobs:
