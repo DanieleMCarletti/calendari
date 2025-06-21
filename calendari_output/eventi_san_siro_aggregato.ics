@@ -7,8 +7,8 @@ BEGIN:VEVENT
 SUMMARY:Justin Timberlake - The Forget Tomorrow World Tour
 DTSTART;TZID=Europe/Rome:20250602T210000
 DTEND;TZID=Europe/Rome:20250602T233000
-DTSTAMP:20250620T014905Z
-UID:403602ff-3345-4608-a59e-e7285c0301a5
+DTSTAMP:20250621T014658Z
+UID:d042209c-c6b8-4e0d-a877-962f0d21bbc9
 DESCRIPTION:Concerto di Justin Timberlake per il suo 'The Forget Tomorrow 
  World Tour'. Evento parte degli I-Days Milano Coca-Cola.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
@@ -20,8 +20,8 @@ BEGIN:VEVENT
 SUMMARY:Dua Lipa - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250607T203000
 DTEND;TZID=Europe/Rome:20250607T230000
-DTSTAMP:20250620T014905Z
-UID:e9cb38f4-5bd0-4e89-b5d3-b6382a80b336
+DTSTAMP:20250621T014658Z
+UID:537749ec-7b94-46c7-86b8-463497c5ab6f
 DESCRIPTION:Concerto di Dua Lipa nell'ambito del festival I-Days Milano Co
  ca-Cola.
 LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
@@ -33,8 +33,8 @@ BEGIN:VEVENT
 SUMMARY:Elodie - Stadio San Siro
 DTSTART;TZID=Europe/Rome:20250608T210000
 DTEND;TZID=Europe/Rome:20250608T233000
-DTSTAMP:20250620T014905Z
-UID:f7c23bfa-48a7-4744-b86d-9346c09a73d6
+DTSTAMP:20250621T014658Z
+UID:adaa98d4-9e3d-477e-a851-d7f79dfaac59
 DESCRIPTION:Concerto di Elodie allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -45,8 +45,8 @@ BEGIN:VEVENT
 SUMMARY:Pinguini Tattici Nucleari - Hello World Tour Stadi 2025
 DTSTART;TZID=Europe/Rome:20250610T210000
 DTEND;TZID=Europe/Rome:20250610T234500
-DTSTAMP:20250620T014905Z
-UID:2f0b4ab2-8ed8-4aae-b3ae-f30474f6cec6
+DTSTAMP:20250621T014658Z
+UID:c0d4b35d-052f-4999-a941-786025a7778e
 DESCRIPTION:Prima data dei Pinguini Tattici Nucleari allo Stadio San Siro 
  per il loro 'Hello World Tour Stadi 2025'.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -58,8 +58,8 @@ BEGIN:VEVENT
 SUMMARY:Pinguini Tattici Nucleari - Hello World Tour Stadi 2025
 DTSTART;TZID=Europe/Rome:20250611T210000
 DTEND;TZID=Europe/Rome:20250611T234500
-DTSTAMP:20250620T014905Z
-UID:e91b945b-f327-4c7f-9b1f-0fd7283609f9
+DTSTAMP:20250621T014658Z
+UID:691c6c6d-5e9f-473e-8c9c-bfcf477ad3f1
 DESCRIPTION:Seconda data dei Pinguini Tattici Nucleari allo Stadio San Sir
  o per il loro 'Hello World Tour Stadi 2025'.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -71,8 +71,8 @@ BEGIN:VEVENT
 SUMMARY:Modà
 DTSTART;TZID=Europe/Rome:20250612T210000
 DTEND;TZID=Europe/Rome:20250612T234500
-DTSTAMP:20250620T014905Z
-UID:75b2869c-b0d1-47ac-941e-6c58a216ec8b
+DTSTAMP:20250621T014658Z
+UID:a1765076-ed25-4022-8f1b-c58e3699edcc
 DESCRIPTION:Modà allo Stadio San Siro per il loro 'Hello World Tour Stadi
   2025'.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -84,8 +84,8 @@ BEGIN:VEVENT
 SUMMARY:Cesare Cremonini - Stadi 2025 (Data 1)
 DTSTART;TZID=Europe/Rome:20250615T210000
 DTEND;TZID=Europe/Rome:20250615T234500
-DTSTAMP:20250620T014905Z
-UID:361a91d2-e15f-4dc6-aa04-36c32f737553
+DTSTAMP:20250621T014658Z
+UID:ecb3d546-d663-420e-bfd1-f9886b9e034e
 DESCRIPTION:Prima data del concerto di Cesare Cremonini allo Stadio San Si
  ro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -97,8 +97,8 @@ BEGIN:VEVENT
 SUMMARY:Cesare Cremonini - Stadi 2025 (Data 2 - Ipotizzata)
 DTSTART;TZID=Europe/Rome:20250616T210000
 DTEND;TZID=Europe/Rome:20250616T234500
-DTSTAMP:20250620T014905Z
-UID:5aeff16c-59cd-4743-ab7e-ff2ec135dc6e
+DTSTAMP:20250621T014658Z
+UID:646fa447-7b6f-4586-9edf-2220a5336a0b
 DESCRIPTION:Seconda data (ipotizzata) del concerto di Cesare Cremonini all
  o Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -110,8 +110,8 @@ BEGIN:VEVENT
 SUMMARY:Elisa - Concerto Stadio San Siro
 DTSTART;TZID=Europe/Rome:20250618T210000
 DTEND;TZID=Europe/Rome:20250618T233000
-DTSTAMP:20250620T014905Z
-UID:2dbacd6a-1ea6-4ea1-ae75-3a5cd5a5dc0a
+DTSTAMP:20250621T014658Z
+UID:c72760ee-d909-44ce-9398-583c46bb39dc
 DESCRIPTION:Concerto di Elisa allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -122,8 +122,8 @@ BEGIN:VEVENT
 SUMMARY:Duran Duran - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250620T210000
 DTEND;TZID=Europe/Rome:20250620T233000
-DTSTAMP:20250620T014905Z
-UID:69f9cbaf-6f60-41ad-8010-06d5e7a94a76
+DTSTAMP:20250621T014658Z
+UID:a0a0399f-f34a-4868-b302-12c618546e87
 DESCRIPTION:Concerto dei Duran Duran\, parte degli I-Days Milano Coca-Cola
  .
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
@@ -135,8 +135,8 @@ BEGIN:VEVENT
 SUMMARY:Gazzelle - Stadio San Siro
 DTSTART;TZID=Europe/Rome:20250622T210000
 DTEND;TZID=Europe/Rome:20250622T233000
-DTSTAMP:20250620T014905Z
-UID:bbbd746a-6dfe-4567-a984-7217aab23854
+DTSTAMP:20250621T014658Z
+UID:3bcbc30b-1d9b-4b53-98e3-5bf793fe9e54
 DESCRIPTION:Concerto di Gazzelle allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -147,8 +147,8 @@ BEGIN:VEVENT
 SUMMARY:Linkin Park - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250624T203000
 DTEND;TZID=Europe/Rome:20250624T230000
-DTSTAMP:20250620T014905Z
-UID:d18c686b-3cee-407f-b396-22971d32348f
+DTSTAMP:20250621T014658Z
+UID:4fe23b06-0dde-4a47-aa74-dc64be168d26
 DESCRIPTION:Concerto dei Linkin Park (o della loro attuale formazione) al 
  festival I-Days Milano Coca-Cola.
 LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
@@ -160,8 +160,8 @@ BEGIN:VEVENT
 SUMMARY:Marracash - Stadi 2025
 DTSTART;TZID=Europe/Rome:20250625T210000
 DTEND;TZID=Europe/Rome:20250625T233000
-DTSTAMP:20250620T014905Z
-UID:aa87b89f-e8d2-48e0-aeab-721e394c196f
+DTSTAMP:20250621T014658Z
+UID:3fd8a6b0-f6f1-4a3c-ace1-5475bb37b323
 DESCRIPTION:Concerto di Marracash allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -172,8 +172,8 @@ BEGIN:VEVENT
 SUMMARY:Gabry Ponte - Stadio San Siro
 DTSTART;TZID=Europe/Rome:20250628T210000
 DTEND;TZID=Europe/Rome:20250628T235900
-DTSTAMP:20250620T014905Z
-UID:d0137652-5c26-4644-84b3-c0625c0bea96
+DTSTAMP:20250621T014658Z
+UID:a59c3df0-a1fd-437b-9067-cedbff674432
 DESCRIPTION:Evento dance con Gabry Ponte allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -184,8 +184,8 @@ BEGIN:VEVENT
 SUMMARY:Bruce Springsteen and The E Street Band
 DTSTART;TZID=Europe/Rome:20250630T203000
 DTEND;TZID=Europe/Rome:20250630T235900
-DTSTAMP:20250620T014905Z
-UID:0d018ec3-cf05-4876-b45b-05efaa1bf271
+DTSTAMP:20250621T014658Z
+UID:95794031-f898-433c-9598-d8cefdf38c48
 DESCRIPTION:Prima data del concerto di Bruce Springsteen and The E Street 
  Band allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -197,8 +197,8 @@ BEGIN:VEVENT
 SUMMARY:Bruce Springsteen and The E Street Band (Data 2)
 DTSTART;TZID=Europe/Rome:20250703T203000
 DTEND;TZID=Europe/Rome:20250703T235900
-DTSTAMP:20250620T014905Z
-UID:01fdfd1c-780e-45d3-ab9a-28a1f2466abe
+DTSTAMP:20250621T014658Z
+UID:84460315-e3c0-40a8-a4b6-83105c113cd8
 DESCRIPTION:Seconda data del concerto di Bruce Springsteen and The E Stree
  t Band allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -210,8 +210,8 @@ BEGIN:VEVENT
 SUMMARY:Ultimo - Stadi 2025 (Data 1)
 DTSTART;TZID=Europe/Rome:20250705T210000
 DTEND;TZID=Europe/Rome:20250705T234500
-DTSTAMP:20250620T014905Z
-UID:939a086d-db37-4244-aa17-82cfaf8f0472
+DTSTAMP:20250621T014658Z
+UID:18487e88-2cd1-4dfd-9ae6-f25756705aba
 DESCRIPTION:Prima data del concerto di Ultimo allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -222,8 +222,8 @@ BEGIN:VEVENT
 SUMMARY:Ultimo - Stadi 2025 (Data 2)
 DTSTART;TZID=Europe/Rome:20250707T210000
 DTEND;TZID=Europe/Rome:20250707T234500
-DTSTAMP:20250620T014905Z
-UID:b0ccbdaa-a68a-4b99-bbf7-05861d6c0f43
+DTSTAMP:20250621T014658Z
+UID:b73cfe90-4694-4582-9480-b724cc096f3e
 DESCRIPTION:Seconda data del concerto di Ultimo allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -234,8 +234,8 @@ BEGIN:VEVENT
 SUMMARY:Marco Mengoni - Marco Negli Stadi (Data 1)
 DTSTART;TZID=Europe/Rome:20250713T210000
 DTEND;TZID=Europe/Rome:20250713T233000
-DTSTAMP:20250620T014905Z
-UID:ad39b274-5ea4-4d28-9a58-de7bd3db09af
+DTSTAMP:20250621T014658Z
+UID:4faf4866-5855-463e-aba0-87355c04abd6
 DESCRIPTION:Prima data del concerto di Marco Mengoni allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -246,8 +246,8 @@ BEGIN:VEVENT
 SUMMARY:Marco Mengoni - Marco Negli Stadi (Data 2)
 DTSTART;TZID=Europe/Rome:20250714T210000
 DTEND;TZID=Europe/Rome:20250714T233000
-DTSTAMP:20250620T014905Z
-UID:6cc48ef1-194d-4518-9473-8797ee02a60b
+DTSTAMP:20250621T014658Z
+UID:f993512f-b09b-4531-9a8a-c7c65de13e98
 DESCRIPTION:Seconda data del concerto di Marco Mengoni allo Stadio San Sir
  o.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -259,8 +259,8 @@ BEGIN:VEVENT
 SUMMARY:Olivia Rodrigo - GUTS World Tour - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250715T203000
 DTEND;TZID=Europe/Rome:20250715T230000
-DTSTAMP:20250620T014905Z
-UID:453dafee-64b7-4e3f-bb37-935f5f4d6a3c
+DTSTAMP:20250621T014658Z
+UID:0bfe4ec9-0936-4ddd-86fa-0a0fd33f548c
 DESCRIPTION:Concerto di Olivia Rodrigo\, parte degli I-Days Milano Coca-Co
  la.
 LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
@@ -272,8 +272,8 @@ BEGIN:VEVENT
 SUMMARY:The Who - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250720T203000
 DTEND;TZID=Europe/Rome:20250720T230000
-DTSTAMP:20250620T014905Z
-UID:dfeeb2fe-06bd-4f2b-9821-ac9de7e97ac7
+DTSTAMP:20250621T014658Z
+UID:4ba483bc-ffe5-4c54-a362-22e3b9a53e8a
 DESCRIPTION:Concerto dei The Who\, parte degli I-Days Milano Coca-Cola.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -284,8 +284,8 @@ BEGIN:VEVENT
 SUMMARY:Thirty Seconds To Mars - Seasons World Tour 2025
 DTSTART;TZID=Europe/Rome:20250702T210000
 DTEND;TZID=Europe/Rome:20250702T233000
-DTSTAMP:20250620T014905Z
-UID:01c6c140-b25f-4dba-9e6c-5f0cc8403332
+DTSTAMP:20250621T014658Z
+UID:8e34cd00-ded6-4156-89d7-72366f0c741a
 DESCRIPTION:Concerto dei Thirty Seconds To Mars.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -296,8 +296,8 @@ BEGIN:VEVENT
 SUMMARY:BLACKPINK - BORN PINK World Tour ENCORE
 DTSTART;TZID=Europe/Rome:20250806T203000
 DTEND;TZID=Europe/Rome:20250806T230000
-DTSTAMP:20250620T014905Z
-UID:84ca689a-2290-4825-a30c-509dfde5ff40
+DTSTAMP:20250621T014658Z
+UID:a69cc2e4-1c63-44aa-b883-87c49814225d
 DESCRIPTION:Concerto delle BLACKPINK.
 LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
   Italy
@@ -308,8 +308,8 @@ BEGIN:VEVENT
 SUMMARY:Post Malone - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250827T203000
 DTEND;TZID=Europe/Rome:20250827T230000
-DTSTAMP:20250620T014905Z
-UID:2c4067d1-bb13-4719-959d-c206698411ac
+DTSTAMP:20250621T014658Z
+UID:ab07a66b-ed11-43db-8803-7c806e8bb27b
 DESCRIPTION:Concerto di Post Malone\, parte degli I-Days Milano Coca-Cola.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -320,8 +320,8 @@ BEGIN:VEVENT
 SUMMARY:Lucio Corsi - Ippodromi 2025
 DTSTART;TZID=Europe/Rome:20250907T210000
 DTEND;TZID=Europe/Rome:20250907T230000
-DTSTAMP:20250620T014905Z
-UID:31c66b98-056e-4755-8be5-950c3b80eb62
+DTSTAMP:20250621T014658Z
+UID:b271046a-f3cc-474a-8b79-2c033e0cc9b3
 DESCRIPTION:Concerto di Lucio Corsi.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -332,8 +332,8 @@ BEGIN:VEVENT
 SUMMARY:Olly - La Grande Festa (Data 1)
 DTSTART;TZID=Europe/Rome:20250902T210000
 DTEND;TZID=Europe/Rome:20250902T230000
-DTSTAMP:20250620T014905Z
-UID:8d9e889c-e8f8-4322-9643-1bb2c2c41b3e
+DTSTAMP:20250621T014658Z
+UID:f1ec9d01-aff2-4280-a48f-9580d892dcc2
 DESCRIPTION:Concerto di Olly.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -344,8 +344,8 @@ BEGIN:VEVENT
 SUMMARY:Olly - La Grande Festa (Data 2)
 DTSTART;TZID=Europe/Rome:20250904T210000
 DTEND;TZID=Europe/Rome:20250904T230000
-DTSTAMP:20250620T014905Z
-UID:f3397371-63e3-4734-8af1-749d2a342d43
+DTSTAMP:20250621T014658Z
+UID:1726e522-65de-475a-ae09-675f205bbc9c
 DESCRIPTION:Replica concerto di Olly.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -356,8 +356,8 @@ BEGIN:VEVENT
 SUMMARY:Tananai - Calmocobra Live Estate 2025
 DTSTART;TZID=Europe/Rome:20250905T210000
 DTEND;TZID=Europe/Rome:20250905T233000
-DTSTAMP:20250620T014905Z
-UID:b0eb8ae6-76d3-475c-bb0d-532fb8c7d2bd
+DTSTAMP:20250621T014658Z
+UID:77ae3c72-f6fe-4466-a919-c761445be4a3
 DESCRIPTION:Concerto di Tananai.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -368,8 +368,8 @@ BEGIN:VEVENT
 SUMMARY:Premio Cumani – Premio Verziere – Premio del Piazzale
 DTSTART;TZID=Europe/Rome:20251012T140000
 DTEND;TZID=Europe/Rome:20251012T180000
-DTSTAMP:20250620T014905Z
-UID:289db3bb-9072-4f24-ae47-10d3c9ec3993
+DTSTAMP:20250621T014658Z
+UID:03db4d09-20b2-431c-a2ab-0468de55d70a
 DESCRIPTION:Importante giornata di corse ippiche all'Ippodromo SNAI San Si
  ro.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
@@ -381,8 +381,8 @@ BEGIN:VEVENT
 SUMMARY:Premio C. Porta – Jockey Club – Premio Dormello
 DTSTART;TZID=Europe/Rome:20251019T140000
 DTEND;TZID=Europe/Rome:20251019T180000
-DTSTAMP:20250620T014905Z
-UID:a59c164d-6c95-4e6e-890d-881770b227fc
+DTSTAMP:20250621T014658Z
+UID:4361dfd1-ae95-4292-9313-08048d7fd1cd
 DESCRIPTION:Altra importante giornata di corse ippiche all'Ippodromo SNAI 
  San Siro.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
@@ -394,8 +394,8 @@ BEGIN:VEVENT
 SUMMARY:Premio Vittorio di Capua
 DTSTART;TZID=Europe/Rome:20251109T140000
 DTEND;TZID=Europe/Rome:20251109T180000
-DTSTAMP:20250620T014905Z
-UID:4603ba35-776d-4043-96f0-f91077e1d73d
+DTSTAMP:20250621T014658Z
+UID:c005d4b0-044e-4ef8-81dc-c3d6f68a7486
 DESCRIPTION:Giornata di corse ippiche con il prestigioso Premio Vittorio d
  i Capua.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
@@ -407,8 +407,8 @@ BEGIN:VEVENT
 SUMMARY:Premio Federico Tesio – St. Leger Italiano
 DTSTART;TZID=Europe/Rome:20251116T140000
 DTEND;TZID=Europe/Rome:20251116T180000
-DTSTAMP:20250620T014905Z
-UID:6f47b1e1-11d0-4b9d-86fe-5bc027897b88
+DTSTAMP:20250621T014658Z
+UID:40affbb5-aaf9-4aab-b7fb-57867306291c
 DESCRIPTION:Giornata di corse ippiche con i premi Federico Tesio e St. Leg
  er Italiano.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
@@ -420,8 +420,8 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche (Dicembre 1)
 DTSTART;TZID=Europe/Rome:20251207T133000
 DTEND;TZID=Europe/Rome:20251207T170000
-DTSTAMP:20250620T014905Z
-UID:46d311ac-4a67-44b3-ab56-34f7a8569a73
+DTSTAMP:20250621T014658Z
+UID:31a135b7-3e17-47ee-ae06-fbbd2b513ccf
 DESCRIPTION:Corse ippiche all'Ippodromo SNAI San Siro.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -432,8 +432,8 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche (Dicembre 2)
 DTSTART;TZID=Europe/Rome:20251213T133000
 DTEND;TZID=Europe/Rome:20251213T170000
-DTSTAMP:20250620T014905Z
-UID:e070e1af-b65e-42ee-8c08-0dcd720ee159
+DTSTAMP:20250621T014658Z
+UID:8e2c7c01-8b7e-4065-8b9b-c2ece9d0f53b
 DESCRIPTION:Corse ippiche all'Ippodromo SNAI San Siro.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -444,8 +444,8 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche (Dicembre 3 - Santo Stefano)
 DTSTART;TZID=Europe/Rome:20251226T133000
 DTEND;TZID=Europe/Rome:20251226T170000
-DTSTAMP:20250620T014905Z
-UID:67290b9e-443d-42b6-8b49-4ff72f97b9bf
+DTSTAMP:20250621T014658Z
+UID:c2fd1615-674f-42e3-80a1-2a7497a80bed
 DESCRIPTION:Tradizionali corse ippiche di Santo Stefano.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -456,24 +456,24 @@ BEGIN:VEVENT
 SUMMARY:Inter - Urawa Reds
 DTSTART;TZID=Europe/Rome:20250621T210000
 DTEND;TZID=Europe/Rome:20250621T224500
-DTSTAMP:20250620T014905Z
-UID:0f45311a-bd47-4f8f-85d4-0d3d728e0e6b
+DTSTAMP:20250621T014658Z
+UID:a0034a5d-1e19-4ac9-aa52-d051c8682e5c
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - River Plate
 DTSTART;TZID=Europe/Rome:20250626T030000
 DTEND;TZID=Europe/Rome:20250626T044500
-DTSTAMP:20250620T014905Z
-UID:3b8fb1bd-5f8c-41fa-a7f9-604902e9424a
+DTSTAMP:20250621T014658Z
+UID:df7db384-e11d-4854-be26-d1d6dd6c1b7f
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:AC Milan - AC Monza (2-0)
 DTSTART;TZID=Europe/Rome:20250524T204500
 DTEND;TZID=Europe/Rome:20250524T223000
-DTSTAMP:20250620T014905Z
-UID:ad537c26-7726-4e28-a538-c58853c0efa5
+DTSTAMP:20250621T014658Z
+UID:da67da84-14f1-4da3-b871-175041bd098c
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date
 END:VEVENT
 END:VCALENDAR
