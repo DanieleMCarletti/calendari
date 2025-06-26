@@ -133,5 +133,14 @@ event_list = [
         'location_address': 'Piazzale Angelo Moratti, 20151 Milano MI, Italy',
         'google_maps_url_str': 'https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Piazzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy',
         'description': "Prima data del concerto di Bruce Springsteen and The E Street Band allo Stadio San Siro."
+    },
+    {
+        'summary': 'Marracash - Marra Stadi25 (Data 2)',
+        'dtstart_str': '2025-06-26T21:00:00', # Orario ipotizzato, tipico per concerti a San Siro
+        'dtend_str': '2025-06-26T23:30:00',   # Orario ipotizzato
+        'location_name': 'Stadio San Siro (Giuseppe Meazza)',
+        'location_address': 'Piazzale Angelo Moratti, 20151 Milano MI, Italy',
+        'google_maps_url_str': 'https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Piazzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy',
+        'description': "Seconda data del concerto di Marracash allo Stadio San Siro per il tour 'Marra Stadi25'."
     }
 ]
