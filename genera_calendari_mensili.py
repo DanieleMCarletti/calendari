@@ -34,24 +34,7 @@ LOCATION_ALIASES = {
     "stadio san siro": ["stadio giuseppe meazza", "san siro", "piazzale angelo moratti"]
 }
 
-
-# --- Funzioni (rimangono invariate rispetto alla tua ultima versione, le ometto per brevità) ---
-# get_calendar_from_url
-# is_location_relevant_for_feed
-# parse_datetime_str
-# make_timezone_aware
-# normalize_summary_for_signature
-# normalize_location_for_signature
-# create_event_signature
-# load_event_list_from_file
-# ical_event_component_to_dict
-# apply_deduplication_and_merge
-# create_calendar_from_event_dicts
-# (Assicurati che queste funzioni siano presenti nel tuo script come nella versione che mi hai incollato)
-# --- COPIA LE FUNZIONI DA QUI SOPRA FINO A QUI DALLA TUA ULTIMA VERSIONE DELLO SCRIPT ---
-# (Ho bisogno di reincollare le funzioni se vuoi che le modifichi, altrimenti le assumo identiche)
-
-# --- Funzioni (COPIATE DALLA TUA ULTIMA VERSIONE) ---
+# --- Funzioni di Download e Parsing URL ---
 def get_calendar_from_url(url):
     try:
         response = requests.get(url, timeout=20)
@@ -70,6 +53,7 @@ def is_location_relevant_for_feed(location_text):
     normalized_loc = normalize_location_for_signature(location_text)
     return normalized_loc in LOCATION_ALIASES
 
+# --- Funzioni di Normalizzazione e Utilità ---
 def parse_datetime_str(dt_str):
     if not dt_str: return None
     try:
@@ -108,19 +92,21 @@ def normalize_location_for_signature(location_name):
             if alias in loc_lower: return canonical
     loc_lower = re.sub(r'[^\w\s-,]', '', loc_lower)
     loc_lower = re.sub(r'\s+', ' ', loc_lower).strip()
-    return loc_lower
+    return loc_lower if loc_lower else "unknown_location" # Ritorna "unknown_location" se vuota
 
-def create_event_signature(event_data_dict):
+def create_event_signatures(event_data_dict):
+    """Crea sia una firma debole (summary+data) sia una forte (summary+data+location)."""
     norm_summary = normalize_summary_for_signature(event_data_dict.get('summary'))
     dt_start_obj_naive = parse_datetime_str(event_data_dict.get('dtstart_str'))
     event_date_str = dt_start_obj_naive.date().isoformat() if dt_start_obj_naive else ""
+    
+    weak_signature = (norm_summary, event_date_str)
+    
     raw_location = event_data_dict.get('location_name', event_data_dict.get('location', ''))
-    norm_loc_specific = normalize_location_for_signature(raw_location)
-    if norm_loc_specific in LOCATION_ALIASES:
-        signature_location = norm_loc_specific
-    else:
-        signature_location = norm_loc_specific if norm_loc_specific else "unknown_location"
-    return (norm_summary, event_date_str, signature_location)
+    norm_loc_specific = normalize_location_for_signature(raw_location) # Restituisce 'unknown_location' se vuota
+    
+    strong_signature = (norm_summary, event_date_str, norm_loc_specific)
+    return weak_signature, strong_signature
 
 def load_event_list_from_file(file_path):
     module_name = file_path.stem
@@ -129,13 +115,20 @@ def load_event_list_from_file(file_path):
     module = importlib.util.module_from_spec(spec)
     try:
         spec.loader.exec_module(module)
-        return getattr(module, 'event_list', None) if hasattr(module, 'event_list') and isinstance(module.event_list, list) else None
+        # Assicurati di aggiungere 'source_type': 'manual' ai dizionari se non già presente
+        loaded_list = getattr(module, 'event_list', None)
+        if isinstance(loaded_list, list):
+            for item in loaded_list:
+                if 'source_type' not in item:
+                    item['source_type'] = 'manual_from_file' # O 'dati_grezzi'
+            return loaded_list
+        return None
     except Exception as e:
         print(f"Errore durante l'importazione di {file_path}: {e}")
     return None
 
 def ical_event_component_to_dict(component):
-    event_dict = {'source_type': 'ics_feed'}
+    event_dict = {'source_type': 'ics_feed'} # Importante per la logica di merge
     event_dict['summary'] = str(component.get('summary', 'Evento da Feed ICS'))
     dtstart_prop = component.get('dtstart')
     if dtstart_prop:
@@ -158,38 +151,96 @@ def ical_event_component_to_dict(component):
 
 def apply_deduplication_and_merge(event_list_of_dicts):
     print(f"  Inizio de-duplicazione per {len(event_list_of_dicts)} eventi candidati...")
-    processed_events_by_signature = {}
-    for raw_event_data in event_list_of_dicts:
-        signature = create_event_signature(raw_event_data)
-        dt_start_new_str = raw_event_data.get('dtstart_str')
-        dt_end_new_str = raw_event_data.get('dtend_str')
-        dt_start_new_obj = make_timezone_aware(parse_datetime_str(dt_start_new_str))
-        if not dt_start_new_obj: continue
-        if signature in processed_events_by_signature:
-            existing_event_data = processed_events_by_signature[signature]
-            dt_start_existing_obj = make_timezone_aware(parse_datetime_str(existing_event_data.get('dtstart_str')))
-            dt_end_existing_obj = make_timezone_aware(parse_datetime_str(existing_event_data.get('dtend_str')))
-            dt_end_new_obj = make_timezone_aware(parse_datetime_str(dt_end_new_str))
-            if dt_start_new_obj < dt_start_existing_obj:
-                existing_event_data['dtstart_str'] = dt_start_new_str
-            if dt_end_new_obj and dt_end_existing_obj:
-                if dt_end_new_obj > dt_end_existing_obj:
-                    existing_event_data['dtend_str'] = dt_end_new_str
-            elif dt_end_new_obj and not dt_end_existing_obj:
-                existing_event_data['dtend_str'] = dt_end_new_str
-            ex_desc = str(existing_event_data.get('description', '')).strip()
-            new_desc = str(raw_event_data.get('description', '')).strip()
-            if new_desc and new_desc.lower() != ex_desc.lower():
-                merged_desc = f"{ex_desc}\n---\n{new_desc}" if ex_desc else new_desc
-                existing_event_data['description'] = merged_desc
-            if raw_event_data.get('source_type') != 'ics_feed' and raw_event_data.get('google_maps_url_str'):
-                if not existing_event_data.get('google_maps_url_str'):
-                    existing_event_data['google_maps_url_str'] = raw_event_data.get('google_maps_url_str')
-                    existing_event_data['location_address'] = raw_event_data.get('location_address', existing_event_data.get('location_address',''))
-            processed_events_by_signature[signature] = existing_event_data
+    # Mappa da firma FORTE a dizionario evento
+    processed_events_by_strong_signature = {}
+    # Mappa da firma DEBOLE a firma FORTE (per trovare corrispondenze deboli)
+    weak_to_strong_map = {}
+
+    for current_event_data in event_list_of_dicts:
+        weak_sig_curr, strong_sig_curr = create_event_signatures(current_event_data)
+        
+        dt_start_curr_obj = make_timezone_aware(parse_datetime_str(current_event_data.get('dtstart_str')))
+        if not dt_start_curr_obj: continue # Evento non valido
+
+        # Controlla se c'è già un evento con la stessa firma DEBOLE
+        if weak_sig_curr in weak_to_strong_map:
+            existing_event_strong_sig = weak_to_strong_map[weak_sig_curr]
+            existing_event_data = processed_events_by_strong_signature[existing_event_strong_sig]
+            
+            print(f"    INFO: Trovata corrispondenza debole (Summary+Data) tra NUOVO '{current_event_data.get('summary')}' e ESISTENTE '{existing_event_data.get('summary')}'")
+
+            is_current_from_feed = current_event_data.get('source_type') == 'ics_feed'
+            is_existing_manual = existing_event_data.get('source_type') != 'ics_feed' # o 'manual_from_file'
+            
+            current_loc_norm = normalize_location_for_signature(current_event_data.get('location_name',''))
+            existing_loc_norm = normalize_location_for_signature(existing_event_data.get('location_name',''))
+
+            # CASO 1: Nuovo da FEED senza location, Esistente MANUALE con location -> Priorità al manuale
+            if is_current_from_feed and is_existing_manual and \
+               current_loc_norm == 'unknown_location' and existing_loc_norm != 'unknown_location':
+                
+                print(f"      Merge: Feed senza loc. ('{current_event_data.get('summary')}') con Manuale con loc. ('{existing_event_data.get('summary')}'). Dettagli manuali mantenuti.")
+                # Aggiorna orari dell'evento manuale esistente se quelli del feed sono "migliori"
+                # (Questa logica di "migliore" potrebbe essere solo il timestamp o se uno è più preciso)
+                # Per ora, semplice sovrascrittura se diversi per semplicità
+                dt_end_curr_obj = make_timezone_aware(parse_datetime_str(current_event_data.get('dtend_str')))
+                dt_end_existing_obj = make_timezone_aware(parse_datetime_str(existing_event_data.get('dtend_str')))
+
+                if dt_start_curr_obj < make_timezone_aware(parse_datetime_str(existing_event_data.get('dtstart_str'))):
+                    existing_event_data['dtstart_str'] = current_event_data['dtstart_str']
+                if dt_end_curr_obj and dt_end_existing_obj:
+                    if dt_end_curr_obj > dt_end_existing_obj:
+                        existing_event_data['dtend_str'] = current_event_data['dtend_str']
+                elif dt_end_curr_obj and not dt_end_existing_obj:
+                    existing_event_data['dtend_str'] = current_event_data['dtend_str']
+                # Non toccare description, url mappa, ecc. del manuale.
+                processed_events_by_strong_signature[existing_event_strong_sig] = existing_event_data
+                continue # L'evento corrente dal feed è stato "assorbito"
+
+            # CASO 2: Altre corrispondenze deboli -> Procedi con il confronto della firma forte e merge standard
+            if strong_sig_curr == existing_event_strong_sig: # Stessa firma forte, sono lo stesso evento
+                print(f"      Merge: Stessa firma forte per '{current_event_data.get('summary')}'. Applico merge standard.")
+                # Logica di merge standard (come l'avevamo prima)
+                dt_end_curr_obj = make_timezone_aware(parse_datetime_str(current_event_data.get('dtend_str')))
+                dt_start_existing_obj = make_timezone_aware(parse_datetime_str(existing_event_data.get('dtstart_str')))
+                dt_end_existing_obj = make_timezone_aware(parse_datetime_str(existing_event_data.get('dtend_str')))
+
+                if dt_start_curr_obj < dt_start_existing_obj:
+                    existing_event_data['dtstart_str'] = current_event_data['dtstart_str']
+                if dt_end_curr_obj and dt_end_existing_obj:
+                    if dt_end_curr_obj > dt_end_existing_obj:
+                        existing_event_data['dtend_str'] = current_event_data['dtend_str']
+                elif dt_end_curr_obj and not dt_end_existing_obj:
+                    existing_event_data['dtend_str'] = current_event_data['dtend_str']
+                
+                ex_desc = str(existing_event_data.get('description', '')).strip()
+                new_desc = str(current_event_data.get('description', '')).strip()
+                if new_desc and new_desc.lower() != ex_desc.lower(): # Unisci solo se diverse
+                    merged_desc = f"{ex_desc}\n---\n{new_desc}" if ex_desc else new_desc
+                    existing_event_data['description'] = merged_desc
+                
+                # Arricchisci con URL mappa e indirizzo se il corrente è manuale e l'esistente no
+                if current_event_data.get('source_type') != 'ics_feed' and current_event_data.get('google_maps_url_str'):
+                    if not existing_event_data.get('google_maps_url_str'):
+                        existing_event_data['google_maps_url_str'] = current_event_data.get('google_maps_url_str')
+                        existing_event_data['location_address'] = current_event_data.get('location_address', existing_event_data.get('location_address',''))
+                
+                processed_events_by_strong_signature[strong_sig_curr] = existing_event_data
+                continue # Evento mergiato
+            else:
+                # Firme deboli uguali, ma forti diverse (es. stessa partita, date diverse ma location normalizzate diverse)
+                # Li trattiamo come eventi distinti per ora, aggiungendo quello nuovo.
+                # Potrebbe essere un'area di ulteriore affinamento se questo produce duplicati indesiderati.
+                print(f"    INFO: Firme deboli uguali ma forti diverse. Aggiungo '{current_event_data.get('summary')}' come nuovo.")
+                processed_events_by_strong_signature[strong_sig_curr] = current_event_data.copy()
+                weak_to_strong_map[weak_sig_curr] = strong_sig_curr # Aggiorna la mappa debole alla firma forte del *nuovo* evento se lo consideriamo "dominante" o più recente. O NON aggiornare, se vogliamo che il primo match debole sia il "master". Da decidere. Per ora, sovrascrivo.
         else:
-            processed_events_by_signature[signature] = raw_event_data.copy()
-    final_list = list(processed_events_by_signature.values())
+            # Nessuna corrispondenza debole, è un evento nuovo per summary+data
+            processed_events_by_strong_signature[strong_sig_curr] = current_event_data.copy()
+            weak_to_strong_map[weak_sig_curr] = strong_sig_curr
+            # print(f"  Aggiunto nuovo evento (firma debole unica): {current_event_data.get('summary')}")
+    
+    final_list = list(processed_events_by_strong_signature.values())
     print(f"  De-duplicazione completata. Eventi unici/mergiati: {len(final_list)}")
     return final_list
 
@@ -218,7 +269,6 @@ def create_calendar_from_event_dicts(event_dictionaries, calendar_display_name):
         final_calendar.add_component(ics_event)
     return final_calendar
 
-
 # --- Script Principale ---
 def main():
     script_dir = Path(__file__).resolve().parent
@@ -237,12 +287,15 @@ def main():
         if not raw_events_monthly:
             print(f"    Nessun evento caricato da {data_file_path.name}.\n")
             continue
+        
         processed_monthly_event_dicts = apply_deduplication_and_merge(raw_events_monthly)
         all_events_for_aggregation.extend(processed_monthly_event_dicts)
+
         output_file_basename = data_file_path.stem
         calendar_name_part = output_file_basename.replace("eventi_", "")
         display_name_monthly = f'Eventi San Siro - {calendar_name_part}'
         monthly_calendar_obj = create_calendar_from_event_dicts(processed_monthly_event_dicts, display_name_monthly)
+        
         if len(monthly_calendar_obj.walk('VEVENT')) > 0:
             output_ics_file_path = output_dir / f"{output_file_basename}.ics"
             try:
@@ -253,14 +306,14 @@ def main():
         print("")
 
     print(f"\n--- Fase 2: Processamento Calendari Partite da URL ---")
-    
-    # MODIFICA QUI: Filtro per prendere eventi futuri o molto recenti dai feed ICS
-    # Prende eventi da (oggi - X giorni) in poi.
-    # Puoi aggiustare i `days=X` per includere un po' di passato recente se vuoi.
-    # Per l'uso normale, vogliamo solo eventi futuri o quasi.
-    giorni_passato_da_includere = 30 # Esempio: includi partite dell'ultima settimana
+    giorni_passato_da_includere = 7 
     data_riferimento_feed = datetime.now(TARGET_TIMEZONE_OBJ) - timedelta(days=giorni_passato_da_includere)
-    print(f"    Considerando partite dai feed ICS a partire da: {data_riferimento_feed.date()}")
+    # Per testare con una stagione specifica, decommenta e adatta le righe seguenti e commenta quelle sopra:
+    # test_stagione_inizio_anno = 2023
+    # test_stagione_fine_anno_per_feed = 2024 # L'anno in cui finisce la stagione
+    # data_riferimento_feed_inizio_stagione = datetime(test_stagione_inizio_anno, 7, 1, tzinfo=TARGET_TIMEZONE_OBJ) 
+    # data_riferimento_feed_fine_stagione = datetime(test_stagione_fine_anno_per_feed, 6, 30, tzinfo=TARGET_TIMEZONE_OBJ)
+    # print(f"    Considerando partite dai feed ICS per la stagione {test_stagione_inizio_anno}/{test_stagione_fine_anno_per_feed}")
 
 
     for team_key, url in CALENDAR_URLS.items():
@@ -278,28 +331,38 @@ def main():
             dtstart_prop = component.get('dtstart')
             if not dtstart_prop: continue
             
-            # Converti dtstart dell'evento del feed in un oggetto datetime aware nel nostro fuso orario
             dtstart_event_obj_orig = dtstart_prop.dt
             dtstart_event_obj_aware = make_timezone_aware(dtstart_event_obj_orig, TARGET_TIMEZONE_OBJ)
+            if not dtstart_event_obj_aware: continue
 
-            if not dtstart_event_obj_aware: continue # Se la conversione fallisce
+            # Filtro Data per i feed
+            # Se usi il filtro stagione per test:
+            # if not (data_riferimento_feed_inizio_stagione <= dtstart_event_obj_aware <= data_riferimento_feed_fine_stagione):
+            #     continue
+            # Filtro per produzione (eventi futuri o recenti):
+            if dtstart_event_obj_aware < data_riferimento_feed: # Usa questo per la produzione
+                 continue
 
-            # --- FILTRO DATA PER PRODUZIONE (EVENTI FUTURI O RECENTI) ---
-            if dtstart_event_obj_aware < data_riferimento_feed:
-                # print(f"      Partita feed passata (prima di {data_riferimento_feed.date()}): {summary_text} ({dtstart_event_obj_aware.date()})")
-                continue
-            # --- FINE FILTRO DATA PER PRODUZIONE ---
-
-            is_home_match = False
+            is_home_match_candidate = False
             summary_parts = [p.strip() for p in re.split(r'\s+vs\s+|\s+-\s+', summary_text, 1)]
             if len(summary_parts) > 0 and club_name_for_feed.lower() in summary_parts[0].lower():
                 remaining_summary_part = re.sub(re.escape(club_name_for_feed), '', summary_parts[0], flags=re.IGNORECASE).strip()
                 if not re.search(r'[a-zA-Z0-9]', remaining_summary_part):
-                    is_home_match = True
-            if not is_home_match and location_text and is_location_relevant_for_feed(location_text):
-                is_home_match = True
+                    is_home_match_candidate = True
 
-            if is_home_match:
+            is_truly_relevant_match = False
+            if is_home_match_candidate:
+                if location_text:
+                    normalized_feed_location = normalize_location_for_signature(location_text)
+                    if normalized_feed_location in LOCATION_ALIASES:
+                        is_truly_relevant_match = True
+                    else:
+                        # print(f"    INFO: Evento feed '{summary_text}' scartato, location '{location_text}' non è San Siro/La Maura.")
+                        pass # Non aggiungere, è una trasferta con location specificata
+                else: # Location non fornita, ci fidiamo del summary per "in casa"
+                    is_truly_relevant_match = True
+            
+            if is_truly_relevant_match:
                 event_dict = ical_event_component_to_dict(component)
                 if event_dict.get('dtstart_str'):
                     all_events_for_aggregation.append(event_dict)
