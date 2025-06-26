@@ -1,6 +1,24 @@
 # dati_grezzi/eventi_2025_08.py
 event_list = [
     {
+        'source_type': 'manual_from_file',
+        'summary': 'AC Milan - Cremonese', # MODIFICATO
+        'dtstart_str': '2025-08-23T20:45:00',
+        # ... resto dei campi ...
+    },
+    {
+        'source_type': 'manual_from_file',
+        'summary': 'Inter - Torino', # Già corretto
+        'dtstart_str': '2025-08-25T20:45:00',
+        # ... resto dei campi ...
+    },
+    {
+        'source_type': 'manual_from_file',
+        'summary': 'Inter - Udinese', # Già corretto
+        'dtstart_str': '2025-08-31T20:45:00',
+        # ... resto dei campi ...
+    },
+    {
         'summary': 'BLACKPINK - BORN PINK World Tour ENCORE', # Aggiunto nome tour
         'dtstart_str': '2025-08-06T20:30:00', # Orario ipotizzato
         'dtend_str': '2025-08-06T23:00:00',   # Orario ipotizzato
