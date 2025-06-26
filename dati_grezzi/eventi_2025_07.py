@@ -71,5 +71,14 @@ event_list = [
         'location_address': 'Piazzale dello Sport, 16, 20151 Milano MI, Italy',
         'google_maps_url_str': 'https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Siro%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy',
         'description': "Concerto dei Thirty Seconds To Mars."
+    },
+    {
+    'summary': 'Lazza - Concerto Ippodromo La Maura',
+    'dtstart_str': '2025-07-09T21:00:00', # Orario ipotizzato, da verificare se possibile
+    'dtend_str': '2025-07-09T23:30:00',   # Orario ipotizzato
+    'location_name': 'Ippodromo SNAI La Maura',
+    'location_address': 'Via Lampugnano, 95, 20151 Milano MI, Italy',
+    'google_maps_url_str': 'https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+La+Maura%2C+Via+Lampugnano%2C+95%2C+20151+Milano+MI%2C+Italy',
+    'description': "Concerto di Lazza all'Ippodromo SNAI La Maura."
     }
 ]
