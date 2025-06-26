@@ -1,6 +1,12 @@
 # dati_grezzi/eventi_2025_09.py
 event_list = [
     {
+        'source_type': 'manual_from_file',
+        'summary': 'AC Milan - Bologna', # MODIFICATO
+        'dtstart_str': '2025-09-14T20:45:00',
+        # ... resto dei campi ...
+    },
+    {
         'summary': 'Lucio Corsi - Ippodromi 2025',
         'dtstart_str': '2025-09-07T21:00:00', # Orario ipotizzato
         'dtend_str': '2025-09-07T23:00:00',   # Orario ipotizzato
