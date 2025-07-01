@@ -7,8 +7,8 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche (Dicembre 1)
 DTSTART;TZID=Europe/Rome:20251207T133000
 DTEND;TZID=Europe/Rome:20251207T170000
-DTSTAMP:20250630T015603Z
-UID:5c11a8e3-3e32-4a7c-bccf-f8a30e6e2efb
+DTSTAMP:20250701T020135Z
+UID:80f337d3-e464-4d2a-a7d2-2d943ef74c3d
 DESCRIPTION:Corse ippiche all'Ippodromo SNAI San Siro.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -19,8 +19,8 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche (Dicembre 2)
 DTSTART;TZID=Europe/Rome:20251213T133000
 DTEND;TZID=Europe/Rome:20251213T170000
-DTSTAMP:20250630T015603Z
-UID:00595f62-4907-497b-aca0-3dfb0de8b3fe
+DTSTAMP:20250701T020135Z
+UID:defd828d-ffcb-4623-8657-010df2a37dda
 DESCRIPTION:Corse ippiche all'Ippodromo SNAI San Siro.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -31,8 +31,8 @@ BEGIN:VEVENT
 SUMMARY:Giornata di corse ippiche (Dicembre 3 - Santo Stefano)
 DTSTART;TZID=Europe/Rome:20251226T133000
 DTEND;TZID=Europe/Rome:20251226T170000
-DTSTAMP:20250630T015603Z
-UID:47f36344-19e1-49dc-af76-37fad57d420e
+DTSTAMP:20250701T020135Z
+UID:6353e349-7bf2-4d31-ad2f-37887ff957e0
 DESCRIPTION:Tradizionali corse ippiche di Santo Stefano.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
