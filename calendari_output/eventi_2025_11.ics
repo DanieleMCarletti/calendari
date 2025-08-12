@@ -7,8 +7,8 @@ BEGIN:VEVENT
 SUMMARY:Premio Vittorio di Capua
 DTSTART;TZID=Europe/Rome:20251109T140000
 DTEND;TZID=Europe/Rome:20251109T180000
-DTSTAMP:20250811T020715Z
-UID:3f95aa55-1bc8-4ad0-9bdd-ba75fe543eb1
+DTSTAMP:20250812T015054Z
+UID:cfe15b6a-9690-4bf0-bce0-b03d7efed6e3
 DESCRIPTION:Giornata di corse ippiche con il prestigioso Premio Vittorio d
  i Capua.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
@@ -20,8 +20,8 @@ BEGIN:VEVENT
 SUMMARY:Premio Federico Tesio – St. Leger Italiano
 DTSTART;TZID=Europe/Rome:20251116T140000
 DTEND;TZID=Europe/Rome:20251116T180000
-DTSTAMP:20250811T020715Z
-UID:7afecf86-e9ad-4f4a-84c0-0ca7e5e42bc8
+DTSTAMP:20250812T015054Z
+UID:e82719cf-78ed-453f-b7f6-2d6ea40ee5ad
 DESCRIPTION:Giornata di corse ippiche con i premi Federico Tesio e St. Leg
  er Italiano.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
