@@ -55,8 +55,8 @@ event_list = [
     },
     {
         'summary': 'Achille Lauro',
-        'dtstart_str': '2026-06-13T21:00:00',
-        'dtend_str': '2026-06-13T23:30:00',
+        'dtstart_str': '2026-06-15T21:00:00',
+        'dtend_str': '2026-06-15T23:30:00',
         'location_name': 'Stadio San Siro',
         'location_address': 'Milano',
         'google_maps_url_str': 'https://www.google.com/maps/search/?api=1&query=San+Siro',
@@ -64,8 +64,8 @@ event_list = [
     },
     {
         'summary': 'Iron Maiden',
-        'dtstart_str': '2026-06-13T21:00:00',
-        'dtend_str': '2026-06-13T23:30:00',
+        'dtstart_str': '2026-06-17T21:00:00',
+        'dtend_str': '2026-06-17T23:30:00',
         'location_name': 'Stadio San Siro',
         'location_address': 'Milano',
         'google_maps_url_str': 'https://www.google.com/maps/search/?api=1&query=San+Siro',
@@ -73,8 +73,8 @@ event_list = [
     },
     {
         'summary': 'Ligabue',
-        'dtstart_str': '2026-06-13T21:00:00',
-        'dtend_str': '2026-06-13T23:30:00',
+        'dtstart_str': '2026-06-20T21:00:00',
+        'dtend_str': '2026-06-20T23:30:00',
         'location_name': 'Stadio San Siro',
         'location_address': 'Milano',
         'google_maps_url_str': 'https://www.google.com/maps/search/?api=1&query=San+Siro',
