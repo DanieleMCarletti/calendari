@@ -7,8 +7,8 @@ BEGIN:VEVENT
 SUMMARY:Tiziano Ferro
 DTSTART;TZID=Europe/Rome:20260606T210000
 DTEND;TZID=Europe/Rome:20260606T233000
-DTSTAMP:20260404T025609Z
-UID:bbae4377-50a6-4820-99b0-dd10c0ce4108
+DTSTAMP:20260405T031817Z
+UID:cb7edb7b-5be1-4b0e-8983-e160d391bad5
 DESCRIPTION:Concerto di Tiziano Ferro allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -18,8 +18,8 @@ BEGIN:VEVENT
 SUMMARY:Tiziano Ferro
 DTSTART;TZID=Europe/Rome:20260607T210000
 DTEND;TZID=Europe/Rome:20260607T233000
-DTSTAMP:20260404T025609Z
-UID:18f63e7f-1f27-4a12-b202-9635c7e12c37
+DTSTAMP:20260405T031817Z
+UID:2dd3d0c7-3bec-4c60-8bae-367c49928f53
 DESCRIPTION:Concerto di Tiziano Ferro allo Stadio San Siro (2o giorno).
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -29,8 +29,8 @@ BEGIN:VEVENT
 SUMMARY:Eros Ramazzotti
 DTSTART;TZID=Europe/Rome:20260609T210000
 DTEND;TZID=Europe/Rome:20260609T233000
-DTSTAMP:20260404T025609Z
-UID:71a3e4b4-d08e-4ea3-bb59-fa0eecddb673
+DTSTAMP:20260405T031817Z
+UID:a01c6f7a-4bc3-45a4-8eb7-23f890bf3ea4
 DESCRIPTION:Concerto di Eros Ramazzotti.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -40,8 +40,8 @@ BEGIN:VEVENT
 SUMMARY:Cesare Cremonini
 DTSTART;TZID=Europe/Rome:20260610T210000
 DTEND;TZID=Europe/Rome:20260610T233000
-DTSTAMP:20260404T025609Z
-UID:52ecfbfc-4e89-48df-ac06-f7ad35f26025
+DTSTAMP:20260405T031817Z
+UID:d34cab17-ad27-45b6-ab86-1a42e97725bf
 DESCRIPTION:Concerto di Cesare Cremonini (area ippodromo).
 LOCATION:Ippodromo SNAI La Maura - Via Lampugnano 95\, Milano
 URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+La+Maura+Mil
@@ -51,8 +51,8 @@ BEGIN:VEVENT
 SUMMARY:Irama
 DTSTART;TZID=Europe/Rome:20260611T210000
 DTEND;TZID=Europe/Rome:20260611T233000
-DTSTAMP:20260404T025609Z
-UID:c5fca816-f608-4114-8c74-ee1b3d6fab9f
+DTSTAMP:20260405T031817Z
+UID:e97613c5-e09c-4634-9622-8f288fabf5dc
 DESCRIPTION:Concerto di Irama.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -62,8 +62,8 @@ BEGIN:VEVENT
 SUMMARY:Geolier
 DTSTART;TZID=Europe/Rome:20260613T210000
 DTEND;TZID=Europe/Rome:20260613T233000
-DTSTAMP:20260404T025609Z
-UID:2a6590ee-762b-4eaf-a74a-3f583a010215
+DTSTAMP:20260405T031817Z
+UID:6ea4c43c-4649-4e08-b22c-e2051417fa71
 DESCRIPTION:Concerto Geolier.
 LOCATION:Stadio San Siro - Milano
 URL:https://www.google.com/maps/search/?api=1&query=San+Siro
@@ -72,8 +72,8 @@ BEGIN:VEVENT
 SUMMARY:Achille Lauro
 DTSTART;TZID=Europe/Rome:20260615T210000
 DTEND;TZID=Europe/Rome:20260615T233000
-DTSTAMP:20260404T025609Z
-UID:8b3957f2-7a1b-4e71-9628-34268cd156be
+DTSTAMP:20260405T031817Z
+UID:9ed89aca-8f69-42e7-a406-0b245a174ec3
 DESCRIPTION:Concerto Achille Lauro.
 LOCATION:Stadio San Siro - Milano
 URL:https://www.google.com/maps/search/?api=1&query=San+Siro
@@ -82,8 +82,8 @@ BEGIN:VEVENT
 SUMMARY:Iron Maiden
 DTSTART;TZID=Europe/Rome:20260617T210000
 DTEND;TZID=Europe/Rome:20260617T233000
-DTSTAMP:20260404T025609Z
-UID:abbbb352-fcde-4174-8694-18f2473afe4d
+DTSTAMP:20260405T031817Z
+UID:b96d960e-2c3e-46a5-80c4-08f568b3b65a
 DESCRIPTION:Concerto Iron Maiden.
 LOCATION:Stadio San Siro - Milano
 URL:https://www.google.com/maps/search/?api=1&query=San+Siro
@@ -92,8 +92,8 @@ BEGIN:VEVENT
 SUMMARY:Ligabue
 DTSTART;TZID=Europe/Rome:20260620T210000
 DTEND;TZID=Europe/Rome:20260620T233000
-DTSTAMP:20260404T025609Z
-UID:296ba7ce-6323-487c-baa2-2afc84f178ab
+DTSTAMP:20260405T031817Z
+UID:dab6ba4e-f051-44de-b2b9-660aa8187756
 DESCRIPTION:Concerto Ligabue.
 LOCATION:Stadio San Siro - Milano
 URL:https://www.google.com/maps/search/?api=1&query=San+Siro
@@ -102,8 +102,8 @@ BEGIN:VEVENT
 SUMMARY:Tedua
 DTSTART;TZID=Europe/Rome:20260624T210000
 DTEND;TZID=Europe/Rome:20260624T233000
-DTSTAMP:20260404T025609Z
-UID:67bd7d3a-2533-4bc5-9f57-90268d081d2e
+DTSTAMP:20260405T031817Z
+UID:ad222da0-ac7f-4fba-b6ea-677a945dc88c
 DESCRIPTION:Concerto Tedua.
 LOCATION:Stadio San Siro - Milano
 URL:https://www.google.com/maps/search/?api=1&query=San+Siro
@@ -112,8 +112,8 @@ BEGIN:VEVENT
 SUMMARY:Maroon 5
 DTSTART;TZID=Europe/Rome:20260625T210000
 DTEND;TZID=Europe/Rome:20260625T233000
-DTSTAMP:20260404T025609Z
-UID:5230fb7a-bf76-4215-b26e-8c7406e11f07
+DTSTAMP:20260405T031817Z
+UID:c9f2f5c9-1bea-4df1-b165-88fc5933646b
 DESCRIPTION:I-Days Milano.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport 16\, Milano
 URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+San+Siro
@@ -122,8 +122,8 @@ BEGIN:VEVENT
 SUMMARY:Gabri Ponte
 DTSTART;TZID=Europe/Rome:20260627T210000
 DTEND;TZID=Europe/Rome:20260627T233000
-DTSTAMP:20260404T025609Z
-UID:b88869cd-86b5-4da3-8373-3f482c284dc3
+DTSTAMP:20260405T031817Z
+UID:c40f6e85-1d63-4650-a6ca-4f87322cd4cc
 DESCRIPTION:Concerto Gabri Ponte.
 LOCATION:Stadio San Siro - Milano
 URL:https://www.google.com/maps/search/?api=1&query=San+Siro
