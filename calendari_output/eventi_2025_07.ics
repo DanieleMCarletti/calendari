@@ -7,8 +7,8 @@ BEGIN:VEVENT
 SUMMARY:Bruce Springsteen and The E Street Band (Data 2)
 DTSTART;TZID=Europe/Rome:20250703T203000
 DTEND;TZID=Europe/Rome:20250703T235900
-DTSTAMP:20260507T041356Z
-UID:8751a666-f927-4d59-aeb6-0d2865c6a08f
+DTSTAMP:20260508T033239Z
+UID:03d86599-9c55-41f5-ba8c-4c9733bf3dba
 DESCRIPTION:Seconda data del concerto di Bruce Springsteen and The E Stree
  t Band allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -20,8 +20,8 @@ BEGIN:VEVENT
 SUMMARY:Ultimo - Stadi 2025 (Data 1)
 DTSTART;TZID=Europe/Rome:20250705T210000
 DTEND;TZID=Europe/Rome:20250705T234500
-DTSTAMP:20260507T041356Z
-UID:395ed186-11f5-4a92-a874-55a0d2af2612
+DTSTAMP:20260508T033239Z
+UID:d42e3ff0-430e-4df8-a10f-e2dbae01c26a
 DESCRIPTION:Prima data del concerto di Ultimo allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -32,8 +32,8 @@ BEGIN:VEVENT
 SUMMARY:Ultimo - Stadi 2025 (Data 2)
 DTSTART;TZID=Europe/Rome:20250707T210000
 DTEND;TZID=Europe/Rome:20250707T234500
-DTSTAMP:20260507T041356Z
-UID:32540c15-9f43-47a2-8e3a-ca7e3fabe198
+DTSTAMP:20260508T033239Z
+UID:3817d706-2e7d-4660-a08a-fb674c1d453e
 DESCRIPTION:Seconda data del concerto di Ultimo allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -44,8 +44,8 @@ BEGIN:VEVENT
 SUMMARY:Marco Mengoni - Marco Negli Stadi (Data 1)
 DTSTART;TZID=Europe/Rome:20250713T210000
 DTEND;TZID=Europe/Rome:20250713T233000
-DTSTAMP:20260507T041356Z
-UID:eba2f234-74b7-4ea5-a3a6-03d5b2d6e114
+DTSTAMP:20260508T033239Z
+UID:c344824c-4608-47bd-b4dc-18720b1eb8a6
 DESCRIPTION:Prima data del concerto di Marco Mengoni allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -56,8 +56,8 @@ BEGIN:VEVENT
 SUMMARY:Marco Mengoni - Marco Negli Stadi (Data 2)
 DTSTART;TZID=Europe/Rome:20250714T210000
 DTEND;TZID=Europe/Rome:20250714T233000
-DTSTAMP:20260507T041356Z
-UID:b5ef31c1-e7b3-408c-b15d-5056a4a07def
+DTSTAMP:20260508T033239Z
+UID:1177e57c-b361-4c24-bf8e-8c290d9af3a3
 DESCRIPTION:Seconda data del concerto di Marco Mengoni allo Stadio San Sir
  o.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -69,8 +69,8 @@ BEGIN:VEVENT
 SUMMARY:Olivia Rodrigo - GUTS World Tour - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250715T203000
 DTEND;TZID=Europe/Rome:20250715T230000
-DTSTAMP:20260507T041356Z
-UID:fd73ff65-1c63-40c0-85e9-f4a2f20bd727
+DTSTAMP:20260508T033239Z
+UID:84f27a74-a07a-4020-9fc1-07567390dd35
 DESCRIPTION:Concerto di Olivia Rodrigo\, parte degli I-Days Milano Coca-Co
  la.
 LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
@@ -82,8 +82,8 @@ BEGIN:VEVENT
 SUMMARY:The Who - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250720T203000
 DTEND;TZID=Europe/Rome:20250720T230000
-DTSTAMP:20260507T041356Z
-UID:a60f3b2a-c966-43d4-939d-a762fa420647
+DTSTAMP:20260508T033239Z
+UID:260b1ebd-b6a0-4d18-b8d4-1dfaec0e292f
 DESCRIPTION:Concerto dei The Who\, parte degli I-Days Milano Coca-Cola.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -94,8 +94,8 @@ BEGIN:VEVENT
 SUMMARY:Thirty Seconds To Mars - Seasons World Tour 2025
 DTSTART;TZID=Europe/Rome:20250702T210000
 DTEND;TZID=Europe/Rome:20250702T233000
-DTSTAMP:20260507T041356Z
-UID:4638a2aa-ee39-4acb-8055-3c8474625310
+DTSTAMP:20260508T033239Z
+UID:c0256c7b-6bd0-4207-b3df-82bffe291220
 DESCRIPTION:Concerto dei Thirty Seconds To Mars.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
@@ -106,8 +106,8 @@ BEGIN:VEVENT
 SUMMARY:Lazza - Concerto Ippodromo La Maura
 DTSTART;TZID=Europe/Rome:20250709T210000
 DTEND;TZID=Europe/Rome:20250709T233000
-DTSTAMP:20260507T041356Z
-UID:a13934bf-6287-4459-ae0d-3f95838bb9e7
+DTSTAMP:20260508T033239Z
+UID:266013bb-6670-44ba-b502-5cc5f3921798
 DESCRIPTION:Concerto di Lazza all'Ippodromo SNAI La Maura.
 LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
   Italy
