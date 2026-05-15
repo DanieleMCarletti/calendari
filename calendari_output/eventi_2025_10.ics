@@ -7,8 +7,8 @@ BEGIN:VEVENT
 SUMMARY:Premio Cumani – Premio Verziere – Premio del Piazzale
 DTSTART;TZID=Europe/Rome:20251012T140000
 DTEND;TZID=Europe/Rome:20251012T180000
-DTSTAMP:20260514T042721Z
-UID:70493950-eb3a-463c-8a04-8828acb7e94e
+DTSTAMP:20260515T043617Z
+UID:23bed38e-2d6a-4b0a-84a2-1f2a8dbc25fa
 DESCRIPTION:Importante giornata di corse ippiche all'Ippodromo SNAI San Si
  ro.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
@@ -20,8 +20,8 @@ BEGIN:VEVENT
 SUMMARY:Premio C. Porta – Jockey Club – Premio Dormello
 DTSTART;TZID=Europe/Rome:20251019T140000
 DTEND;TZID=Europe/Rome:20251019T180000
-DTSTAMP:20260514T042721Z
-UID:ec61e99a-b255-4b3e-8755-fc74fea053ca
+DTSTAMP:20260515T043617Z
+UID:6d683785-b88a-4b44-a685-dd0f7c853da8
 DESCRIPTION:Altra importante giornata di corse ippiche all'Ippodromo SNAI 
  San Siro.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
