@@ -39,6 +39,21 @@ webcal://raw.githubusercontent.com/DanieleMCarletti/calendari/main/eventi_san_si
 - **Concerti / eventi non sportivi**: vanno aggiunti a mano (vedi sotto).
 - Il workflow GitHub Actions [`generate_monthly_calendars.yml`](.github/workflows/generate_monthly_calendars.yml) committa automaticamente i file `.ics` rigenerati.
 
+## AI discovery (concerti automatici)
+
+Per ridurre il lavoro di curatura manuale dei concerti, c'è un secondo workflow [`discover_events.yml`](.github/workflows/discover_events.yml) che:
+
+1. Gira **ogni domenica notte (04:00 UTC)** e su `workflow_dispatch`.
+2. Scarica alcune pagine pubbliche di eventi a Milano (vedi `SOURCES` in [`discover_eventi.py`](discover_eventi.py)).
+3. Passa il testo a **GitHub Models** (`openai/gpt-4o-mini`, gratis su Actions con `permissions: models: read`) per estrarre eventi a San Siro / Ippodromo La Maura / Ippodromo SNAI San Siro.
+4. Valida l'output contro [`discovered/SCHEMA.json`](discovered/SCHEMA.json).
+5. Fa **dedup** contro tutto quello che è già in `dati_grezzi/*.py` e `discovered/*.json` su `main`.
+6. Se ci sono eventi nuovi, apre/aggiorna una **PR rolling** sul branch fisso `bot/discovered-events`.
+
+Tu (Daniele) revisioni la PR: cancelli gli eventi spazzatura, modifichi quelli imprecisi, merge quando soddisfatto. Al run successivo di `Generate Monthly Calendars`, gli eventi entrano nel calendario pubblico.
+
+I file `discovered/eventi_YYYY_MM.json` sono **dati**, non codice: un errore in un JSON è rilevato dal workflow [`validate_json.yml`](.github/workflows/validate_json.yml) prima del merge.
+
 ## Aggiungere un evento manuale
 
 Gli eventi manuali (concerti e simili) vivono in file Python per mese sotto [`dati_grezzi/`](dati_grezzi/), uno per mese, con nome `eventi_YYYY_MM.py`.

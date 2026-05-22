@@ -1,0 +1,82 @@
+name: Discover Events (AI)
+
+on:
+  schedule:
+    # Domenica notte alle 04:00 UTC. Un solo run/settimana e' ampiamente
+    # sufficiente: gli eventi cambiano poco e la PR e' rolling.
+    - cron: '0 4 * * 0'
+  workflow_dispatch:
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # per pushare il branch bot/discovered-events
+      pull-requests: write  # per aprire/aggiornare la PR rolling
+      models: read          # per chiamare GitHub Models
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run discovery
+        env:
+          GH_MODELS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python discover_eventi.py
+
+      - name: Detect changes in discovered/
+        id: detect
+        run: |
+          if git status --porcelain discovered/ | grep -q .; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Modifiche rilevate in discovered/:"
+            git status --porcelain discovered/
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Nessuna modifica in discovered/."
+          fi
+
+      - name: Create or update rolling PR
+        if: steps.detect.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: bot/discovered-events
+          delete-branch: true
+          base: main
+          title: "bot: discovered events (rolling)"
+          commit-message: "Discovered events update (auto)"
+          body: |
+            ## Eventi proposti dall'AI
+
+            Questa PR e' aggiornata automaticamente ogni settimana (cron `0 4 * * 0` UTC) dal workflow [`discover_events.yml`](.github/workflows/discover_events.yml).
+
+            ### Cosa fare
+            1. **Controlla i file `discovered/eventi_YYYY_MM.json`** sotto Files changed.
+            2. **Cancella le entries** che sono spazzatura (titoli generici, eventi inventati, location sbagliate).
+            3. **Modifica** quelle imprecise (orari, descrizioni).
+            4. **Merge** quando sei soddisfatto: al run successivo di `Generate Monthly Calendars` gli eventi compariranno nel calendario pubblico.
+
+            ### Note
+            - I `confidence` `low`/`medium` segnalano incertezza dell'LLM — controlla con attenzione.
+            - Le entries che includi (merge) NON saranno ri-proposte: lo script fa dedup su `(summary normalizzato, data)`.
+            - Se chiudi la PR senza merge, le entries verranno ri-proposte al run successivo.
+
+            ### Fonti correnti
+            Vedi `source_urls` dentro ogni file JSON.
+
+            ---
+            🤖 Auto-PR generata da GitHub Models (`openai/gpt-4o-mini`).

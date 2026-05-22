@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Discovered Events",
+  "description": "Eventi candidati estratti automaticamente da fonti pubbliche via LLM. Revisionati da Daniele tramite PR.",
+  "type": "object",
+  "required": ["generated_at", "source_urls", "events"],
+  "additionalProperties": false,
+  "properties": {
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp ISO della generazione (UTC)"
+    },
+    "source_urls": {
+      "type": "array",
+      "items": {"type": "string", "format": "uri"},
+      "minItems": 1
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["summary", "dtstart_str", "location_name"],
+        "additionalProperties": false,
+        "properties": {
+          "summary": {"type": "string", "minLength": 3, "maxLength": 200},
+          "dtstart_str": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$"
+          },
+          "dtend_str": {
+            "type": "string",
+            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}$"
+          },
+          "location_name": {"type": "string", "minLength": 3, "maxLength": 200},
+          "location_address": {"type": "string", "maxLength": 300},
+          "description": {"type": "string", "maxLength": 1000},
+          "google_maps_url_str": {"type": "string", "format": "uri"},
+          "source_url": {"type": "string", "format": "uri"},
+          "confidence": {
+            "type": "string",
+            "enum": ["high", "medium", "low"],
+            "description": "Stima dell'LLM sulla certezza dell'estrazione"
+          }
+        }
+      }
+    }
+  }
+}
