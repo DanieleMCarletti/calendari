@@ -442,14 +442,24 @@ def main():
                 if not re.search(r'[a-zA-Z0-9]', remaining_summary_part):
                     is_home_match_candidate = True
 
-            # Detection casa: AND rigido. Richiediamo SIA che il club sia primo nel summary
-            # SIA che la location sia presente e normalizzata in LOCATION_ALIASES.
-            # Senza il vincolo sulla location, un cambio di formato del feed (es. ordine
-            # invertito di "home vs away") farebbe passare silenziosamente trasferte.
+            # Detection casa:
+            # 1. club primo nel summary (es. "AC Milan - Cagliari" -> casa Milan): la
+            #    convention osservata su ics.fixtur.es e' "home - away".
+            # 2. se il feed popola LOCATION, deve essere una location nota (sanity check).
+            #    Oggi ics.fixtur.es lascia LOCATION vuota su TUTTI gli eventi: in quel
+            #    caso ci basiamo solo sul summary (era il comportamento storico).
+            #    Se in futuro il feed iniziasse a popolare LOCATION con qualcosa di
+            #    diverso da San Siro per le partite casalinghe, il match e' un warning.
             is_truly_relevant_match = False
-            if is_home_match_candidate and location_text:
-                normalized_feed_location = normalize_location_for_signature(location_text)
-                if normalized_feed_location in LOCATION_ALIASES:
+            if is_home_match_candidate:
+                if location_text:
+                    normalized_feed_location = normalize_location_for_signature(location_text)
+                    if normalized_feed_location in LOCATION_ALIASES:
+                        is_truly_relevant_match = True
+                    else:
+                        log(f"    SKIP feed match con location estranea: '{summary_text}' loc='{location_text}'")
+                else:
+                    # Location assente: ci fidiamo del summary (case attuale di ics.fixtur.es)
                     is_truly_relevant_match = True
             
             if is_truly_relevant_match:
@@ -457,7 +467,8 @@ def main():
                 if event_dict.get('dtstart_str'):
                     all_events_for_aggregation.append(event_dict)
                     team_events_added_count += 1
-        log(f"    Aggiunti {team_events_added_count} eventi da {club_name_for_feed} dopo filtro casa/location e data.")
+                    log(f"    + casa: {dtstart_event_obj_aware.date()} {summary_text}")
+        log(f"    Totale {team_events_added_count} partite casalinghe aggiunte da {club_name_for_feed}.")
 
     # Safety net: se TUTTI i feed sono falliti, non sovrascrivere l'aggregato (rischio calendario vuoto)
     if feed_failures == len(CALENDAR_URLS):

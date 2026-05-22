@@ -502,6 +502,26 @@ URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
  o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Inter - Hellas Verona FC (1-1)
+DTSTART;TZID=Europe/Rome:20260517T150000
+DTEND;TZID=Europe/Rome:20260517T164500
+DTSTAMP:20260517T130000Z
+UID:5d980efad7393f48@calendari.danielecarletti
+DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
+ th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
+ /fixtures
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:AC Milan - Cagliari
+DTSTART;TZID=Europe/Rome:20260524T204500
+DTEND;TZID=Europe/Rome:20260524T223000
+DTSTAMP:20260524T184500Z
+UID:af7626ee5270eaa7@calendari.danielecarletti
+DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
+ th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
+ com/fixtures
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Tiziano Ferro
 DTSTART;TZID=Europe/Rome:20260606T210000
 DTEND;TZID=Europe/Rome:20260606T233000
@@ -725,6 +745,16 @@ UID:0a6644f862557a1a@calendari.danielecarletti
 DESCRIPTION:Terza data.
 LOCATION:Stadio San Siro - Milano
 URL:https://maps.google.com/?q=San+Siro
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:AC Milan - Inter []
+DTSTART;TZID=Europe/Rome:20260805T020000
+DTEND;TZID=Europe/Rome:20260805T034500
+DTSTAMP:20260805T000000Z
+UID:5c47f1dc0108fac8@calendari.danielecarletti
+DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
+ th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
+ com/fixtures
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Tony Pitony
