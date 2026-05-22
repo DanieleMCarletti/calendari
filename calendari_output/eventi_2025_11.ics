@@ -1,14 +1,14 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Generated Calendar (Europe/Rome)//example.com//
+PRODID:-//Generated Calendar (Europe/Rome)//calendari.danielecarletti//
 X-WR-CALNAME:Eventi San Siro - 2025_11
 X-WR-TIMEZONE:Europe/Rome
 BEGIN:VEVENT
 SUMMARY:Premio Vittorio di Capua
 DTSTART;TZID=Europe/Rome:20251109T140000
 DTEND;TZID=Europe/Rome:20251109T180000
-DTSTAMP:20260522T045241Z
-UID:5f41b12a-9786-40a0-b271-2449b0f5ee6d
+DTSTAMP:20251109T130000Z
+UID:1665b105172590b8@calendari.danielecarletti
 DESCRIPTION:Giornata di corse ippiche con il prestigioso Premio Vittorio d
  i Capua.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
@@ -20,8 +20,8 @@ BEGIN:VEVENT
 SUMMARY:Premio Federico Tesio – St. Leger Italiano
 DTSTART;TZID=Europe/Rome:20251116T140000
 DTEND;TZID=Europe/Rome:20251116T180000
-DTSTAMP:20260522T045241Z
-UID:56d5742d-b473-4897-9ea3-aebd581cf7a9
+DTSTAMP:20251116T130000Z
+UID:2a72f8da6ea65b75@calendari.danielecarletti
 DESCRIPTION:Giornata di corse ippiche con i premi Federico Tesio e St. Leg
  er Italiano.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan

@@ -1,14 +1,18 @@
 # genera_calendari_mensili.py
 
-from icalendar import Calendar, Event, vDDDTypes
+from icalendar import Calendar, Event
 from datetime import datetime, date, timedelta
 import pytz
 import os
+import sys
+import hashlib
+import shutil
 from pathlib import Path
-import uuid
 import re
-import importlib.util # Per importare dinamicamente i file di dati
-import requests # Per scaricare i calendari URL
+import importlib.util
+import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 # --- Configurazione Globale ---
 TARGET_TIMEZONE_STR = 'Europe/Rome'
@@ -34,18 +38,79 @@ LOCATION_ALIASES = {
     "stadio san siro": ["stadio giuseppe meazza", "san siro", "piazzale angelo moratti"]
 }
 
-# --- Funzioni di Download e Parsing URL ---
-def get_calendar_from_url(url):
+LAMPUGNANO_CANONICAL_LOCATION = "ippodromo snai la maura"
+UID_DOMAIN = "calendari.danielecarletti"
+MIN_AGGREGATED_EVENTS = 5
+SHRINK_TOLERANCE = 0.5  # se nuovi < 50% dei precedenti, abortisci senza scrivere
+
+
+def log(msg):
+    print(f"[{datetime.now().isoformat(timespec='seconds')}] {msg}")
+
+
+def _make_http_session():
+    """Session HTTP con retry+timeout per i fetch dei feed ICS."""
+    s = requests.Session()
+    retry = Retry(
+        total=3,
+        backoff_factor=2,
+        status_forcelist=[500, 502, 503, 504],
+        allowed_methods=frozenset(["GET"]),
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    s.mount('https://', adapter)
+    s.mount('http://', adapter)
+    return s
+
+
+def stable_uid(summary, dtstart_iso, location_name):
+    """UID deterministico (sha256 troncato) basato su summary+dtstart+location normalizzati.
+    Stabile tra run a parità di contenuto → niente più eventi duplicati su Google Calendar."""
+    norm_summary = normalize_summary_for_signature(summary or '')
+    norm_loc = normalize_location_for_signature(location_name or '')
+    key = f"{norm_summary}|{dtstart_iso or ''}|{norm_loc}"
+    digest = hashlib.sha256(key.encode('utf-8')).hexdigest()[:16]
+    return f"{digest}@{UID_DOMAIN}"
+
+
+def stable_dtstamp(dtstart_aware):
+    """DTSTAMP stabile derivato da dtstart (in UTC). Necessario per idempotenza dell'output ICS."""
+    if not dtstart_aware:
+        return datetime(2024, 1, 1, tzinfo=pytz.UTC)
+    return dtstart_aware.astimezone(pytz.UTC).replace(microsecond=0)
+
+
+def count_events_in_ics_file(path):
+    """Conta i VEVENT in un file ICS esistente; ritorna 0 se il file non esiste o non parsabile."""
+    if not path.exists():
+        return 0
     try:
-        response = requests.get(url, timeout=20)
+        with open(path, 'rb') as f:
+            cal = Calendar.from_ical(f.read())
+        return sum(1 for _ in cal.walk('VEVENT'))
+    except Exception as e:
+        log(f"WARN: impossibile parsare {path} per conteggio storico: {e}")
+        return 0
+
+
+# --- Funzioni di Download e Parsing URL ---
+_HTTP_SESSION = None
+
+
+def get_calendar_from_url(url):
+    global _HTTP_SESSION
+    if _HTTP_SESSION is None:
+        _HTTP_SESSION = _make_http_session()
+    try:
+        response = _HTTP_SESSION.get(url, timeout=20)
         response.raise_for_status()
         return Calendar.from_ical(response.text)
     except requests.exceptions.Timeout:
-        print(f"Timeout durante il download del calendario da {url}")
+        log(f"ERRORE: Timeout durante il download del calendario da {url}")
     except requests.exceptions.RequestException as e:
-        print(f"Errore nel scaricare il calendario da {url}: {e}")
+        log(f"ERRORE nel scaricare il calendario da {url}: {e}")
     except Exception as e:
-        print(f"Errore nel parsare il calendario da {url}: {e}")
+        log(f"ERRORE nel parsare il calendario da {url}: {e}")
     return None
 
 def is_location_relevant_for_feed(location_text):
@@ -246,28 +311,57 @@ def apply_deduplication_and_merge(event_list_of_dicts):
 
 def create_calendar_from_event_dicts(event_dictionaries, calendar_display_name):
     final_calendar = Calendar()
-    final_calendar.add('prodid', f'-//Generated Calendar ({TARGET_TIMEZONE_STR})//example.com//')
+    final_calendar.add('prodid', f'-//Generated Calendar ({TARGET_TIMEZONE_STR})//calendari.danielecarletti//')
     final_calendar.add('version', '2.0')
     final_calendar.add('X-WR-CALNAME', calendar_display_name)
     final_calendar.add('X-WR-TIMEZONE', TARGET_TIMEZONE_STR)
-    for event_dict in event_dictionaries:
+    # Ordino gli eventi per dtstart per garantire output deterministico (stesso ordine tra run)
+    sorted_events = sorted(
+        event_dictionaries,
+        key=lambda e: (e.get('dtstart_str') or '', e.get('summary') or '')
+    )
+    for event_dict in sorted_events:
         ics_event = Event()
         dtstart = make_timezone_aware(parse_datetime_str(event_dict.get('dtstart_str')))
         dtend = make_timezone_aware(parse_datetime_str(event_dict.get('dtend_str')))
         if not dtstart: continue
-        ics_event.add('summary', event_dict.get('summary', 'Evento Senza Titolo'))
-        ics_event.add('dtstart', dtstart)
-        if dtend: ics_event.add('dtend', dtend)
-        ics_event.add('dtstamp', make_timezone_aware(datetime.now()))
+        summary_val = event_dict.get('summary', 'Evento Senza Titolo')
         loc_name = event_dict.get('location_name', '')
         loc_addr = event_dict.get('location_address', '')
         location_string = f"{loc_name} - {loc_addr}".strip().strip('-').strip() if loc_name and loc_addr else loc_name or loc_addr
+        ics_event.add('summary', summary_val)
+        ics_event.add('dtstart', dtstart)
+        if dtend: ics_event.add('dtend', dtend)
+        # DTSTAMP stabile (derivato da dtstart) → idempotenza dell'ICS, niente diff fittizi tra run
+        ics_event.add('dtstamp', stable_dtstamp(dtstart))
         if location_string: ics_event.add('location', location_string)
         if event_dict.get('description'): ics_event.add('description', event_dict.get('description'))
         if event_dict.get('google_maps_url_str'): ics_event.add('url', event_dict.get('google_maps_url_str'))
-        ics_event.add('uid', str(uuid.uuid4()))
+        # UID deterministico: hash sha256(summary+dtstart+location) → stabile tra run
+        ics_event.add('uid', stable_uid(summary_val, event_dict.get('dtstart_str'), loc_name))
         final_calendar.add_component(ics_event)
     return final_calendar
+
+
+def write_calendar_with_validation(cal_obj, target_path, label):
+    """Scrive l'ICS solo se l'output rispetta le soglie minime di sanità.
+    Protegge da feed temporaneamente vuoto che svuoterebbe il calendario pubblico."""
+    new_count = sum(1 for _ in cal_obj.walk('VEVENT'))
+    old_count = count_events_in_ics_file(target_path)
+    if new_count < MIN_AGGREGATED_EVENTS:
+        log(f"ERRORE [{label}]: nuovo conteggio eventi {new_count} < soglia minima {MIN_AGGREGATED_EVENTS}. NON sovrascrivo {target_path}.")
+        return False
+    if old_count > 0 and new_count < old_count * SHRINK_TOLERANCE:
+        log(f"ERRORE [{label}]: nuovo conteggio {new_count} < {SHRINK_TOLERANCE*100:.0f}% del precedente ({old_count}). NON sovrascrivo {target_path}.")
+        return False
+    try:
+        with open(target_path, 'wb') as f:
+            f.write(cal_obj.to_ical())
+        log(f"  OK [{label}] salvato in {target_path} ({new_count} eventi, prima {old_count}).")
+        return True
+    except Exception as e:
+        log(f"ERRORE [{label}] in scrittura {target_path}: {e}")
+        return False
 
 # --- Script Principale ---
 def main():
@@ -275,19 +369,22 @@ def main():
     data_source_dir = script_dir / DATA_SOURCE_FOLDER_NAME
     output_dir = script_dir / OUTPUT_ICS_FOLDER_NAME
     if not data_source_dir.is_dir():
-        print(f"Errore: La cartella dei dati sorgente '{data_source_dir}' non è stata trovata.")
-        return
+        log(f"ERRORE FATALE: La cartella dei dati sorgente '{data_source_dir}' non è stata trovata.")
+        sys.exit(1)
     output_dir.mkdir(parents=True, exist_ok=True)
     all_events_for_aggregation = []
 
-    print(f"\n--- Fase 1: Processamento Dati Grezzi Mensili da '{data_source_dir}' ---")
-    for data_file_path in sorted(data_source_dir.glob("*.py")):
-        print(f"  Processando file dati: {data_file_path.name}")
+    log(f"--- Fase 1: Processamento Dati Grezzi Mensili da '{data_source_dir}' ---")
+    monthly_files = sorted(data_source_dir.glob("eventi_*.py"))
+    if not monthly_files:
+        log(f"  WARN: nessun file mensile in {data_source_dir}. Continuo solo con i feed.")
+    for data_file_path in monthly_files:
+        log(f"  Processando file dati: {data_file_path.name}")
         raw_events_monthly = load_event_list_from_file(data_file_path)
         if not raw_events_monthly:
-            print(f"    Nessun evento caricato da {data_file_path.name}.\n")
+            log(f"    Nessun evento caricato da {data_file_path.name} (file vuoto o malformato). Skip.")
             continue
-        
+
         processed_monthly_event_dicts = apply_deduplication_and_merge(raw_events_monthly)
         all_events_for_aggregation.extend(processed_monthly_event_dicts)
 
@@ -295,34 +392,29 @@ def main():
         calendar_name_part = output_file_basename.replace("eventi_", "")
         display_name_monthly = f'Eventi San Siro - {calendar_name_part}'
         monthly_calendar_obj = create_calendar_from_event_dicts(processed_monthly_event_dicts, display_name_monthly)
-        
+
         if len(monthly_calendar_obj.walk('VEVENT')) > 0:
             output_ics_file_path = output_dir / f"{output_file_basename}.ics"
             try:
                 with open(output_ics_file_path, 'wb') as f: f.write(monthly_calendar_obj.to_ical())
-                print(f"    Calendario mensile salvato in: {output_ics_file_path}")
+                log(f"    Calendario mensile salvato in: {output_ics_file_path}")
             except Exception as e:
-                print(f"    Errore nello scrivere il file ICS mensile {output_ics_file_path}: {e}")
-        print("")
+                log(f"    ERRORE nello scrivere il file ICS mensile {output_ics_file_path}: {e}")
 
-    print(f"\n--- Fase 2: Processamento Calendari Partite da URL ---")
-    giorni_passato_da_includere = 7 
+    log(f"--- Fase 2: Processamento Calendari Partite da URL ---")
+    giorni_passato_da_includere = 7
     data_riferimento_feed = datetime.now(TARGET_TIMEZONE_OBJ) - timedelta(days=giorni_passato_da_includere)
-    # Per testare con una stagione specifica, decommenta e adatta le righe seguenti e commenta quelle sopra:
-    # test_stagione_inizio_anno = 2023
-    # test_stagione_fine_anno_per_feed = 2024 # L'anno in cui finisce la stagione
-    # data_riferimento_feed_inizio_stagione = datetime(test_stagione_inizio_anno, 7, 1, tzinfo=TARGET_TIMEZONE_OBJ) 
-    # data_riferimento_feed_fine_stagione = datetime(test_stagione_fine_anno_per_feed, 6, 30, tzinfo=TARGET_TIMEZONE_OBJ)
-    # print(f"    Considerando partite dai feed ICS per la stagione {test_stagione_inizio_anno}/{test_stagione_fine_anno_per_feed}")
 
-
+    feed_failures = 0
     for team_key, url in CALENDAR_URLS.items():
         club_name_for_feed = "AC Milan" if team_key.lower() == "milan" else team_key.capitalize()
         if team_key.lower() == "inter": club_name_for_feed = "Inter"
-        
-        print(f"  Scaricando calendario per: {club_name_for_feed} da {url}")
+
+        log(f"  Scaricando calendario per: {club_name_for_feed} da {url}")
         calendar_data_from_url = get_calendar_from_url(url)
-        if not calendar_data_from_url: continue
+        if not calendar_data_from_url:
+            feed_failures += 1
+            continue
 
         team_events_added_count = 0
         for component in calendar_data_from_url.walk('VEVENT'):
@@ -350,16 +442,14 @@ def main():
                 if not re.search(r'[a-zA-Z0-9]', remaining_summary_part):
                     is_home_match_candidate = True
 
+            # Detection casa: AND rigido. Richiediamo SIA che il club sia primo nel summary
+            # SIA che la location sia presente e normalizzata in LOCATION_ALIASES.
+            # Senza il vincolo sulla location, un cambio di formato del feed (es. ordine
+            # invertito di "home vs away") farebbe passare silenziosamente trasferte.
             is_truly_relevant_match = False
-            if is_home_match_candidate:
-                if location_text:
-                    normalized_feed_location = normalize_location_for_signature(location_text)
-                    if normalized_feed_location in LOCATION_ALIASES:
-                        is_truly_relevant_match = True
-                    else:
-                        # print(f"    INFO: Evento feed '{summary_text}' scartato, location '{location_text}' non è San Siro/La Maura.")
-                        pass # Non aggiungere, è una trasferta con location specificata
-                else: # Location non fornita, ci fidiamo del summary per "in casa"
+            if is_home_match_candidate and location_text:
+                normalized_feed_location = normalize_location_for_signature(location_text)
+                if normalized_feed_location in LOCATION_ALIASES:
                     is_truly_relevant_match = True
             
             if is_truly_relevant_match:
@@ -367,25 +457,57 @@ def main():
                 if event_dict.get('dtstart_str'):
                     all_events_for_aggregation.append(event_dict)
                     team_events_added_count += 1
-        print(f"    Aggiunti {team_events_added_count} eventi da {club_name_for_feed} dopo filtro casa/location e data.")
-    
-    print(f"\n--- Fase 3: Creazione Calendario Aggregato Finale ---")
-    print(f"  Numero totale di eventi prima della de-duplicazione finale: {len(all_events_for_aggregation)}")
-    final_unique_event_dicts = apply_deduplication_and_merge(all_events_for_aggregation)
-    display_name_aggregated = f'Eventi San Siro (Aggregato)'
-    aggregated_calendar_obj = create_calendar_from_event_dicts(final_unique_event_dicts, display_name_aggregated)
+        log(f"    Aggiunti {team_events_added_count} eventi da {club_name_for_feed} dopo filtro casa/location e data.")
 
-    if len(aggregated_calendar_obj.walk('VEVENT')) > 0:
-        aggregated_ics_file_path = output_dir / AGGREGATED_ICS_FILENAME
+    # Safety net: se TUTTI i feed sono falliti, non sovrascrivere l'aggregato (rischio calendario vuoto)
+    if feed_failures == len(CALENDAR_URLS):
+        log(f"ERRORE FATALE: tutti i {feed_failures} feed sono falliti. ABORT senza scrivere l'aggregato.")
+        sys.exit(1)
+
+    log(f"--- Fase 3: Creazione Calendario Aggregato Finale ---")
+    log(f"  Eventi totali prima della de-duplicazione: {len(all_events_for_aggregation)}")
+    final_unique_event_dicts = apply_deduplication_and_merge(all_events_for_aggregation)
+    aggregated_calendar_obj = create_calendar_from_event_dicts(final_unique_event_dicts, 'Eventi San Siro (Aggregato)')
+
+    aggregated_ics_file_path = output_dir / AGGREGATED_ICS_FILENAME
+    ok_agg = write_calendar_with_validation(aggregated_calendar_obj, aggregated_ics_file_path, 'aggregato')
+    if not ok_agg:
+        log("ABORT: validazione aggregato fallita.")
+        sys.exit(1)
+
+    # Mantengo per compatibilità l'URL pubblico storico /eventi_san_siro_merged.ics
+    # come copia esatta dell'aggregato (chi era già iscritto via webcal continua a funzionare).
+    root_merged_path = script_dir / "eventi_san_siro_merged.ics"
+    try:
+        shutil.copyfile(aggregated_ics_file_path, root_merged_path)
+        log(f"  OK [compat] copia in {root_merged_path}")
+    except Exception as e:
+        log(f"  WARN: impossibile aggiornare {root_merged_path}: {e}")
+
+    # --- Fase 4: Calendario Lampugnano (sottoinsieme filtrato per Ippodromo SNAI La Maura) ---
+    log("--- Fase 4: Generazione calendario Lampugnano (Ippodromo SNAI La Maura) ---")
+    lampugnano_events = [
+        e for e in final_unique_event_dicts
+        if normalize_location_for_signature(e.get('location_name', '')) == LAMPUGNANO_CANONICAL_LOCATION
+    ]
+    lampugnano_path = output_dir / "eventi_lampugnano.ics"
+    if lampugnano_events:
+        lamp_cal = create_calendar_from_event_dicts(lampugnano_events, 'Eventi Ippodromo La Maura (Lampugnano)')
+        # Validazione più permissiva per Lampugnano: pochi eventi nominali; non applico la soglia min globale
         try:
-            with open(aggregated_ics_file_path, 'wb') as f: f.write(aggregated_calendar_obj.to_ical())
-            print(f"  Calendario aggregato salvato in: {aggregated_ics_file_path}")
-            print(f"  Eventi totali nel calendario aggregato: {len(aggregated_calendar_obj.walk('VEVENT'))}")
+            with open(lampugnano_path, 'wb') as f:
+                f.write(lamp_cal.to_ical())
+            log(f"  OK [lampugnano] salvato in {lampugnano_path} ({len(lampugnano_events)} eventi).")
+            # Copia in root per compat con URL pubblico storico
+            shutil.copyfile(lampugnano_path, script_dir / "eventi_lampugnano.ics")
+            log(f"  OK [compat] copia in {script_dir / 'eventi_lampugnano.ics'}")
         except Exception as e:
-            print(f"  Errore nello scrivere il file ICS aggregato {aggregated_ics_file_path}: {e}")
+            log(f"  ERRORE in scrittura Lampugnano: {e}")
     else:
-        print("  Nessun evento da scrivere nel calendario aggregato finale.")
-    print("\nProcessamento completato.")
+        log("  Nessun evento Lampugnano per questo run; non sovrascrivo l'output esistente.")
+
+    log("Processamento completato.")
+
 
 if __name__ == "__main__":
     main()
