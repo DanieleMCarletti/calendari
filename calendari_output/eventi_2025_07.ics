@@ -1,14 +1,26 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Generated Calendar (Europe/Rome)//example.com//
+PRODID:-//Generated Calendar (Europe/Rome)//calendari.danielecarletti//
 X-WR-CALNAME:Eventi San Siro - 2025_07
 X-WR-TIMEZONE:Europe/Rome
+BEGIN:VEVENT
+SUMMARY:Thirty Seconds To Mars - Seasons World Tour 2025
+DTSTART;TZID=Europe/Rome:20250702T210000
+DTEND;TZID=Europe/Rome:20250702T233000
+DTSTAMP:20250702T190000Z
+UID:31014b8849d00c1e@calendari.danielecarletti
+DESCRIPTION:Concerto dei Thirty Seconds To Mars.
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
+ o MI\, Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
+ o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Bruce Springsteen and The E Street Band (Data 2)
 DTSTART;TZID=Europe/Rome:20250703T203000
 DTEND;TZID=Europe/Rome:20250703T235900
-DTSTAMP:20260522T045241Z
-UID:20c493b7-9326-452c-8f50-d520d576e705
+DTSTAMP:20250703T183000Z
+UID:ef3adbc4e04c3b90@calendari.danielecarletti
 DESCRIPTION:Seconda data del concerto di Bruce Springsteen and The E Stree
  t Band allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -20,8 +32,8 @@ BEGIN:VEVENT
 SUMMARY:Ultimo - Stadi 2025 (Data 1)
 DTSTART;TZID=Europe/Rome:20250705T210000
 DTEND;TZID=Europe/Rome:20250705T234500
-DTSTAMP:20260522T045241Z
-UID:d5f93847-16ed-4196-b7ee-ab87b1a01198
+DTSTAMP:20250705T190000Z
+UID:a13c9730c1a328f3@calendari.danielecarletti
 DESCRIPTION:Prima data del concerto di Ultimo allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -32,8 +44,8 @@ BEGIN:VEVENT
 SUMMARY:Ultimo - Stadi 2025 (Data 2)
 DTSTART;TZID=Europe/Rome:20250707T210000
 DTEND;TZID=Europe/Rome:20250707T234500
-DTSTAMP:20260522T045241Z
-UID:bbff785d-0238-4650-b202-b4666fdc32e8
+DTSTAMP:20250707T190000Z
+UID:470a945b8f421444@calendari.danielecarletti
 DESCRIPTION:Seconda data del concerto di Ultimo allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -41,11 +53,23 @@ URL:https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Pia
  zzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Lazza - Concerto Ippodromo La Maura
+DTSTART;TZID=Europe/Rome:20250709T210000
+DTEND;TZID=Europe/Rome:20250709T233000
+DTSTAMP:20250709T190000Z
+UID:d8e3ffcda4dda5f1@calendari.danielecarletti
+DESCRIPTION:Concerto di Lazza all'Ippodromo SNAI La Maura.
+LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
+  Italy
+URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+La+Maur
+ a%2C+Via+Lampugnano%2C+95%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Marco Mengoni - Marco Negli Stadi (Data 1)
 DTSTART;TZID=Europe/Rome:20250713T210000
 DTEND;TZID=Europe/Rome:20250713T233000
-DTSTAMP:20260522T045241Z
-UID:89ab8b1a-e39a-4120-bde2-5d85a39b0564
+DTSTAMP:20250713T190000Z
+UID:82e5ee0ff965f9c5@calendari.danielecarletti
 DESCRIPTION:Prima data del concerto di Marco Mengoni allo Stadio San Siro.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
  51 Milano MI\, Italy
@@ -56,8 +80,8 @@ BEGIN:VEVENT
 SUMMARY:Marco Mengoni - Marco Negli Stadi (Data 2)
 DTSTART;TZID=Europe/Rome:20250714T210000
 DTEND;TZID=Europe/Rome:20250714T233000
-DTSTAMP:20260522T045241Z
-UID:1137e477-89e5-4460-9a90-3b55f6777050
+DTSTAMP:20250714T190000Z
+UID:300ff0a036ccdbca@calendari.danielecarletti
 DESCRIPTION:Seconda data del concerto di Marco Mengoni allo Stadio San Sir
  o.
 LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
@@ -69,8 +93,8 @@ BEGIN:VEVENT
 SUMMARY:Olivia Rodrigo - GUTS World Tour - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250715T203000
 DTEND;TZID=Europe/Rome:20250715T230000
-DTSTAMP:20260522T045241Z
-UID:2bf8c0d8-bc2c-42c2-9190-3573b6dfb9d9
+DTSTAMP:20250715T183000Z
+UID:d428fb2e0a3f25b1@calendari.danielecarletti
 DESCRIPTION:Concerto di Olivia Rodrigo\, parte degli I-Days Milano Coca-Co
  la.
 LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
@@ -82,36 +106,12 @@ BEGIN:VEVENT
 SUMMARY:The Who - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250720T203000
 DTEND;TZID=Europe/Rome:20250720T230000
-DTSTAMP:20260522T045241Z
-UID:6d577185-4e5f-4879-9c9d-4b64a5c91f4b
+DTSTAMP:20250720T183000Z
+UID:aa45f6e5f7d3954c@calendari.danielecarletti
 DESCRIPTION:Concerto dei The Who\, parte degli I-Days Milano Coca-Cola.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
 URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
  o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Thirty Seconds To Mars - Seasons World Tour 2025
-DTSTART;TZID=Europe/Rome:20250702T210000
-DTEND;TZID=Europe/Rome:20250702T233000
-DTSTAMP:20260522T045241Z
-UID:94892c20-b21e-4109-9cd6-9590e02a410f
-DESCRIPTION:Concerto dei Thirty Seconds To Mars.
-LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
- o MI\, Italy
-URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
- o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Lazza - Concerto Ippodromo La Maura
-DTSTART;TZID=Europe/Rome:20250709T210000
-DTEND;TZID=Europe/Rome:20250709T233000
-DTSTAMP:20260522T045241Z
-UID:f1cdf104-441a-4a0b-b8fb-c57de62fb681
-DESCRIPTION:Concerto di Lazza all'Ippodromo SNAI La Maura.
-LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
-  Italy
-URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+La+Maur
- a%2C+Via+Lampugnano%2C+95%2C+20151+Milano+MI%2C+Italy
 END:VEVENT
 END:VCALENDAR

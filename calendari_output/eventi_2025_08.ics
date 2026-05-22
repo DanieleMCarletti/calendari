@@ -1,32 +1,14 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//Generated Calendar (Europe/Rome)//example.com//
+PRODID:-//Generated Calendar (Europe/Rome)//calendari.danielecarletti//
 X-WR-CALNAME:Eventi San Siro - 2025_08
 X-WR-TIMEZONE:Europe/Rome
-BEGIN:VEVENT
-SUMMARY:AC Milan - Cremonese
-DTSTART;TZID=Europe/Rome:20250823T204500
-DTSTAMP:20260522T045241Z
-UID:faa9d9e5-d212-427d-8e95-0bd784c6cb21
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Inter - Torino
-DTSTART;TZID=Europe/Rome:20250825T204500
-DTSTAMP:20260522T045241Z
-UID:59226b32-f53f-4a77-a0b5-121952e4a947
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:Inter - Udinese
-DTSTART;TZID=Europe/Rome:20250831T204500
-DTSTAMP:20260522T045241Z
-UID:eb4baa0e-5f75-4ac9-9b41-29f883298811
-END:VEVENT
 BEGIN:VEVENT
 SUMMARY:BLACKPINK - BORN PINK World Tour ENCORE
 DTSTART;TZID=Europe/Rome:20250806T203000
 DTEND;TZID=Europe/Rome:20250806T230000
-DTSTAMP:20260522T045241Z
-UID:d7a9ce9e-be39-4cf1-8dad-2de7d2c1cbae
+DTSTAMP:20250806T183000Z
+UID:1f171a93851c5070@calendari.danielecarletti
 DESCRIPTION:Concerto delle BLACKPINK.
 LOCATION:Ippodromo SNAI La Maura - Via Lampugnano\, 95\, 20151 Milano MI\,
   Italy
@@ -34,15 +16,33 @@ URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+La+Maur
  a%2C+Via+Lampugnano%2C+95%2C+20151+Milano+MI%2C+Italy
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:AC Milan - Cremonese
+DTSTART;TZID=Europe/Rome:20250823T204500
+DTSTAMP:20250823T184500Z
+UID:ad7ff7f2755140fe@calendari.danielecarletti
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Inter - Torino
+DTSTART;TZID=Europe/Rome:20250825T204500
+DTSTAMP:20250825T184500Z
+UID:9c67c092a3c4e53d@calendari.danielecarletti
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Post Malone - I-Days Milano
 DTSTART;TZID=Europe/Rome:20250827T203000
 DTEND;TZID=Europe/Rome:20250827T230000
-DTSTAMP:20260522T045241Z
-UID:9f80c75b-5cc2-46e5-b86d-0ea7a256228a
+DTSTAMP:20250827T183000Z
+UID:a3009405086af3d3@calendari.danielecarletti
 DESCRIPTION:Concerto di Post Malone\, parte degli I-Days Milano Coca-Cola.
 LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport\, 16\, 20151 Milan
  o MI\, Italy
 URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
  o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Inter - Udinese
+DTSTART;TZID=Europe/Rome:20250831T204500
+DTSTAMP:20250831T184500Z
+UID:ac0bd40ed3434a4f@calendari.danielecarletti
 END:VEVENT
 END:VCALENDAR
