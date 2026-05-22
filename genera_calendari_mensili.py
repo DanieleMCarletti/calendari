@@ -5,6 +5,7 @@ from datetime import datetime, date, timedelta
 import pytz
 import os
 import sys
+import json
 import hashlib
 import shutil
 from pathlib import Path
@@ -19,6 +20,7 @@ TARGET_TIMEZONE_STR = 'Europe/Rome'
 TARGET_TIMEZONE_OBJ = pytz.timezone(TARGET_TIMEZONE_STR)
 
 DATA_SOURCE_FOLDER_NAME = "dati_grezzi"
+DISCOVERED_FOLDER_NAME = "discovered"
 OUTPUT_ICS_FOLDER_NAME = "calendari_output"
 CURRENT_YEAR = datetime.now().year
 AGGREGATED_ICS_FILENAME = "eventi_san_siro_aggregato.ics"
@@ -374,27 +376,53 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
     all_events_for_aggregation = []
 
-    log(f"--- Fase 1: Processamento Dati Grezzi Mensili da '{data_source_dir}' ---")
+    # Raggruppo per mese (YYYY_MM): manuali da dati_grezzi/*.py + AI-discovered da discovered/*.json.
+    # I "discovered" sono eventi gia' revisionati e mergiati via PR (vedi discover_eventi.py).
+    events_by_month: dict[str, list] = {}
+
+    log(f"--- Fase 1a: Eventi manuali da '{data_source_dir}' ---")
     monthly_files = sorted(data_source_dir.glob("eventi_*.py"))
     if not monthly_files:
-        log(f"  WARN: nessun file mensile in {data_source_dir}. Continuo solo con i feed.")
+        log(f"  WARN: nessun file mensile in {data_source_dir}.")
     for data_file_path in monthly_files:
         log(f"  Processando file dati: {data_file_path.name}")
         raw_events_monthly = load_event_list_from_file(data_file_path)
         if not raw_events_monthly:
-            log(f"    Nessun evento caricato da {data_file_path.name} (file vuoto o malformato). Skip.")
+            log(f"    Nessun evento caricato da {data_file_path.name}. Skip.")
             continue
+        month_key = data_file_path.stem.replace("eventi_", "")  # 2026_06
+        events_by_month.setdefault(month_key, []).extend(raw_events_monthly)
+        log(f"    Caricati {len(raw_events_monthly)} eventi manuali per {month_key}.")
 
-        processed_monthly_event_dicts = apply_deduplication_and_merge(raw_events_monthly)
+    discovered_dir = script_dir / DISCOVERED_FOLDER_NAME
+    log(f"--- Fase 1b: Eventi AI-discovered da '{discovered_dir}' ---")
+    if discovered_dir.is_dir():
+        for json_file in sorted(discovered_dir.glob("eventi_*.json")):
+            try:
+                doc = json.loads(json_file.read_text(encoding="utf-8"))
+                json_events = doc.get("events", [])
+                month_key = json_file.stem.replace("eventi_", "")  # 2026_06
+                for ev in json_events:
+                    ev["source_type"] = "discovered"
+                    events_by_month.setdefault(month_key, []).append(ev)
+                log(f"  Caricati {len(json_events)} eventi discovered per {month_key} ({json_file.name}).")
+            except Exception as e:
+                log(f"  WARN: impossibile leggere {json_file.name}: {e}")
+    else:
+        log(f"  (Cartella {discovered_dir} non presente; skip.)")
+
+    log(f"--- Fase 1c: Generazione ICS mensili (manuali + discovered) ---")
+    for month_key in sorted(events_by_month.keys()):
+        events = events_by_month[month_key]
+        log(f"  Mese {month_key}: {len(events)} eventi totali (pre-dedup).")
+        processed_monthly_event_dicts = apply_deduplication_and_merge(events)
         all_events_for_aggregation.extend(processed_monthly_event_dicts)
 
-        output_file_basename = data_file_path.stem
-        calendar_name_part = output_file_basename.replace("eventi_", "")
-        display_name_monthly = f'Eventi San Siro - {calendar_name_part}'
+        display_name_monthly = f'Eventi San Siro - {month_key}'
         monthly_calendar_obj = create_calendar_from_event_dicts(processed_monthly_event_dicts, display_name_monthly)
 
         if len(monthly_calendar_obj.walk('VEVENT')) > 0:
-            output_ics_file_path = output_dir / f"{output_file_basename}.ics"
+            output_ics_file_path = output_dir / f"eventi_{month_key}.ics"
             try:
                 with open(output_ics_file_path, 'wb') as f: f.write(monthly_calendar_obj.to_ical())
                 log(f"    Calendario mensile salvato in: {output_ics_file_path}")

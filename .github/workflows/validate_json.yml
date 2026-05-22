@@ -1,0 +1,65 @@
+name: Validate Discovered JSON
+
+on:
+  pull_request:
+    paths:
+      - 'discovered/**.json'
+      - 'discovered/SCHEMA.json'
+  push:
+    branches: [main]
+    paths:
+      - 'discovered/**.json'
+      - 'discovered/SCHEMA.json'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install jsonschema
+        run: pip install 'jsonschema>=4.20,<5.0'
+
+      - name: Validate all discovered/*.json against SCHEMA.json
+        run: |
+          python <<'PY'
+          import json, sys
+          from pathlib import Path
+          from jsonschema import Draft202012Validator
+          schema_path = Path('discovered/SCHEMA.json')
+          if not schema_path.exists():
+              print('FATAL: discovered/SCHEMA.json missing')
+              sys.exit(2)
+          schema = json.loads(schema_path.read_text(encoding='utf-8'))
+          v = Draft202012Validator(schema)
+          had_errors = False
+          targets = sorted(Path('discovered').glob('eventi_*.json'))
+          if not targets:
+              print('Nessun file eventi_*.json da validare. OK.')
+              sys.exit(0)
+          for p in targets:
+              try:
+                  doc = json.loads(p.read_text(encoding='utf-8'))
+              except Exception as e:
+                  print(f'{p.name}: JSON malformato: {e}')
+                  had_errors = True
+                  continue
+              errs = list(v.iter_errors(doc))
+              if errs:
+                  had_errors = True
+                  print(f'{p.name}: {len(errs)} errori schema')
+                  for e in errs:
+                      print(f'  {list(e.absolute_path)}: {e.message}')
+              else:
+                  print(f'{p.name}: OK ({len(doc.get("events", []))} eventi)')
+          sys.exit(1 if had_errors else 0)
+          PY
