@@ -41,25 +41,36 @@ GH_MODELS_ENDPOINT = "https://models.github.ai/inference/chat/completions"
 GH_MODELS_MODEL = "openai/gpt-4o-mini"
 GH_MODELS_MAX_TOKENS = 2000
 
-# Fonti da scrappare. Inizio con UNA sola fonte (vedi piano Step 2).
-# Altre saranno aggiunte in Step 3 dopo aver misurato la qualita' di output.
+# Fonti. Ogni fonte ha un 'type' che determina il parser:
+#   - easypark24_api: API JSON pubblica usata da sansiroparcheggi.it. Strutturata,
+#     niente LLM. Copre Stadio San Siro + Ippodromo SNAI La Maura + Ippodromo SNAI San Siro.
+#     Affidabile perche' la gente prenota il parcheggio sulla base degli eventi.
+#   - llm_html: HTML server-rendered passato a GitHub Models per estrazione.
+#     Fallback per fonti non strutturate.
 SOURCES = [
-    # NB: MilanoToday usa rendering lato-client per i listing → il body server-side
-    # contiene poco contenuto. Lasciato come fonte di prova in attesa di Step 3
-    # (aggiunta fonti server-rendered o playwright). Failure mode: 0 eventi, niente PR.
     {
-        "name": "milanotoday-concerti",
-        "url": "https://www.milanotoday.it/eventi/concerti/",
-    },
-    {
-        "name": "milanotoday-san-siro",
-        "url": "https://www.milanotoday.it/eventi/location/san-siro/",
-    },
-    {
-        "name": "milanotoday-ippodromo-san-siro",
-        "url": "https://www.milanotoday.it/eventi/location/ippodromo-di-san-siro/",
+        "name": "easypark24-sansiroparcheggi",
+        "url": "https://webapi.easypark24.com/api/Event/GetEvent?ListParkings=1123&ListParkings=1130",
+        "type": "easypark24_api",
+        "human_url": "https://sansiroparcheggi.it/eventi.html",
     },
 ]
+
+# Mapping da PlaceEventDescr del feed easypark24 ai nostri (location_name, location_address) canonici.
+EASYPARK24_PLACE_MAP = {
+    "stadio san siro": (
+        "Stadio San Siro (Giuseppe Meazza)",
+        "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+    ),
+    "ippodromo snai san siro": (
+        "Ippodromo SNAI San Siro",
+        "Piazzale dello Sport 16, 20151 Milano MI, Italy",
+    ),
+    "ippodromo snai la maura": (
+        "Ippodromo SNAI La Maura",
+        "Via Lampugnano 95, 20151 Milano MI, Italy",
+    ),
+}
 
 LOCATION_REGEX = re.compile(
     r"san\s*siro|meazza|lampugnano|la\s*maura|ippodromo",
@@ -121,6 +132,75 @@ def fetch_source_text(session: requests.Session, source: dict) -> str | None:
     if len(text) > 8000:
         text = text[:8000] + " ...[truncated]"
     return text
+
+
+def extract_from_easypark24(session: requests.Session, source: dict) -> list[dict]:
+    """Parser per webapi.easypark24.com. Restituisce eventi gia' nel formato finale
+    (non passa per l'LLM). Affidabilita' alta perche' la fonte e' API JSON strutturata."""
+    url = source["url"]
+    try:
+        r = session.get(url, headers={"Accept": "application/json"}, timeout=20)
+        r.raise_for_status()
+        data = r.json()
+    except Exception as e:
+        log(f"  ERRORE fetch easypark24 {url}: {e}")
+        return []
+    if not isinstance(data, list):
+        log(f"  ERRORE: payload easypark24 non e' lista, e' {type(data).__name__}")
+        return []
+
+    events: list[dict] = []
+    for raw in data:
+        if not isinstance(raw, dict):
+            continue
+        if raw.get("Disabled"):
+            continue
+        desc = (raw.get("Description") or "").strip()
+        time_str = (raw.get("Time") or "21:00:00").strip()
+        place = (raw.get("PlaceEventDescr") or "").strip()
+        parkings = raw.get("IdParkings") or []
+        if not desc or not parkings:
+            continue
+        date_str = (parkings[0].get("FromDate") or "")[:10]
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", date_str):
+            continue
+        # Summary pulita: "Tiziano Ferro - 06/06/2026" -> "Tiziano Ferro"
+        summary = re.sub(r"\s*-\s*\d{1,2}/\d{1,2}/\d{4}\s*$", "", desc).strip()
+        if not summary:
+            continue
+        # Location: lookup canonical name + address
+        place_lower = place.lower()
+        loc_name, loc_addr = None, None
+        for key, (name, addr) in EASYPARK24_PLACE_MAP.items():
+            if key in place_lower:
+                loc_name, loc_addr = name, addr
+                break
+        if not loc_name:
+            log(f"    SKIP easypark24: place sconosciuto {place!r} per '{summary}'")
+            continue
+        # dtstart + dtend = dtstart + 2h30m (concerto tipico)
+        if not re.match(r"^\d{2}:\d{2}(:\d{2})?$", time_str):
+            time_str = "21:00:00"
+        if time_str.count(":") == 1:
+            time_str += ":00"
+        dtstart_str = f"{date_str}T{time_str}"
+        try:
+            dtstart = datetime.strptime(dtstart_str, "%Y-%m-%dT%H:%M:%S")
+            dtend = dtstart + timedelta(hours=2, minutes=30)
+            dtend_str = dtend.strftime("%Y-%m-%dT%H:%M:%S")
+        except ValueError:
+            log(f"    SKIP easypark24: dtstart non parsabile {dtstart_str!r}")
+            continue
+        events.append({
+            "summary": summary,
+            "dtstart_str": dtstart_str,
+            "dtend_str": dtend_str,
+            "location_name": loc_name,
+            "location_address": loc_addr,
+            "description": f"Fonte: sansiroparcheggi.it (easypark24 id={raw.get('Id')}).",
+            "confidence": "high",
+        })
+    return events
 
 
 def call_github_models(token: str, source_url: str, page_text: str) -> dict | None:
@@ -340,9 +420,10 @@ def validate_against_schema(doc: dict) -> list[str]:
 
 
 def main() -> int:
+    needs_llm = any(s.get("type", "llm_html") == "llm_html" for s in SOURCES)
     token = os.environ.get("GH_MODELS_TOKEN") or os.environ.get("GITHUB_TOKEN")
-    if not token:
-        log("ERRORE: GH_MODELS_TOKEN o GITHUB_TOKEN non impostato.")
+    if needs_llm and not token:
+        log("ERRORE: GH_MODELS_TOKEN o GITHUB_TOKEN non impostato (richiesto da almeno una fonte LLM).")
         return 2
 
     log(f"--- Discovery eventi (orizzonte {WINDOW_DAYS} giorni) ---")
@@ -356,22 +437,34 @@ def main() -> int:
     source_urls_used: list[str] = []
 
     for source in SOURCES:
-        log(f"--- Sorgente: {source['name']} ({source['url']}) ---")
-        text = fetch_source_text(session, source)
-        if not text:
-            log("  Skip sorgente (fetch fallito).")
+        source_type = source.get("type", "llm_html")
+        human_url = source.get("human_url") or source["url"]
+        log(f"--- Sorgente: {source['name']} (type={source_type}) {human_url} ---")
+
+        raw_events: list[dict]
+        if source_type == "easypark24_api":
+            raw_events = extract_from_easypark24(session, source)
+            log(f"  Fonte strutturata ha restituito {len(raw_events)} eventi")
+        elif source_type == "llm_html":
+            text = fetch_source_text(session, source)
+            if not text:
+                log("  Skip sorgente (fetch fallito).")
+                continue
+            log(f"  Testo estratto: {len(text)} chars")
+            parsed = call_github_models(token or "", source["url"], text)
+            if not parsed:
+                log("  Skip sorgente (LLM fallito).")
+                continue
+            raw_events = parsed.get("events", []) if isinstance(parsed, dict) else []
+            log(f"  LLM ha proposto {len(raw_events)} eventi candidati")
+        else:
+            log(f"  Type sconosciuto: {source_type}. Skip.")
             continue
-        log(f"  Testo estratto: {len(text)} chars")
-        parsed = call_github_models(token, source["url"], text)
-        if not parsed:
-            log("  Skip sorgente (LLM fallito).")
-            continue
-        raw_events = parsed.get("events", []) if isinstance(parsed, dict) else []
-        log(f"  LLM ha proposto {len(raw_events)} eventi candidati")
-        new_events = filter_and_dedup(raw_events, existing_manual, existing_discovered, source["url"])
+
+        new_events = filter_and_dedup(raw_events, existing_manual, existing_discovered, human_url)
         log(f"  Dopo filtro/dedup: {len(new_events)} eventi nuovi")
         all_new_events.extend(new_events)
-        source_urls_used.append(source["url"])
+        source_urls_used.append(human_url)
 
     if not all_new_events:
         log("Nessun evento nuovo da proporre.")
