@@ -49,14 +49,18 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-          git pull --rebase origin main
-
+          # NB ordine: prima stage + commit, poi pull --rebase, poi push.
+          # 'git pull --rebase' rifiuta se il working tree e' dirty (esattamente
+          # il caso post-generazione ICS): committando prima, il rebase opera
+          # su un albero pulito.
           git add calendari_output/*.ics eventi_san_siro_merged.ics eventi_lampugnano.ics 2>/dev/null || true
 
-          if ! git diff --staged --quiet; then
-            echo "Modifiche trovate. Commit e push..."
-            git commit -m "Aggiornamento automatico calendari mensili (workflow)"
-            git push
-          else
+          if git diff --staged --quiet; then
             echo "Nessuna modifica significativa da committare."
+            exit 0
           fi
+
+          echo "Modifiche trovate. Commit + rebase + push..."
+          git commit -m "Aggiornamento automatico calendari mensili (workflow)"
+          git pull --rebase origin main
+          git push

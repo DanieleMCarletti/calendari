@@ -430,8 +430,16 @@ def main():
                 log(f"    ERRORE nello scrivere il file ICS mensile {output_ics_file_path}: {e}")
 
     log(f"--- Fase 2: Processamento Calendari Partite da URL ---")
-    giorni_passato_da_includere = 7
-    data_riferimento_feed = datetime.now(TARGET_TIMEZONE_OBJ) - timedelta(days=giorni_passato_da_includere)
+    # Stagione calcistica italiana: 1 luglio -> 30 giugno. Includiamo le ultime
+    # SEASONS_LOOKBACK stagioni (corrente + N-1 precedenti) come archivio rolling.
+    # Es. SEASONS_LOOKBACK=2 con oggi=2026-05 -> include dal 1/7/2024 (stagione 24-25 + 25-26).
+    # Quando inizia la stagione 26-27 (1 luglio 2026), la 24-25 esce automaticamente.
+    SEASONS_LOOKBACK = 2
+    now_local = datetime.now(TARGET_TIMEZONE_OBJ)
+    current_season_start_year = now_local.year if now_local.month >= 7 else now_local.year - 1
+    start_year = current_season_start_year - (SEASONS_LOOKBACK - 1)
+    data_riferimento_feed = TARGET_TIMEZONE_OBJ.localize(datetime(start_year, 7, 1))
+    log(f"  Includo partite dal {data_riferimento_feed.date()} (ultime {SEASONS_LOOKBACK} stagioni).")
 
     feed_failures = 0
     for team_key, url in CALENDAR_URLS.items():
