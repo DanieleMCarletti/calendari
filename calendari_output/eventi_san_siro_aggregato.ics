@@ -1642,11 +1642,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  /fixtures
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:AC Milan - Cagliari
+SUMMARY:AC Milan - Cagliari (1-2)
 DTSTART;TZID=Europe/Rome:20260524T204500
 DTEND;TZID=Europe/Rome:20260524T223000
 DTSTAMP:20260524T184500Z
-UID:af7626ee5270eaa7@calendari.danielecarletti
+UID:1c59ba3548e6a828@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
