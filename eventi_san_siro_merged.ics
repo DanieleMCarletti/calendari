@@ -772,7 +772,7 @@ URL:https://www.google.com/maps/search/?api=1&query=Ippodromo+SNAI+San+Sir
  o%2C+Piazzale+dello+Sport%2C+16%2C+20151+Milano+MI%2C+Italy
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - Urawa Reds [] (2-1)
+SUMMARY:Inter - Urawa Reds (2-1)
 DTSTART;TZID=Europe/Rome:20250621T210000
 DTEND;TZID=Europe/Rome:20250621T224500
 DTSTAMP:20250621T190000Z
@@ -819,7 +819,7 @@ URL:https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Pia
  zzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - River Plate [] (2-0)
+SUMMARY:Inter - River Plate (2-0)
 DTSTART;TZID=Europe/Rome:20250626T030000
 DTEND;TZID=Europe/Rome:20250626T044500
 DTSTAMP:20250626T010000Z
@@ -867,7 +867,7 @@ URL:https://www.google.com/maps/search/?api=1&query=Stadio+San+Siro%2C+Pia
  zzale+Angelo+Moratti%2C+20151+Milano+MI%2C+Italy
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - Fluminense [] (0-2)
+SUMMARY:Inter - Fluminense (0-2)
 DTSTART;TZID=Europe/Rome:20250630T210000
 DTEND;TZID=Europe/Rome:20250630T224500
 DTSTAMP:20250630T190000Z
@@ -1877,7 +1877,7 @@ LOCATION:Stadio San Siro - Milano
 URL:https://maps.google.com/?q=San+Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:AC Milan - Inter []
+SUMMARY:AC Milan - Inter
 DTSTART;TZID=Europe/Rome:20260805T020000
 DTEND;TZID=Europe/Rome:20260805T034500
 DTSTAMP:20260805T000000Z
