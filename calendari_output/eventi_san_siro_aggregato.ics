@@ -1887,6 +1887,16 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  com/fixtures
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:AC Milan - Manchester United
+DTSTART;TZID=Europe/Rome:20260815T020000
+DTEND;TZID=Europe/Rome:20260815T034500
+DTSTAMP:20260815T000000Z
+UID:a9ae589807ee16c5@calendari.danielecarletti
+DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
+ th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
+ com/fixtures
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Inter - AC Monza
 DTSTART;TZID=Europe/Rome:20260823T200000
 DTEND;TZID=Europe/Rome:20260823T214500
@@ -1902,10 +1912,11 @@ SUMMARY:AC Milan - Venezia
 DTSTART;TZID=Europe/Rome:20260830T200000
 DTEND;TZID=Europe/Rome:20260830T214500
 DTSTAMP:20260830T180000Z
-UID:26c75a50331e87d0@calendari.danielecarletti
+UID:cffbfa7fb137eff6@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Tony Pitony
@@ -1994,10 +2005,11 @@ SUMMARY:AC Milan - Lecce
 DTSTART;TZID=Europe/Rome:20260920T200000
 DTEND;TZID=Europe/Rome:20260920T214500
 DTSTAMP:20260920T180000Z
-UID:8e742384914f1123@calendari.danielecarletti
+UID:ffc59a3d58dbbe7d@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Parma
@@ -2015,10 +2027,11 @@ SUMMARY:AC Milan - Atalanta
 DTSTART;TZID=Europe/Rome:20261018T200000
 DTEND;TZID=Europe/Rome:20261018T214500
 DTSTAMP:20261018T180000Z
-UID:cc3405d442c75ede@calendari.danielecarletti
+UID:b3d667445be811cd@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Fiorentina
@@ -2036,20 +2049,22 @@ SUMMARY:AC Milan - Bologna
 DTSTART;TZID=Europe/Rome:20261028T190000
 DTEND;TZID=Europe/Rome:20261028T204500
 DTSTAMP:20261028T180000Z
-UID:33b7844b70cf8cd8@calendari.danielecarletti
+UID:4b2e60f73c84c8a2@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:AC Milan - Inter
 DTSTART;TZID=Europe/Rome:20261101T210000
 DTEND;TZID=Europe/Rome:20261101T224500
 DTSTAMP:20261101T200000Z
-UID:2f43542ebfc9c5df@calendari.danielecarletti
+UID:08dff5ecfb3b5fa6@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Como
@@ -2067,10 +2082,11 @@ SUMMARY:AC Milan - Frosinone
 DTSTART;TZID=Europe/Rome:20261122T210000
 DTEND;TZID=Europe/Rome:20261122T224500
 DTSTAMP:20261122T200000Z
-UID:8abcb3169094c8af@calendari.danielecarletti
+UID:81881847863d25c4@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - FC Genoa
@@ -2088,10 +2104,11 @@ SUMMARY:AC Milan - Parma
 DTSTART;TZID=Europe/Rome:20261206T210000
 DTEND;TZID=Europe/Rome:20261206T224500
 DTSTAMP:20261206T200000Z
-UID:7958574456047742@calendari.danielecarletti
+UID:35d7f2ceba8cc5e0@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Torino
@@ -2109,10 +2126,11 @@ SUMMARY:AC Milan - Como
 DTSTART;TZID=Europe/Rome:20261220T210000
 DTEND;TZID=Europe/Rome:20261220T224500
 DTSTAMP:20261220T200000Z
-UID:186c1d4a06119337@calendari.danielecarletti
+UID:fac0fa6225596c9f@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - US Sassuolo
@@ -2130,10 +2148,11 @@ SUMMARY:AC Milan - Fiorentina
 DTSTART;TZID=Europe/Rome:20270106T210000
 DTEND;TZID=Europe/Rome:20270106T224500
 DTSTAMP:20270106T200000Z
-UID:cb24e769ecf4cab4@calendari.danielecarletti
+UID:59e925df6f505180@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Juventus
@@ -2151,10 +2170,11 @@ SUMMARY:AC Milan - Torino
 DTSTART;TZID=Europe/Rome:20270117T210000
 DTEND;TZID=Europe/Rome:20270117T224500
 DTSTAMP:20270117T200000Z
-UID:cd529a5d5cf31353@calendari.danielecarletti
+UID:6d0a51a063a9d9de@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Venezia
@@ -2172,10 +2192,11 @@ SUMMARY:AC Milan - Juventus
 DTSTART;TZID=Europe/Rome:20270131T210000
 DTEND;TZID=Europe/Rome:20270131T224500
 DTSTAMP:20270131T200000Z
-UID:1bca2ecd0930f3fe@calendari.danielecarletti
+UID:c8ec09af2c0e81b3@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Cagliari
@@ -2204,10 +2225,11 @@ SUMMARY:AC Milan - FC Genoa
 DTSTART;TZID=Europe/Rome:20270221T210000
 DTEND;TZID=Europe/Rome:20270221T224500
 DTSTAMP:20270221T200000Z
-UID:8d33057830b300af@calendari.danielecarletti
+UID:11c518f2fbe38ec0@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Atalanta
@@ -2225,20 +2247,22 @@ SUMMARY:AC Milan - Cagliari
 DTSTART;TZID=Europe/Rome:20270307T210000
 DTEND;TZID=Europe/Rome:20270307T224500
 DTSTAMP:20270307T200000Z
-UID:0c1e17afa152272c@calendari.danielecarletti
+UID:c9440881b1c80a2b@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:AC Milan - US Sassuolo
 DTSTART;TZID=Europe/Rome:20270314T190000
 DTEND;TZID=Europe/Rome:20270314T204500
 DTSTAMP:20270314T180000Z
-UID:6070fea7820bfacf@calendari.danielecarletti
+UID:8113aacdafd4ed1a@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Frosinone
@@ -2256,10 +2280,11 @@ SUMMARY:AC Milan - AC Monza
 DTSTART;TZID=Europe/Rome:20270404T200000
 DTEND;TZID=Europe/Rome:20270404T214500
 DTSTAMP:20270404T180000Z
-UID:5bcddbf7c5b9d3a9@calendari.danielecarletti
+UID:9a7ac4ba14d7401d@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - AS Roma
@@ -2277,10 +2302,11 @@ SUMMARY:AC Milan - Napoli
 DTSTART;TZID=Europe/Rome:20270418T200000
 DTEND;TZID=Europe/Rome:20270418T214500
 DTSTAMP:20270418T180000Z
-UID:79cb53cd1ed7fa16@calendari.danielecarletti
+UID:b90fddf03fdb6538@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Bologna
@@ -2298,10 +2324,11 @@ SUMMARY:AC Milan - S.S. Lazio
 DTSTART;TZID=Europe/Rome:20270502T200000
 DTEND;TZID=Europe/Rome:20270502T214500
 DTSTAMP:20270502T180000Z
-UID:302ee6d5e018a933@calendari.danielecarletti
+UID:0cf025d4ab72fee1@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Lecce
@@ -2319,10 +2346,11 @@ SUMMARY:AC Milan - AS Roma
 DTSTART;TZID=Europe/Rome:20270516T200000
 DTEND;TZID=Europe/Rome:20270516T214500
 DTSTAMP:20270516T180000Z
-UID:23e554c89cd3bfac@calendari.danielecarletti
+UID:7f5ecb6ec3d357be@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - S.S. Lazio
@@ -2340,9 +2368,10 @@ SUMMARY:AC Milan - Udinese
 DTSTART;TZID=Europe/Rome:20270530T200000
 DTEND;TZID=Europe/Rome:20270530T214500
 DTSTAMP:20270530T180000Z
-UID:9dc408ab39867d51@calendari.danielecarletti
+UID:fb2bf60d577153b1@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
+LOCATION:San Siro
 END:VEVENT
 END:VCALENDAR
