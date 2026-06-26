@@ -1898,10 +1898,10 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - AC Monza
-DTSTART;TZID=Europe/Rome:20260823T200000
-DTEND;TZID=Europe/Rome:20260823T214500
-DTSTAMP:20260823T180000Z
-UID:43c6cf51a85662fe@calendari.danielecarletti
+DTSTART;TZID=Europe/Rome:20260822T183000
+DTEND;TZID=Europe/Rome:20260822T201500
+DTSTAMP:20260822T163000Z
+UID:24d6b6e539d92ed5@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
  /fixtures
@@ -1909,10 +1909,10 @@ LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:AC Milan - Venezia
-DTSTART;TZID=Europe/Rome:20260830T200000
-DTEND;TZID=Europe/Rome:20260830T214500
-DTSTAMP:20260830T180000Z
-UID:cffbfa7fb137eff6@calendari.danielecarletti
+DTSTART;TZID=Europe/Rome:20260828T204500
+DTEND;TZID=Europe/Rome:20260828T223000
+DTSTAMP:20260828T184500Z
+UID:023dfcae19085d07@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
@@ -1930,10 +1930,10 @@ URL:https://maps.google.com/?q=Ippodromo+San+Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:Inter - Napoli
-DTSTART;TZID=Europe/Rome:20260906T200000
-DTEND;TZID=Europe/Rome:20260906T214500
-DTSTAMP:20260906T180000Z
-UID:583edca45c27c1fa@calendari.danielecarletti
+DTSTART;TZID=Europe/Rome:20260905T180000
+DTEND;TZID=Europe/Rome:20260905T194500
+DTSTAMP:20260905T160000Z
+UID:7c49998fc937c82b@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
  /fixtures
@@ -1980,17 +1980,6 @@ LOCATION:Ippodromo SNAI San Siro - Milano
 URL:https://maps.google.com/?q=Ippodromo+San+Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - Udinese
-DTSTART;TZID=Europe/Rome:20260913T200000
-DTEND;TZID=Europe/Rome:20260913T214500
-DTSTAMP:20260913T180000Z
-UID:234cf5b8f855a04a@calendari.danielecarletti
-DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
- th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
- /fixtures
-LOCATION:San Siro
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:Marracash & Gué
 DTSTART;TZID=Europe/Rome:20260913T210000
 DTEND;TZID=Europe/Rome:20260913T233000
@@ -2001,11 +1990,22 @@ LOCATION:Ippodromo SNAI San Siro - Milano
 URL:https://maps.google.com/?q=Ippodromo+San+Siro
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Inter - Udinese
+DTSTART;TZID=Europe/Rome:20260914T204500
+DTEND;TZID=Europe/Rome:20260914T223000
+DTSTAMP:20260914T184500Z
+UID:519a559c5ed49141@calendari.danielecarletti
+DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
+ th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
+ /fixtures
+LOCATION:San Siro
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:AC Milan - Lecce
-DTSTART;TZID=Europe/Rome:20260920T200000
-DTEND;TZID=Europe/Rome:20260920T214500
-DTSTAMP:20260920T180000Z
-UID:ffc59a3d58dbbe7d@calendari.danielecarletti
+DTSTART;TZID=Europe/Rome:20260920T204500
+DTEND;TZID=Europe/Rome:20260920T223000
+DTSTAMP:20260920T184500Z
+UID:685619b7bd8d93d8@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
