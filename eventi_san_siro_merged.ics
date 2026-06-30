@@ -2100,6 +2100,26 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:AC Milan - Winnaar Groep D [COP]
+DTSTART;TZID=Europe/Rome:20261202T000000
+DTEND;TZID=Europe/Rome:20261203T000000
+DTSTAMP:20261201T230000Z
+UID:c6fb8dbd5b9e50f3@calendari.danielecarletti
+DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
+ th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
+ com/fixtures
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Inter - Winnaar Groep D [COP]
+DTSTART;TZID=Europe/Rome:20261202T000000
+DTEND;TZID=Europe/Rome:20261203T000000
+DTSTAMP:20261201T230000Z
+UID:09d3b0dd4eed3f5c@calendari.danielecarletti
+DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
+ th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
+ /fixtures
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:AC Milan - Parma
 DTSTART;TZID=Europe/Rome:20261206T210000
 DTEND;TZID=Europe/Rome:20261206T224500
