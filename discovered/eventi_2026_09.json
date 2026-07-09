@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-07-05T06:58:52Z",
+  "source_urls": [
+    "https://sansiroparcheggi.it/eventi.html"
+  ],
+  "events": [
+    {
+      "summary": "Tony Effe",
+      "dtstart_str": "2026-09-04T20:00:00",
+      "dtend_str": "2026-09-04T22:30:00",
+      "location_name": "Ippodromo SNAI San Siro",
+      "location_address": "Piazzale dello Sport 16, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10426).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Emma",
+      "dtstart_str": "2026-09-09T21:00:00",
+      "dtend_str": "2026-09-09T23:30:00",
+      "location_name": "Ippodromo SNAI San Siro",
+      "location_address": "Piazzale dello Sport 16, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10428).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Asap Rocky",
+      "dtstart_str": "2026-09-10T16:00:00",
+      "dtend_str": "2026-09-10T18:30:00",
+      "location_name": "Ippodromo SNAI San Siro",
+      "location_address": "Piazzale dello Sport 16, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10429).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Marracash e Guè",
+      "dtstart_str": "2026-09-13T21:00:00",
+      "dtend_str": "2026-09-13T23:30:00",
+      "location_name": "Ippodromo SNAI San Siro",
+      "location_address": "Piazzale dello Sport 16, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10430).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    }
+  ]
+}
