@@ -54,6 +54,46 @@ LOCATION:Stadio San Siro - Milano
 URL:https://maps.google.com/?q=San+Siro
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Max Pezzali
+DTSTART;TZID=Europe/Rome:20260711T210000
+DTEND;TZID=Europe/Rome:20260711T233000
+DTSTAMP:20260711T190000Z
+UID:bbaa24a46e63f935@calendari.danielecarletti
+DESCRIPTION:Fonte: sansiroparcheggi.it (easypark24 id=10370).
+LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
+ 51 Milano MI\, Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Max Pezzali
+DTSTART;TZID=Europe/Rome:20260712T210000
+DTEND;TZID=Europe/Rome:20260712T233000
+DTSTAMP:20260712T190000Z
+UID:ed29a235a2907269@calendari.danielecarletti
+DESCRIPTION:Fonte: sansiroparcheggi.it (easypark24 id=10372).
+LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
+ 51 Milano MI\, Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Bruno Mars
+DTSTART;TZID=Europe/Rome:20260714T193000
+DTEND;TZID=Europe/Rome:20260714T220000
+DTSTAMP:20260714T173000Z
+UID:3ee855ea0daef8de@calendari.danielecarletti
+DESCRIPTION:Fonte: sansiroparcheggi.it (easypark24 id=10402).
+LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
+ 51 Milano MI\, Italy
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Bruno Mars
+DTSTART;TZID=Europe/Rome:20260715T193000
+DTEND;TZID=Europe/Rome:20260715T220000
+DTSTAMP:20260715T173000Z
+UID:4d552c7179e28723@calendari.danielecarletti
+DESCRIPTION:Fonte: sansiroparcheggi.it (easypark24 id=10403).
+LOCATION:Stadio San Siro (Giuseppe Meazza) - Piazzale Angelo Moratti\, 201
+ 51 Milano MI\, Italy
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Bad Bunny
 DTSTART;TZID=Europe/Rome:20260717T210000
 DTEND;TZID=Europe/Rome:20260717T233000

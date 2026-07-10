@@ -4,6 +4,16 @@ PRODID:-//Generated Calendar (Europe/Rome)//calendari.danielecarletti//
 X-WR-CALNAME:Eventi San Siro - 2026_09
 X-WR-TIMEZONE:Europe/Rome
 BEGIN:VEVENT
+SUMMARY:Tony Effe
+DTSTART;TZID=Europe/Rome:20260904T200000
+DTEND;TZID=Europe/Rome:20260904T223000
+DTSTAMP:20260904T180000Z
+UID:c96291678b52d6f5@calendari.danielecarletti
+DESCRIPTION:Fonte: sansiroparcheggi.it (easypark24 id=10426).
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport 16\, 20151 Milano 
+ MI\, Italy
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Tony Pitony
 DTSTART;TZID=Europe/Rome:20260904T210000
 DTEND;TZID=Europe/Rome:20260904T233000
@@ -24,6 +34,16 @@ LOCATION:Ippodromo SNAI San Siro - Milano
 URL:https://maps.google.com/?q=Ippodromo+San+Siro
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Emma
+DTSTART;TZID=Europe/Rome:20260909T210000
+DTEND;TZID=Europe/Rome:20260909T233000
+DTSTAMP:20260909T190000Z
+UID:b949838402c2ca16@calendari.danielecarletti
+DESCRIPTION:Fonte: sansiroparcheggi.it (easypark24 id=10428).
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport 16\, 20151 Milano 
+ MI\, Italy
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Emma Marrone
 DTSTART;TZID=Europe/Rome:20260909T210000
 DTEND;TZID=Europe/Rome:20260909T233000
@@ -32,6 +52,16 @@ UID:be833e0b517aa124@calendari.danielecarletti
 DESCRIPTION:Concerto live.
 LOCATION:Ippodromo SNAI San Siro - Milano
 URL:https://maps.google.com/?q=Ippodromo+San+Siro
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Asap Rocky
+DTSTART;TZID=Europe/Rome:20260910T160000
+DTEND;TZID=Europe/Rome:20260910T183000
+DTSTAMP:20260910T140000Z
+UID:4163f6ee63e35211@calendari.danielecarletti
+DESCRIPTION:Fonte: sansiroparcheggi.it (easypark24 id=10429).
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport 16\, 20151 Milano 
+ MI\, Italy
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:A$AP Rocky
@@ -62,5 +92,15 @@ UID:2ededb8a325d13e4@calendari.danielecarletti
 DESCRIPTION:Seconda data.
 LOCATION:Ippodromo SNAI San Siro - Milano
 URL:https://maps.google.com/?q=Ippodromo+San+Siro
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Marracash e Guè
+DTSTART;TZID=Europe/Rome:20260913T210000
+DTEND;TZID=Europe/Rome:20260913T233000
+DTSTAMP:20260913T190000Z
+UID:6665e299fe34fe16@calendari.danielecarletti
+DESCRIPTION:Fonte: sansiroparcheggi.it (easypark24 id=10430).
+LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport 16\, 20151 Milano 
+ MI\, Italy
 END:VEVENT
 END:VCALENDAR
