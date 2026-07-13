@@ -1434,10 +1434,10 @@ LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:AC Milan - Atalanta
-DTSTART;TZID=Europe/Rome:20261018T200000
-DTEND;TZID=Europe/Rome:20261018T214500
-DTSTAMP:20261018T180000Z
-UID:b3d667445be811cd@calendari.danielecarletti
+DTSTART;TZID=Europe/Rome:20261017T020000
+DTEND;TZID=Europe/Rome:20261017T034500
+DTSTAMP:20261017T000000Z
+UID:81a5a44a8e814582@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
