@@ -1248,10 +1248,10 @@ URL:https://maps.google.com/?q=San+Siro
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:AC Milan - Inter
-DTSTART;TZID=Europe/Rome:20260805T020000
-DTEND;TZID=Europe/Rome:20260805T034500
-DTSTAMP:20260805T000000Z
-UID:5c47f1dc0108fac8@calendari.danielecarletti
+DTSTART;TZID=Europe/Rome:20260805T130000
+DTEND;TZID=Europe/Rome:20260805T144500
+DTSTAMP:20260805T110000Z
+UID:10a089ad1f5d38bf@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
