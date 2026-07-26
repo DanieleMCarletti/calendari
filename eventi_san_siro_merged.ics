@@ -1258,10 +1258,10 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:AC Milan - Manchester United
-DTSTART;TZID=Europe/Rome:20260815T020000
-DTEND;TZID=Europe/Rome:20260815T034500
-DTSTAMP:20260815T000000Z
-UID:a9ae589807ee16c5@calendari.danielecarletti
+DTSTART;TZID=Europe/Rome:20260815T164500
+DTEND;TZID=Europe/Rome:20260815T183000
+DTSTAMP:20260815T144500Z
+UID:b030222ca061b7ae@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
