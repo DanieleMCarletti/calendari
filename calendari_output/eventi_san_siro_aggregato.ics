@@ -1257,6 +1257,16 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  com/fixtures
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Inter - Real Betis
+DTSTART;TZID=Europe/Rome:20260815T193000
+DTEND;TZID=Europe/Rome:20260815T211500
+DTSTAMP:20260815T173000Z
+UID:694d008e3a8b3164@calendari.danielecarletti
+DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
+ th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
+ /fixtures
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Inter - AC Monza
 DTSTART;TZID=Europe/Rome:20260822T183000
 DTEND;TZID=Europe/Rome:20260822T201500
