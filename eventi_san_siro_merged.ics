@@ -1247,11 +1247,11 @@ LOCATION:Stadio San Siro - Milano
 URL:https://maps.google.com/?q=San+Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:AC Milan - Inter
+SUMMARY:AC Milan - Inter (1-1)
 DTSTART;TZID=Europe/Rome:20260805T130000
 DTEND;TZID=Europe/Rome:20260805T144500
 DTSTAMP:20260805T110000Z
-UID:10a089ad1f5d38bf@calendari.danielecarletti
+UID:716080c7205ee9e5@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
