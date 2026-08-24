@@ -1267,11 +1267,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  /fixtures
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - AC Monza
+SUMMARY:Inter - AC Monza (4-1)
 DTSTART;TZID=Europe/Rome:20260822T183000
 DTEND;TZID=Europe/Rome:20260822T201500
 DTSTAMP:20260822T163000Z
-UID:24d6b6e539d92ed5@calendari.danielecarletti
+UID:a53fa81220d9b216@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
  /fixtures
