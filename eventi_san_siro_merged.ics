@@ -1565,11 +1565,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:AC Milan - Winnaar Groep D [COP]
+SUMMARY:AC Milan - AC Monza [COP]
 DTSTART;TZID=Europe/Rome:20261202T000000
 DTEND;TZID=Europe/Rome:20261203T000000
 DTSTAMP:20261201T230000Z
-UID:c6fb8dbd5b9e50f3@calendari.danielecarletti
+UID:987a03e091e03287@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
