@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-09-13T08:36:42Z",
+  "source_urls": [
+    "https://sansiroparcheggi.it/eventi.html"
+  ],
+  "events": [
+    {
+      "summary": "Inter - Liverpool",
+      "dtstart_str": "2027-01-19T21:00:00",
+      "dtend_str": "2027-01-19T23:30:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10441).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Milan - Ararat Armenia",
+      "dtstart_str": "2027-01-28T21:00:00",
+      "dtend_str": "2027-01-28T23:30:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10445).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    }
+  ]
+}
