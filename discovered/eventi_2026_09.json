@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-05T06:58:52Z",
+  "generated_at": "2026-09-13T08:36:42Z",
   "source_urls": [
     "https://sansiroparcheggi.it/eventi.html"
   ],
@@ -41,6 +41,46 @@
       "location_name": "Ippodromo SNAI San Siro",
       "location_address": "Piazzale dello Sport 16, 20151 Milano MI, Italy",
       "description": "Fonte: sansiroparcheggi.it (easypark24 id=10430).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Inter - Udinese",
+      "dtstart_str": "2026-09-14T20:45:00",
+      "dtend_str": "2026-09-14T23:15:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10435).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Emma",
+      "dtstart_str": "2026-09-15T21:00:00",
+      "dtend_str": "2026-09-15T23:30:00",
+      "location_name": "Ippodromo SNAI San Siro",
+      "location_address": "Piazzale dello Sport 16, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10428).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Milan - Benfica",
+      "dtstart_str": "2026-09-16T21:00:00",
+      "dtend_str": "2026-09-16T23:30:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10442).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Milan - Lecce",
+      "dtstart_str": "2026-09-20T20:45:00",
+      "dtend_str": "2026-09-20T23:15:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10436).",
       "confidence": "high",
       "source_url": "https://sansiroparcheggi.it/eventi.html"
     }

@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-09-13T08:36:42Z",
+  "source_urls": [
+    "https://sansiroparcheggi.it/eventi.html"
+  ],
+  "events": [
+    {
+      "summary": "Milan - Sunderland",
+      "dtstart_str": "2026-12-10T21:00:00",
+      "dtend_str": "2026-12-10T23:30:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10444).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    }
+  ]
+}
