@@ -1400,11 +1400,11 @@ LOCATION:Ippodromo SNAI San Siro - Piazzale dello Sport 16\, 20151 Milano
  MI\, Italy
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - Udinese
+SUMMARY:Inter - Udinese (5-3)
 DTSTART;TZID=Europe/Rome:20260914T204500
 DTEND;TZID=Europe/Rome:20260914T223000
 DTSTAMP:20260914T184500Z
-UID:519a559c5ed49141@calendari.danielecarletti
+UID:c678cc05c3a19215@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
  /fixtures
