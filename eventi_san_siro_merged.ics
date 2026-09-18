@@ -1575,11 +1575,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  com/fixtures
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - Winnaar Groep D [COP]
+SUMMARY:Inter - FC Genoa [COP]
 DTSTART;TZID=Europe/Rome:20261202T000000
 DTEND;TZID=Europe/Rome:20261203T000000
 DTSTAMP:20261201T230000Z
-UID:09d3b0dd4eed3f5c@calendari.danielecarletti
+UID:dc90534d786bcecd@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
  /fixtures
