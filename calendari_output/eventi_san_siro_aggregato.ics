@@ -1411,11 +1411,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:AC Milan - Benfica [EL]
+SUMMARY:AC Milan - Benfica [EL] (0-2)
 DTSTART;TZID=Europe/Rome:20260916T210000
 DTEND;TZID=Europe/Rome:20260916T224500
 DTSTAMP:20260916T190000Z
-UID:9c535c9465d04b48@calendari.danielecarletti
+UID:9adcb302f0929911@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
