@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-10-04T10:17:21Z",
+  "source_urls": [
+    "https://sansiroparcheggi.it/eventi.html"
+  ],
+  "events": [
+    {
+      "summary": "Milan - Parma",
+      "dtstart_str": "2026-12-06T20:45:00",
+      "dtend_str": "2026-12-06T23:15:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10464).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Milan - Sunderland",
+      "dtstart_str": "2026-12-10T21:00:00",
+      "dtend_str": "2026-12-10T23:30:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10444).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Inter - Torino",
+      "dtstart_str": "2026-12-13T15:00:00",
+      "dtend_str": "2026-12-13T17:30:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10465).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Milan - Como",
+      "dtstart_str": "2026-12-19T18:00:00",
+      "dtend_str": "2026-12-19T20:30:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10466).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    }
+  ]
+}

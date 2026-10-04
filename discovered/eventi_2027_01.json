@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-10-04T10:17:21Z",
+  "source_urls": [
+    "https://sansiroparcheggi.it/eventi.html"
+  ],
+  "events": [
+    {
+      "summary": "Inter - Sassuolo",
+      "dtstart_str": "2027-01-03T12:30:00",
+      "dtend_str": "2027-01-03T15:00:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10467).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Milan - Fiorentina",
+      "dtstart_str": "2027-01-05T20:45:00",
+      "dtend_str": "2027-01-05T23:15:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10468).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Inter - Juventus",
+      "dtstart_str": "2027-01-10T20:45:00",
+      "dtend_str": "2027-01-10T23:15:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10469).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Inter - Liverpool",
+      "dtstart_str": "2027-01-19T21:00:00",
+      "dtend_str": "2027-01-19T23:30:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10441).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Milan - Ararat Armenia",
+      "dtstart_str": "2027-01-28T21:00:00",
+      "dtend_str": "2027-01-28T23:30:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10445).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    }
+  ]
+}
