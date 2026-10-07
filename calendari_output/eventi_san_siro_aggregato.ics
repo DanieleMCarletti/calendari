@@ -1433,6 +1433,16 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
+SUMMARY:Inter - FC Lumezzane (2-0)
+DTSTART;TZID=Europe/Rome:20261003T110000
+DTEND;TZID=Europe/Rome:20261003T124500
+DTSTAMP:20261003T090000Z
+UID:a4dd04ee4ef78701@calendari.danielecarletti
+DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
+ th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
+ /fixtures
+END:VEVENT
+BEGIN:VEVENT
 SUMMARY:Inter - Parma
 DTSTART;TZID=Europe/Rome:20261010T180000
 DTEND;TZID=Europe/Rome:20261010T194500
