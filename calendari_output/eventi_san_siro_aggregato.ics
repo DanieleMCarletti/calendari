@@ -1443,11 +1443,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  /fixtures
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - Parma
+SUMMARY:Inter - Parma (3-0)
 DTSTART;TZID=Europe/Rome:20261010T180000
 DTEND;TZID=Europe/Rome:20261010T194500
 DTSTAMP:20261010T160000Z
-UID:8fb79dee74316c0c@calendari.danielecarletti
+UID:1cc9ce648f1f3a2a@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
  /fixtures
