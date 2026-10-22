@@ -1476,11 +1476,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - Shakhtar Donetsk [CL]
+SUMMARY:Inter - Shakhtar Donetsk [CL] (1-0)
 DTSTART;TZID=Europe/Rome:20261021T210000
 DTEND;TZID=Europe/Rome:20261021T224500
 DTSTAMP:20261021T190000Z
-UID:42d4f49c0e2afe19@calendari.danielecarletti
+UID:c45c5ffa28f7e243@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
  /fixtures
