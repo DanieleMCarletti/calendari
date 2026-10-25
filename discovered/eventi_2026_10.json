@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-10-25T08:48:05Z",
+  "source_urls": [
+    "https://sansiroparcheggi.it/eventi.html"
+  ],
+  "events": [
+    {
+      "summary": "Inter - Fiorentina",
+      "dtstart_str": "2026-10-25T12:30:00",
+      "dtend_str": "2026-10-25T15:00:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10447).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Milan - Bologna",
+      "dtstart_str": "2026-10-28T18:30:00",
+      "dtend_str": "2026-10-28T21:00:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10461).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    },
+    {
+      "summary": "Milan - Inter",
+      "dtstart_str": "2026-10-31T20:45:00",
+      "dtend_str": "2026-10-31T23:15:00",
+      "location_name": "Stadio San Siro (Giuseppe Meazza)",
+      "location_address": "Piazzale Angelo Moratti, 20151 Milano MI, Italy",
+      "description": "Fonte: sansiroparcheggi.it (easypark24 id=10448).",
+      "confidence": "high",
+      "source_url": "https://sansiroparcheggi.it/eventi.html"
+    }
+  ]
+}
