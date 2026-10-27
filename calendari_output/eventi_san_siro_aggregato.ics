@@ -1487,11 +1487,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - Fiorentina
+SUMMARY:Inter - Fiorentina (2-1)
 DTSTART;TZID=Europe/Rome:20261025T123000
 DTEND;TZID=Europe/Rome:20261025T141500
 DTSTAMP:20261025T113000Z
-UID:1a2eef992d1730cd@calendari.danielecarletti
+UID:85bc350b6ab85872@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
  /fixtures
