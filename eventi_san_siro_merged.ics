@@ -1498,11 +1498,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:AC Milan - Bologna
+SUMMARY:AC Milan - Bologna (2-4)
 DTSTART;TZID=Europe/Rome:20261028T183000
 DTEND;TZID=Europe/Rome:20261028T201500
 DTSTAMP:20261028T173000Z
-UID:0bb6e7a1e4370b81@calendari.danielecarletti
+UID:c61d0bb37a067629@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
