@@ -1509,11 +1509,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:AC Milan - Inter
+SUMMARY:AC Milan - Inter (3-1)
 DTSTART;TZID=Europe/Rome:20261031T204500
 DTEND;TZID=Europe/Rome:20261031T223000
 DTSTAMP:20261031T194500Z
-UID:636e17df6212e232@calendari.danielecarletti
+UID:f18c77821d72774c@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
