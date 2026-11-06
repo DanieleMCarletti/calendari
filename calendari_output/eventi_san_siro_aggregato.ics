@@ -1520,11 +1520,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:AC Milan - Ferencvarosi [EL]
+SUMMARY:AC Milan - Ferencvarosi [EL] (0-2)
 DTSTART;TZID=Europe/Rome:20261105T184500
 DTEND;TZID=Europe/Rome:20261105T203000
 DTSTAMP:20261105T174500Z
-UID:3f36a18294a6960d@calendari.danielecarletti
+UID:7c7be53ccae1892c@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=ac-milan\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.
  com/fixtures
