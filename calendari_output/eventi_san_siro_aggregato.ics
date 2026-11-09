@@ -1531,11 +1531,11 @@ DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
 LOCATION:San Siro
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:Inter - Como
+SUMMARY:Inter - Como (2-0)
 DTSTART;TZID=Europe/Rome:20261108T180000
 DTEND;TZID=Europe/Rome:20261108T194500
 DTSTAMP:20261108T170000Z
-UID:e661f6d83b543759@calendari.danielecarletti
+UID:24d07d3b7df6d588@calendari.danielecarletti
 DESCRIPTION:Calendar not up to date? Check https://fixtur.es/up-to-date?pa
  th=inter\n\nSupport Fixtur.es via Buy Me a Coffee https://buymeacoffee.com
  /fixtures
